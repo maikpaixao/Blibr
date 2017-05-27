@@ -9,6 +9,7 @@ public class Usuario implements Serializable{
 	private int cpf;
 	private int senha;
 	
+	
 	public Usuario(int id, String nome, int cpf, int senha){
 		this.id = id;
 		this.nome = nome;

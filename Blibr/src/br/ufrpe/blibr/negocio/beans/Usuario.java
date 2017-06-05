@@ -8,13 +8,15 @@ public class Usuario implements Serializable{
 	private String nome;
 	private int cpf;
 	private int senha;
+	private int limiteMax;
 	
 	
-	public Usuario(int id, String nome, int cpf, int senha){
+	public Usuario(int id, String nome, int cpf, int senha, int limiteMax){
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
+		this.limiteMax = limiteMax;
 	}
 
 	public int getId() {
@@ -48,5 +50,12 @@ public class Usuario implements Serializable{
 	public void setSenha(int senha) {
 		this.senha = senha;
 	}
-
+	
+	public int getLimiteMax(){
+		return limiteMax;
+	}
+	
+	public void setLimiteMax(int limiteMax){
+		this.limiteMax = limiteMax;
+	}
 }

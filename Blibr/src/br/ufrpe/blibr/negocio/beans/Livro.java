@@ -7,12 +7,14 @@ public class Livro implements Serializable{
 	private int codigoLivro;
 	private String nomeLivro;
 	private String autorLivro;
+	private String editora;
 	private int quantidadeLivros;
 	
-	public Livro(int codigoLivro, String nomeLivro, String autorLivro, int quantidadeLivros){
+	public Livro(int codigoLivro, String nomeLivro, String autorLivro, String editora, int quantidadeLivros){
 		this.codigoLivro = codigoLivro;
 		this.nomeLivro = nomeLivro;
 		this.autorLivro = autorLivro;
+		this.editora = editora;
 		this.quantidadeLivros = quantidadeLivros;
 	}
 
@@ -38,6 +40,14 @@ public class Livro implements Serializable{
 
 	public void setAutorLivro(String autorLivro) {
 		this.autorLivro = autorLivro;
+	}
+	
+	public String getEditora() {
+		return editora;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
 	}
 
 	public int getQuantidadeLivros() {

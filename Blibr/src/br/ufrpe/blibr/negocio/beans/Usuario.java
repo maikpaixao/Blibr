@@ -1,20 +1,14 @@
 package br.ufrpe.blibr.negocio.beans;
 
-import java.io.Serializable;
-
-public class Usuario implements Serializable{
+public class Usuario extends Pessoa{
 	
 	private int id;
-	private String nome;
-	private int cpf;
 	private int senha;
 	private int limiteMax;
 	
-	
-	public Usuario(int id, String nome, int cpf, int senha, int limiteMax){
+	public Usuario(int id, String nome, int cpf, char sexo, int idade, int senha, int limiteMax){
+		super(nome, cpf, idade, sexo);
 		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
 		this.senha = senha;
 		this.limiteMax = limiteMax;
 	}
@@ -25,22 +19,6 @@ public class Usuario implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
 	}
 
 	public int getSenha() {
@@ -57,5 +35,9 @@ public class Usuario implements Serializable{
 	
 	public void setLimiteMax(int limiteMax){
 		this.limiteMax = limiteMax;
+	}
+	
+	public String toString() {
+		return "Usuario [id=" + id + ", senha=" + senha + ", limiteMax=" + limiteMax + "]";
 	}
 }

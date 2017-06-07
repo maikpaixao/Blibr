@@ -27,7 +27,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" text="Status">
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" text="Pesquisar">
                      <font>
                         <Font size="35.0" />
                      </font>
@@ -93,29 +93,21 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Biblioteca">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" text="Cadastrar Livro" />
+                        <MenuItem mnemonicParsing="false" text="Remover Livro" />
+                        <MenuItem mnemonicParsing="false" text="Editar Livro" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Usuarios">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" text="Cadastrar Usuario" />
+                        <MenuItem mnemonicParsing="false" text="Pesquisar Usuario" />
+                        <MenuItem mnemonicParsing="false" text="Remover Usuario" />
+                        <MenuItem mnemonicParsing="false" text="Atualizar Usuario" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Funcionarios">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Sobre">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Sair">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
+                  <Menu mnemonicParsing="false" text="Sobre" />
+                  <Menu mnemonicParsing="false" text="Sair" />
               </menus>
             </MenuBar>
          </top>

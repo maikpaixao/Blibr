@@ -1,8 +1,10 @@
 package br.ufrpe.blibr.negocio.beans;
 
 public class Pessoa {
-	private String nome;
+	
 	private double cpf;
+	private int senha;
+	private String nome;
 	private int idade;
 	private char sexo;
 	
@@ -43,6 +45,15 @@ public class Pessoa {
 
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
+	}
+	
+
+	public int getSenha() {
+		return senha;
+	}
+
+	public void setSenha(int senha) {
+		this.senha = senha;
 	}
 
 	public String toString() {

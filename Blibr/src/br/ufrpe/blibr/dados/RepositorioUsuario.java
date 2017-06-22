@@ -15,11 +15,11 @@ public class RepositorioUsuario {
 		return instance;
 	}
 	
-	private RepositorioUsuario(){
+	public RepositorioUsuario(){
 		this.numUsuario=0;
 	}
 	
-	public void adicionarClientes(Usuario usuario){
+	public void adicionarUsuario(Usuario usuario){
 		if(usuario != null && this.numUsuario < repoUsuario.length){
 			this.repoUsuario[numUsuario] = usuario;
 			this.numUsuario++;
@@ -28,6 +28,16 @@ public class RepositorioUsuario {
 			this.repoUsuario[numUsuario] = usuario;
 			this.numUsuario++;
 		}
+	}
+	
+	public boolean existeUsuario(double cpf){
+		boolean retorno = false;
+		for(int i = 0; i < this.numUsuario; i++){
+			if(this.repoUsuario[i].getCpf() == cpf){
+				retorno = true;
+			}
+		}
+		return retorno;
 	}
 	
 	private void duplicaArray(){

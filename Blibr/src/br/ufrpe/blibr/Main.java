@@ -26,7 +26,7 @@ public class Main extends Application{
 		
 		Pane root = FXMLLoader.load(getClass().getResource("/main/Gui.fxml"));
 		Scene scene = new Scene(root, 1280, 720);
-		
+		scene.getStylesheets().add("Custom.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

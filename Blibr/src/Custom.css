@@ -1,0 +1,55 @@
+.root{
+	-fx-background-color: #292929;
+}
+
+.menu-bar .label{
+	-fx-text-fill: white;
+}
+
+.button{
+	-fx-background-color: red;
+	-fx-text-fill: white;
+	-fx-border:none;
+}
+
+.menu-bar{
+	-fx-background-color: #191919;
+	-fx-font-size: 14px;
+}
+
+.menuitem .label{
+	-fx-text-fill: red;
+}
+
+.a{
+	-fx-background-color: #16a085;
+}
+
+.b{
+	-fx-background-color: #16a085;
+}
+
+.c{
+	-fx-background-color: #16a085;
+}
+
+.d{
+	-fx-background-color: #e74c3c;
+}
+
+.table-view{
+    -fx-background-color: #16a085;
+}
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: #191919;
+    -fx-border: none;
+}
+
+.table-view .column-header-background .label{
+	-fx-background-color: transparent;
+	-fx-font-size: 14px;
+    -fx-text-fill: white;
+}

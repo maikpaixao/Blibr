@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class Livro implements Serializable{
 	
 	private int codigoLivro;
+	private int quantidadeLivros;
 	private String nomeLivro;
 	private String autorLivro;
 	private String editora;
-	private int quantidadeLivros;
 	
 	public Livro(int codigoLivro, String nomeLivro, String autorLivro, String editora, int quantidadeLivros){
 		this.codigoLivro = codigoLivro;

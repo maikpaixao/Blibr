@@ -1,12 +1,15 @@
 package br.ufrpe.blibr.dados;
 
+import java.util.ArrayList;
+
+import br.ufrpe.blibr.exception.LivroExistente;
+import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Livro;
-import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class RepositorioLivro {
+	
 	private static RepositorioLivro instance;
-	private Livro[] repoLivro;
-	private int numUsuario;
+	private ArrayList<Livro> listaLivro;
 	
 	public static synchronized RepositorioLivro getInstance(){
 		if(instance == null){
@@ -15,62 +18,45 @@ public class RepositorioLivro {
 		return instance;
 	}
 	
-	private RepositorioLivro(){
-		this.numUsuario=0;
+	public RepositorioLivro(){
+		this.listaLivro = new ArrayList<Livro>();
 	}
 	
-	public void adicionarLivro(Livro livro){
-		if(livro != null && this.numUsuario < repoLivro.length){
-			this.repoLivro[numUsuario] = livro;
-			this.numUsuario++;
-		}else if(livro != null && this.numUsuario == repoLivro.length){
-			duplicaArray();
-			this.repoLivro[numUsuario] = livro;
-			this.numUsuario++;
+	public void adicionarLivro(Livro livro) throws Exception{
+		if(this.listaLivro.contains(livro)){
+			listaLivro.add(livro);
+		}else{
+		throw new LivroExistente("Esse livro já existe!");
 		}
 	}
 	
-	private void duplicaArray(){
-		if(this.repoLivro != null && this.repoLivro.length > 0){
-			Livro[] repositorioDuplicado = new Livro[this.repoLivro.length * 2];
-			for(int i = 0; i < repoLivro.length; i++){
-				repositorioDuplicado[i] = this.repoLivro[i];
-			}
-			this.repoLivro = repositorioDuplicado;
-		}
-	}
-	
-	public Livro buscarLivrro(double cpf){
-		int i;
-		Livro retorno = null;
-		for(i = 0; i < numUsuario; i++){
-			if(this.repoLivro[i].getCodigoLivro() == cpf){
-				retorno = this.repoLivro[i];
+	public Livro buscarLivrro(double codigoLivro){
+		for(Livro livro: listaLivro){
+			if(livro.getCodigoLivro()==codigoLivro){
+				return livro;
 			}
 		}
-		return retorno;
+		return null;
 	}
 	
-	public void removerLivro(double cpf){
-		int i;	
-		for(i = 0; i < numUsuario; i++){
-			if(this.repoLivro[i].getCodigoLivro() == cpf){
-				this.repoLivro[i] = this.repoLivro[numUsuario-1];
-				this.repoLivro[numUsuario-1] = null;
-				this.numUsuario--;
-			}
+	public ArrayList<Livro> listarLivros(){
+		return this.listaLivro;
+	}
+	
+	public void removerLivro(Livro livro) throws LivroNaoExistente{
+		if(this.listaLivro.contains(livro)){
+			this.listaLivro.remove(livro);
+		}else{
+			throw new LivroNaoExistente("Esse livro não existe!");
 		}
 	}
 	
-	public boolean atualizarLivro(Livro livro){
-		boolean retorno = false;
-		int i;	
-		for(i = 0; i < numUsuario; i++){
-			if(this.repoLivro[i].getCodigoLivro() == livro.getCodigoLivro()){
-				this.repoLivro[i] = livro;
-				retorno = true;
-			}
-		}
-		return retorno;
+	public void editarLivro(Livro livro) throws LivroNaoExistente{
+		if (this.listaLivro.contains(livro)) {
+            int indice = this.listaLivro.indexOf(livro);
+            this.listaLivro.set(indice, livro);
+        } else {
+            throw new LivroNaoExistente("Esse livro nao existe!");
+        }
 	}
 }

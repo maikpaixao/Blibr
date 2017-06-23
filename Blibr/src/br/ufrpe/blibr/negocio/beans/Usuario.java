@@ -4,13 +4,13 @@ public class Usuario extends Pessoa{
 	
 	private int id;
 	private int senha;
-	private int limiteMax;
+	private int livroEmprestado;
+	private Livro livro;
 	
-	public Usuario(int id, String nome, int cpf, char sexo, int idade, int senha, int limiteMax){
+	public Usuario(String nome, String cpf, String sexo, int idade, int senha){
 		super(nome, cpf, idade, sexo);
-		this.id = id;
 		this.senha = senha;
-		this.limiteMax = limiteMax;
+		this.id = (this.id)+1;
 	}
 
 	public int getId() {
@@ -29,15 +29,24 @@ public class Usuario extends Pessoa{
 		this.senha = senha;
 	}
 	
-	public int getLimiteMax(){
-		return limiteMax;
+	public int getLivroEmprestado() {
+		return livroEmprestado;
+	}
+
+	public void setLivroEmprestado(int livroEmprestado) {
+		this.livroEmprestado = livroEmprestado;
 	}
 	
-	public void setLimiteMax(int limiteMax){
-		this.limiteMax = limiteMax;
+
+	public Livro getLivro() {
+		return livro;
 	}
-	
+
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
 	public String toString() {
-		return "Usuario [id=" + id + ", senha=" + senha + ", limiteMax=" + limiteMax + "]";
+		return "Usuario [id=" + id + ", senha=" + senha + "]";
 	}
 }

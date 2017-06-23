@@ -1,6 +1,9 @@
 package br.ufrpe.blibr.negocio;
 
+import java.util.ArrayList;
+
 import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.exception.UsuarioExistente;
 import br.ufrpe.blibr.exception.UsuarioNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Usuario;;
 
@@ -13,16 +16,16 @@ public class ControladorUsuario {
 		this.repoUsuario = new RepositorioUsuario();
 	}
 	
-	public ControladorUsuario getInstance(){
+	public static ControladorUsuario getInstance(){
 		if(instance==null){
 			instance = new ControladorUsuario();
 		}
 		return instance;
 	}
 	
-	public void adicionarUsuario(Usuario usuario){
+	public void adicionarUsuario(Usuario usuario) throws UsuarioExistente{
 		try{
-			if(usuario != null && repoUsuario.existeUsuario(usuario.getCpf()) == false){
+			if(usuario != null){
 				repoUsuario.adicionarUsuario(usuario);
 			}else{
 				throw new UsuarioNaoExistente("Usuario já existe");
@@ -32,23 +35,14 @@ public class ControladorUsuario {
 		}
 	}
 	
-	public Usuario buscarUsuario(double cpf){
-		try {
-			if(repoUsuario.existeUsuario(cpf)){
-				return repoUsuario.buscarUsuario(cpf);
-			}else{
-				throw new UsuarioNaoExistente("Usuario não existe");
-			}
-		} catch (UsuarioNaoExistente e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
+	public ArrayList<Usuario> listarUsuario(double cpf){
+		return repoUsuario.listarUsuarios();
 	}
 	
-	public void removerUsuario(double cpf){
+	public void removerUsuario(Usuario usuario){
 		try {
-			if(repoUsuario.existeUsuario(cpf)){
-				repoUsuario.removerUsuario(cpf);
+			if(usuario != null){
+				repoUsuario.removerUsuario(usuario);
 			}else{
 				throw new UsuarioNaoExistente("Usuario não existe");
 			}
@@ -57,10 +51,10 @@ public class ControladorUsuario {
 		}
 	}
 	
-	public void atualizarUsario(Usuario usuario){
+	public void editarUsario(Usuario usuario){
 		try {
-			if(usuario != null && repoUsuario.existeUsuario(usuario.getCpf())){
-				repoUsuario.atualizarUsuario(usuario);
+			if(usuario != null){
+				repoUsuario.editarUsuario(usuario);
 			}else{
 				throw new UsuarioNaoExistente("Usuario nao existe");
 			}

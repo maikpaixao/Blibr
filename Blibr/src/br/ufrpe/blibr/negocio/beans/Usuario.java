@@ -2,11 +2,12 @@ package br.ufrpe.blibr.negocio.beans;
 
 public class Usuario extends Pessoa{
 	
-	private int id;
+	private static int id=0;
 	private int senha;
 	private int livroEmprestado;
 	private Livro livro;
 	
+	@SuppressWarnings("static-access")
 	public Usuario(String nome, String cpf, String sexo, int idade, int senha){
 		super(nome, cpf, idade, sexo);
 		this.senha = senha;
@@ -18,7 +19,7 @@ public class Usuario extends Pessoa{
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		Usuario.id = id;
 	}
 
 	public int getSenha() {

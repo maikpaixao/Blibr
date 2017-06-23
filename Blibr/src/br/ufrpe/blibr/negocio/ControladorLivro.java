@@ -1,5 +1,6 @@
 package br.ufrpe.blibr.negocio;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 import br.ufrpe.blibr.dados.RepositorioLivro;
@@ -45,4 +46,8 @@ public class ControladorLivro {
 	public String toString() {
 		return repoLivro.toString();
 	}
+=======
+public class ControladorLivro {
+	
+>>>>>>> branch 'master' of https://github.com/maikpaixao/Blibr.git
 }

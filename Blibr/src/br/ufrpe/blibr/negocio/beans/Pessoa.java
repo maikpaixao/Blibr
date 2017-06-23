@@ -1,6 +1,15 @@
 package br.ufrpe.blibr.negocio.beans;
 
 public class Pessoa {
+<<<<<<< HEAD
+=======
+	private int id;
+	private int senha;
+	private String nome;
+	private double cpf;
+	private int idade;
+	private char sexo;
+>>>>>>> branch 'master' of https://github.com/maikpaixao/Blibr.git
 	
 	private String cpf;
 	private int senha;
@@ -47,6 +56,23 @@ public class Pessoa {
 		this.sexo = sexo;
 	}
 	
+
+	public int getSenha() {
+		return senha;
+	}
+
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getSenha() {
 		return senha;

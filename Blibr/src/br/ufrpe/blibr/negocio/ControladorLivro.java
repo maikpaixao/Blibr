@@ -22,8 +22,8 @@ public class ControladorLivro {
 		repoLivro.adicionarLivro(livro);
 	}
 
-	public Livro buscarLivrro(double codigoLivro) {
-		return repoLivro.buscarLivrro(codigoLivro);
+	public Livro buscarLivro(String nomeLivro) {
+		return repoLivro.buscarLivrro(nomeLivro);
 	}
 
 	public void editarLivro(Livro livro){
@@ -37,6 +37,5 @@ public class ControladorLivro {
 	public void removerLivro(String nome){
 		repoLivro.removerLivro(nome);
 	}
-
 
 }

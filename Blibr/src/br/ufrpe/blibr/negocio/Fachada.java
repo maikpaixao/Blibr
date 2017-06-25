@@ -34,6 +34,10 @@ public class Fachada {
 		return controladorU.listarUsuario();
 	}
 
+	public Usuario buscarUsuario(String cpf) {
+		return controladorU.buscarUsuario(cpf);
+	}
+
 	public void removerUsuario(String cpf) {
 		controladorU.removerUsuario(cpf);
 	}
@@ -48,8 +52,8 @@ public class Fachada {
 		controladorL.adicionarLivro(livro);
 	}
 
-	public Livro buscarLivrro(double codigoLivro) {
-		return controladorL.buscarLivrro(codigoLivro);
+	public Livro buscarLivro(String nomeLivro) {
+		return controladorL.buscarLivro(nomeLivro);
 	}
 
 	public void editarLivro(Livro livro){

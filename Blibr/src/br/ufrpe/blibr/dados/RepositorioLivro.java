@@ -29,9 +29,9 @@ public class RepositorioLivro {
 		return this.listaLivro;
 	}
 	
-	public Livro buscarLivrro(double codigoLivro){
+	public Livro buscarLivrro(String nome){
 		for(Livro livro: listaLivro){
-			if(livro.getCodigoLivro()==codigoLivro){
+			if(livro.getNomeLivro().equals(nome)){
 				return livro;
 			}
 		}

@@ -112,9 +112,16 @@ public class TextualUserInterface {
 	}
 	
 	public void emprestarLivro(){
-		String nome;
-		System.out.println("Digite o nome do livro a ser emprestado: ");
-		nome = sc.next();
+		String nomeLivro;
+		String cpfUsuario;
+		
+		System.out.println("Digite o codigo do livro a ser emprestado: ");
+		nomeLivro = sc.next();
+		fachada.buscarLivro(nomeLivro);
+		
+		System.out.println("Digite o CPF do usuario a emprestar o livro: ");
+		cpfUsuario=sc.next();
+		fachada.buscarUsuario(cpfUsuario);
 	}
 	
 	public void adicionarUsuario(){

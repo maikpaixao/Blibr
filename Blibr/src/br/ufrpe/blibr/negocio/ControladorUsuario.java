@@ -27,6 +27,12 @@ public class ControladorUsuario {
 		return repoUsuario.listarUsuarios();
 	}
 	
+	
+	
+	public Usuario buscarUsuario(String cpf) {
+		return repoUsuario.buscarUsuario(cpf);
+	}
+
 	public void removerUsuario(String cpf){
 		try {
 			if(cpf != null){

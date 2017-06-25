@@ -26,7 +26,8 @@ public class TextualUserInterface {
 				System.out.println("1 - Menu Livro");
 				System.out.println("2 - Menu Usuario");
 				System.out.println("3 - Emprestar Livro");
-				System.out.println("4 - Listar Funcionarios");
+				System.out.println("4 - Teste Listar Funcionarios");
+				System.out.println("5 - Teste Listar Livros Emprestados");
 				System.out.println("======================");
 				
 				opcao = sc.nextInt();
@@ -44,6 +45,9 @@ public class TextualUserInterface {
 				case 4:
 					preencherFuncionario();
 					listarFuncionario();
+					break;
+				case 5:
+					listarLivrosEmprestados();
 					break;
 				case 0:
 					System.exit(0);
@@ -115,13 +119,18 @@ public class TextualUserInterface {
 		String nomeLivro;
 		String cpfUsuario;
 		
-		System.out.println("Digite o codigo do livro a ser emprestado: ");
+		livro = new Livro();
+		usuario = new Usuario();
+		
+		System.out.println("Digite o nome do livro a ser emprestado: ");
 		nomeLivro = sc.next();
-		fachada.buscarLivro(nomeLivro);
+		livro = fachada.buscarLivro(nomeLivro);
 		
 		System.out.println("Digite o CPF do usuario a emprestar o livro: ");
 		cpfUsuario=sc.next();
-		fachada.buscarUsuario(cpfUsuario);
+		usuario = fachada.buscarUsuario(cpfUsuario);
+		
+		fachada.emprestarLivro(livro, usuario);
 	}
 	
 	public void adicionarUsuario(){
@@ -278,6 +287,14 @@ public class TextualUserInterface {
 		while(itr.hasNext()){
 			Funcionario func = (Funcionario)itr.next();
 			System.out.println("Codigo Funcionario: "+funcionario.getCodFuncionario()+" Nome: "+func.getNome()+" Cpf: "+func.getCpf()+" Idade: "+func.getIdade()+" Sexo: "+func.getSexo());
+		}
+	}
+	
+	public void listarLivrosEmprestados(){
+		Iterator itr = fachada.listarLivrosEmprestados().iterator();
+		while(itr.hasNext()){
+			Usuario usu = (Usuario)itr.next();
+			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro());
 		}
 	}
 	

@@ -30,12 +30,15 @@ public class RepositorioLivro {
 	}
 	
 	public Livro buscarLivrro(String nome){
+		Livro retorno = null;
 		for(Livro livro: listaLivro){
 			if(livro.getNomeLivro().equals(nome)){
-				return livro;
+				System.out.println("asdsad");
+				retorno = livro;
+				//return livro;
 			}
 		}
-		return null;
+		return retorno;
 	}
 	
 	public void editarLivro(Livro livro){

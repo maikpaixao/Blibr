@@ -30,12 +30,15 @@ public class RepositorioUsuario {
 	}
 	
 	public Usuario buscarUsuario(String cpf){
+		Usuario rotorno = null;
 		for(Usuario usuario: listaUsuario){
 			if(usuario.getCpf().equals(cpf)){
-				return usuario;
+				System.out.println("asdsad");
+				rotorno = usuario;
+				//return usuario;
 			}
 		}
-		return null;
+		return rotorno;
 	}
 	
 	public void editarUsuario(Usuario usuario){

@@ -15,6 +15,7 @@ public class Fachada {
 	private ControladorUsuario controladorU = ControladorUsuario.getInstance();
 	private ControladorLivro controladorL = ControladorLivro.getInstance();
 	private ControladorFuncionario controladorF = ControladorFuncionario.getInstance();
+	private ControladorEmprestimo emprestimoE = ControladorEmprestimo.getInstance();
 	
 	public static synchronized Fachada getInstance() {
         if (instance == null) {
@@ -86,4 +87,13 @@ public class Fachada {
 		controladorF.removerUsuario(codFuncionario);
 	}
 	
+	//////////////////Emprestar///////////////
+	
+	public void emprestarLivro(Livro livro, Usuario usuario) {
+		emprestimoE.emprestarLivro(livro, usuario);
+	}
+	
+	public ArrayList<Usuario> listarLivrosEmprestados(){
+		return emprestimoE.listarLivrosEmprestados();
+	}
 }

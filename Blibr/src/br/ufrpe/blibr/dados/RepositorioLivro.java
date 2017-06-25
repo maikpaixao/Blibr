@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import br.ufrpe.blibr.exception.LivroExistente;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Livro;
+import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class RepositorioLivro {
 	
 	private static RepositorioLivro instance;
-	private ArrayList<Livro> listaLivro;
+	private ArrayList<Livro> listaLivro = new ArrayList<Livro>();
 	
 	public static synchronized RepositorioLivro getInstance(){
 		if(instance == null){
@@ -18,16 +19,14 @@ public class RepositorioLivro {
 		return instance;
 	}
 	
-	public RepositorioLivro(){
-		this.listaLivro = new ArrayList<Livro>();
+	public void adicionarLivro(Livro livro){
+		if(livro!=null && !this.listaLivro.contains(livro)){
+			listaLivro.add(livro);
+		}
 	}
 	
-	public void adicionarLivro(Livro livro) throws Exception{
-		if(this.listaLivro.contains(livro)){
-			listaLivro.add(livro);
-		}else{
-		throw new LivroExistente("Esse livro já existe!");
-		}
+	public ArrayList<Livro> listarLivros(){
+		return this.listaLivro;
 	}
 	
 	public Livro buscarLivrro(double codigoLivro){
@@ -39,24 +38,28 @@ public class RepositorioLivro {
 		return null;
 	}
 	
-	public ArrayList<Livro> listarLivros(){
-		return this.listaLivro;
-	}
-	
-	public void removerLivro(Livro livro) throws LivroNaoExistente{
-		if(this.listaLivro.contains(livro)){
-			this.listaLivro.remove(livro);
-		}else{
-			throw new LivroNaoExistente("Esse livro não existe!");
+	public void editarLivro(Livro livro){
+		if(livro!=null){
+			for(Livro li: listaLivro){
+				if (li.getNomeLivro().equals(livro.getNomeLivro())){
+					int indice = this.listaLivro.indexOf(li);
+					listaLivro.set(indice, livro);
+		        }else{
+		        	
+		        }
+			}
 		}
 	}
 	
-	public void editarLivro(Livro livro) throws LivroNaoExistente{
-		if (this.listaLivro.contains(livro)) {
-            int indice = this.listaLivro.indexOf(livro);
-            this.listaLivro.set(indice, livro);
-        } else {
-            throw new LivroNaoExistente("Esse livro nao existe!");
-        }
+	public void removerLivro(String nome){
+		if(nome!=null){
+			for(Livro li: listaLivro){
+				if(li.getNomeLivro().equals(nome)){
+					this.listaLivro.remove(li);
+					break;
+				}
+			}
+		}
 	}
+	
 }

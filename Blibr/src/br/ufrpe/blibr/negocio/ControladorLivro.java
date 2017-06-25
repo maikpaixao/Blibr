@@ -8,7 +8,7 @@ import br.ufrpe.blibr.negocio.beans.Livro;
 
 public class ControladorLivro {
 	
-	private RepositorioLivro repoLivro;
+	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
 	private static ControladorLivro instance;
 	
 	public static ControladorLivro getInstance(){
@@ -18,7 +18,7 @@ public class ControladorLivro {
 		return instance;
 	}
 
-	public void adicionarLivro(Livro livro) throws Exception {
+	public void adicionarLivro(Livro livro){
 		repoLivro.adicionarLivro(livro);
 	}
 
@@ -26,24 +26,17 @@ public class ControladorLivro {
 		return repoLivro.buscarLivrro(codigoLivro);
 	}
 
-	public void editarLivro(Livro livro) throws LivroNaoExistente {
+	public void editarLivro(Livro livro){
 		repoLivro.editarLivro(livro);
-	}
-
-	public boolean equals(Object obj) {
-		return repoLivro.equals(obj);
 	}
 
 	public ArrayList<Livro> listarLivros() {
 		return repoLivro.listarLivros();
 	}
 
-	public void removerLivro(Livro livro) throws LivroNaoExistente {
-		repoLivro.removerLivro(livro);
+	public void removerLivro(String nome){
+		repoLivro.removerLivro(nome);
 	}
 
-	public String toString() {
-		return repoLivro.toString();
-	}
 
 }

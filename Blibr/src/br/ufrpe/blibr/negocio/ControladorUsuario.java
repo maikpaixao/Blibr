@@ -9,40 +9,28 @@ import br.ufrpe.blibr.negocio.beans.Usuario;;
 
 public class ControladorUsuario {
 	
-	private RepositorioUsuario repoUsuario;
+	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private static ControladorUsuario instance;
 	
-	public ControladorUsuario(){
-		this.repoUsuario = new RepositorioUsuario();
-	}
-	
-	public static ControladorUsuario getInstance(){
+	public static synchronized ControladorUsuario getInstance(){
 		if(instance==null){
 			instance = new ControladorUsuario();
 		}
 		return instance;
 	}
 	
-	public void adicionarUsuario(Usuario usuario) throws UsuarioExistente{
-		try{
-			if(usuario != null){
-				repoUsuario.adicionarUsuario(usuario);
-			}else{
-				throw new UsuarioNaoExistente("Usuario já existe");
-			}
-		}catch(UsuarioNaoExistente e){
-			System.out.println(e.getMessage());
-		}
+	public void adicionarUsuario(Usuario usuario){
+		repoUsuario.adicionarUsuario(usuario);
 	}
 	
-	public ArrayList<Usuario> listarUsuario(double cpf){
+	public ArrayList<Usuario> listarUsuario(){
 		return repoUsuario.listarUsuarios();
 	}
 	
-	public void removerUsuario(Usuario usuario){
+	public void removerUsuario(String cpf){
 		try {
-			if(usuario != null){
-				repoUsuario.removerUsuario(usuario);
+			if(cpf != null){
+				repoUsuario.removerUsuario(cpf);
 			}else{
 				throw new UsuarioNaoExistente("Usuario não existe");
 			}
@@ -52,14 +40,10 @@ public class ControladorUsuario {
 	}
 	
 	public void editarUsario(Usuario usuario){
-		try {
 			if(usuario != null){
 				repoUsuario.editarUsuario(usuario);
 			}else{
-				throw new UsuarioNaoExistente("Usuario nao existe");
+				
 			}
-		} catch (UsuarioNaoExistente e) {
-			System.out.println(e.getMessage());
-		}
 	}
 }

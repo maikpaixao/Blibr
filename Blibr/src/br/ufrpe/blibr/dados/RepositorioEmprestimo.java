@@ -11,7 +11,7 @@ public class RepositorioEmprestimo {
 	public void emprestarLivro(Livro livro, Usuario usuario){
 		for(Usuario usu: repoUsuario.listarUsuarios()){
 			if(usu.getCpf()==usuario.getCpf()){
-				usuario.setLivro(livro);
+				//usuario.setLivro(livro);
 				livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
 			}
 		}

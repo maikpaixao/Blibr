@@ -2,14 +2,13 @@ package br.ufrpe.blibr.dados;
 
 import java.util.ArrayList;
 
-import br.ufrpe.blibr.exception.UsuarioExistente;
 import br.ufrpe.blibr.exception.UsuarioNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class RepositorioUsuario {
 	
 	private static RepositorioUsuario instance;
-	private ArrayList<Usuario> listaUsuario;
+	private ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
 	
 	public static synchronized RepositorioUsuario getInstance(){
 		if(instance == null){
@@ -18,16 +17,16 @@ public class RepositorioUsuario {
 		return instance;
 	}
 	
-	public RepositorioUsuario(){
-		this.listaUsuario = new ArrayList<Usuario>();
+	public void adicionarUsuario(Usuario usuario){
+		if(usuario!=null && !this.listaUsuario.contains(usuario)){
+			this.listaUsuario.add(usuario);
+		}else{
+			
+		}
 	}
 	
-	public void adicionarUsuario(Usuario usuario) throws UsuarioExistente{
-		if(this.listaUsuario.contains(usuario)){
-			listaUsuario.add(usuario);
-		}else{
-		throw new UsuarioExistente("Esse usuário já existe!");
-		}
+	public ArrayList<Usuario> listarUsuarios(){
+		return this.listaUsuario;
 	}
 	
 	public Usuario buscarUsuario(String cpf){
@@ -39,25 +38,30 @@ public class RepositorioUsuario {
 		return null;
 	}
 	
-	public ArrayList<Usuario> listarUsuarios(){
-		return this.listaUsuario;
-	}
-	
-	public void removerUsuario(Usuario usuario) throws UsuarioNaoExistente{
-		if(this.listaUsuario.contains(usuario)){
-			this.listaUsuario.remove(usuario);
-		}else{
-			throw new UsuarioNaoExistente("Esse usuario não existe!");
+	public void editarUsuario(Usuario usuario){
+		if(usuario!=null){
+			for(Usuario us: this.listaUsuario){
+				if (us.getNome().equals(usuario.getNome())){
+					int indice = this.listaUsuario.indexOf(us);
+		            listaUsuario.set(indice, usuario);
+		        }else{
+		        	
+		        }
+			}
 		}
 	}
 	
-	public void editarUsuario(Usuario usuario) throws UsuarioNaoExistente{
-		if (this.listaUsuario.contains(usuario)) {
-            int indice = this.listaUsuario.indexOf(usuario);
-            this.listaUsuario.set(indice, usuario);
-        } else {
-            throw new UsuarioNaoExistente("Esse usuario nao existe!");
-        }
+	public void removerUsuario(String cpf){
+		if(cpf!=null){
+			for(Usuario us: listaUsuario){
+				if(us.getCpf().equals(cpf)){
+					this.listaUsuario.remove(us);
+					break;
+				}else{
+					
+				}
+			}
+		}
 	}
 	
 }

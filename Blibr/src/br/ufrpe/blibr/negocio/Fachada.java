@@ -96,4 +96,8 @@ public class Fachada {
 	public ArrayList<Usuario> listarLivrosEmprestados(){
 		return emprestimoE.listarLivrosEmprestados();
 	}
+	
+	public void verificarEmprestimo(String usuario){
+		emprestimoE.verificarEmprestimo(usuario);
+	}
 }

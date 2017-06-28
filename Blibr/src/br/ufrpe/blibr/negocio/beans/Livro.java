@@ -1,6 +1,8 @@
 package br.ufrpe.blibr.negocio.beans;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Livro implements Serializable{
 	
@@ -9,6 +11,7 @@ public class Livro implements Serializable{
 	private String nomeLivro;
 	private String autorLivro;
 	private String editora;
+	private Date dataEmprestimo;
 	
 	public Livro(int codigoLivro, String nomeLivro, String autorLivro, String editora, int quantidadeLivros){
 		this.codigoLivro = codigoLivro;
@@ -61,6 +64,13 @@ public class Livro implements Serializable{
 	public void setQuantidadeLivros(int quantidadeLivros) {
 		this.quantidadeLivros = quantidadeLivros;
 	}
-	
+
+	public Date getDataEmprestimo() {
+		return dataEmprestimo;
+	}
+
+	public void setDataEmprestimo(Date string) {
+		this.dataEmprestimo = string;
+	}
 	
 }

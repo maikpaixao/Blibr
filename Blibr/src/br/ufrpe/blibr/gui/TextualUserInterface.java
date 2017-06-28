@@ -28,6 +28,7 @@ public class TextualUserInterface {
 				System.out.println("3 - Emprestar Livro");
 				System.out.println("4 - Teste Listar Funcionarios");
 				System.out.println("5 - Teste Listar Livros Emprestados");
+				System.out.println("6 - Menu Multa");
 				System.out.println("======================");
 				
 				opcao = sc.nextInt();
@@ -48,6 +49,9 @@ public class TextualUserInterface {
 					break;
 				case 5:
 					listarLivrosEmprestados();
+					break;
+				case 6:
+					menuMulta();
 					break;
 				case 0:
 					System.exit(0);
@@ -109,6 +113,26 @@ public class TextualUserInterface {
 			break;
 		case 4:
 			removerUsuario();
+			break;
+		default:
+			break;
+		}
+	}
+	
+public void menuMulta(){
+		
+		System.out.println("1-Verificar Multa");
+		System.out.println("2-Pagar Multa");
+		
+		System.out.println("Digite a opcao desejada: ");
+		opcao = sc.nextInt();
+		
+		switch (opcao) {
+		case 1:
+			verificarMulta();
+			break;
+		case 2:
+			pagarMulta();
 			break;
 		default:
 			break;
@@ -294,8 +318,25 @@ public class TextualUserInterface {
 		Iterator itr = fachada.listarLivrosEmprestados().iterator();
 		while(itr.hasNext()){
 			Usuario usu = (Usuario)itr.next();
-			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro());
+			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro()+" Data: "+usu.getLivro().getDataEmprestimo());
 		}
+	}
+	
+	
+	
+	public void pagarMulta(){
+		String nome;
+		System.out.println("Digite o nome do usuario: ");
+		nome = sc.next();
+		
+		fachada.verificarEmprestimo(nome);
+	}
+	
+	public void verificarMulta(){
+		String nome;
+		System.out.println("Digite o nome do usuario: ");
+		nome = sc.next();
+		fachada.verificarEmprestimo(nome);
 	}
 	
 }

@@ -20,17 +20,18 @@ public class TextualUserInterface {
 	Scanner sc = new Scanner(System.in);
 	
 	public void showInterface(){
-		
+		    
+			preencherFuncionario();
+			
 			do{
 				System.out.println("==========Menu========");
 				System.out.println("1 - Menu Livro");
 				System.out.println("2 - Menu Usuario");
-				System.out.println("3 - Emprestar Livro");
-				System.out.println("4 - Teste Listar Funcionarios");
-				System.out.println("5 - Teste Listar Livros Emprestados");
-				System.out.println("6 - Menu Multa");
-				System.out.println("======================");
-				
+				System.out.println("3 - Menu Emprestimo");
+				System.out.println("4 - Menu Multa");
+				System.out.println("0 - Sair");
+				System.out.println("======================\n");
+				System.out.println("Digite o opcao desejada: \n");
 				opcao = sc.nextInt();
 				
 				switch (opcao) {
@@ -41,16 +42,9 @@ public class TextualUserInterface {
 					menuUsuario();
 					break;
 				case 3:
-					emprestarLivro();
+					menuEmprestimo();
 					break;
 				case 4:
-					preencherFuncionario();
-					listarFuncionario();
-					break;
-				case 5:
-					listarLivrosEmprestados();
-					break;
-				case 6:
 					menuMulta();
 					break;
 				case 0:
@@ -69,7 +63,7 @@ public class TextualUserInterface {
 		System.out.println("3-Editar Livro");
 		System.out.println("4-Remover Livro");
 		
-		System.out.println("Digite a opcao desejada: ");
+		System.out.println("Digite a opcao desejada: \n");
 		opcao = sc.nextInt();
 		
 		switch (opcao) {
@@ -98,7 +92,7 @@ public class TextualUserInterface {
 		System.out.println("3-Editar Usuario");
 		System.out.println("4-Remover Usuario");
 		
-		System.out.println("Digite a opcao desejada: ");
+		System.out.println("Digite a opcao desejada: \n");
 		opcao = sc.nextInt();
 		
 		switch (opcao) {
@@ -119,12 +113,31 @@ public class TextualUserInterface {
 		}
 	}
 	
-public void menuMulta(){
+	public void menuEmprestimo(){
+		System.out.println("1 - Emprestar Livro");
+		System.out.println("2 - Livros Emprestados");
+		
+		System.out.println("Digite a opcao desejada: \n");
+		opcao = sc.nextInt();
+		
+		switch (opcao) {
+		case 1:
+			emprestarLivro();
+			break;
+		case 2:
+			listarLivrosEmprestados();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void menuMulta(){
 		
 		System.out.println("1-Verificar Multa");
 		System.out.println("2-Pagar Multa");
 		
-		System.out.println("Digite a opcao desejada: ");
+		System.out.println("Digite a opcao desejada: \n");
 		opcao = sc.nextInt();
 		
 		switch (opcao) {
@@ -321,8 +334,6 @@ public void menuMulta(){
 			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro()+" Data: "+usu.getLivro().getDataEmprestimo());
 		}
 	}
-	
-	
 	
 	public void pagarMulta(){
 		String nome;

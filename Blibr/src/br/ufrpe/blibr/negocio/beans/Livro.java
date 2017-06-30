@@ -6,7 +6,9 @@ import java.util.Date;
 
 public class Livro implements Serializable{
 	
-	private int codigoLivro;
+	private static long nextCod = 1;
+	
+	private Long codigoLivro;
 	private int quantidadeLivros;
 	private String nomeLivro;
 	private String autorLivro;
@@ -14,23 +16,24 @@ public class Livro implements Serializable{
 	private Date dataEmprestimo;
 	private Date dataDevolucao;
 	
-	public Livro(int codigoLivro, String nomeLivro, String autorLivro, String editora, int quantidadeLivros){
-		this.codigoLivro = codigoLivro;
+	public Livro(String nomeLivro, String autorLivro, String editora){
 		this.nomeLivro = nomeLivro;
 		this.autorLivro = autorLivro;
 		this.editora = editora;
-		this.quantidadeLivros = quantidadeLivros;
 	}
 	
 	public Livro(){
+		this.codigoLivro = nextCod;
+		nextCod++;
 		
+		this.quantidadeLivros = 10;
 	}
 
-	public int getCodigoLivro() {
+	public Long getCodigoLivro() {
 		return codigoLivro;
 	}
 
-	public void setCodigoLivro(int codigoLivro) {
+	public void setCodigoLivro(Long codigoLivro) {
 		this.codigoLivro = codigoLivro;
 	}
 
@@ -81,6 +84,11 @@ public class Livro implements Serializable{
 	public void setDataDevolucao(Date dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Livro [codigoLivro=" + codigoLivro + ", quantidadeLivros=" + quantidadeLivros + ", nomeLivro="
+				+ nomeLivro + ", autorLivro=" + autorLivro + ", editora=" + editora +"]";
+	}
 	
 }

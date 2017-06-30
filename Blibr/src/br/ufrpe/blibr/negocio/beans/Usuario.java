@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class Usuario extends Pessoa{
 	
+	private static long nextId = 1;
+	
+	private Long idUsuario;
 	private Livro livro;
 	private boolean pendenciaMulta = false;
 	private double valorMulta=0;
@@ -13,7 +16,8 @@ public class Usuario extends Pessoa{
 	}
 	
 	public Usuario(){
-		
+		this.idUsuario = nextId;
+		nextId++;
 	}
 
 	public Livro getLivro() {
@@ -38,6 +42,11 @@ public class Usuario extends Pessoa{
 
 	public void setValorMulta(double valorMulta) {
 		this.valorMulta = valorMulta;
+	}
+
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", livro=" + livro + ", pendenciaMulta=" + pendenciaMulta
+				+ ", valorMulta=" + valorMulta + "]";
 	}
 	
 }

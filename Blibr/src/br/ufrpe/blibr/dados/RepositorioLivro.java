@@ -32,37 +32,31 @@ public class RepositorioLivro {
 	public Livro buscarLivrro(String nome){
 		Livro retorno = null;
 		for(Livro livro: listaLivro){
-			if(livro.getNomeLivro().equals(nome)){
+			if(livro.getNomeLivro().equals(nome) && nome!=null){
 				System.out.println("asdsad");
 				retorno = livro;
-				//return livro;
 			}
 		}
 		return retorno;
 	}
 	
 	public void editarLivro(Livro livro){
-		if(livro!=null){
-			for(Livro li: listaLivro){
-				if (li.getNomeLivro().equals(livro.getNomeLivro())){
-					int indice = this.listaLivro.indexOf(li);
-					listaLivro.set(indice, livro);
-		        }else{
+		for(Livro li: listaLivro){
+			if (li.getNomeLivro().equals(livro.getNomeLivro()) && livro!=null){
+				int indice = this.listaLivro.indexOf(li);
+				listaLivro.set(indice, livro);
+		     }else{
 		        	
-		        }
-			}
+		     }
 		}
 	}
 	
 	public void removerLivro(String nome){
-		if(nome!=null){
-			for(Livro li: listaLivro){
-				if(li.getNomeLivro().equals(nome)){
-					this.listaLivro.remove(li);
-					break;
-				}
+		for(Livro li: listaLivro){
+			if(li.getNomeLivro().equals(nome) && nome!=null){
+				this.listaLivro.remove(li);
+				break;
 			}
 		}
 	}
-	
 }

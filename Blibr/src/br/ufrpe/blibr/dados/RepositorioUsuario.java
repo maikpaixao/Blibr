@@ -32,37 +32,32 @@ public class RepositorioUsuario {
 	public Usuario buscarUsuario(String cpf){
 		Usuario rotorno = null;
 		for(Usuario usuario: listaUsuario){
-			if(usuario.getCpf().equals(cpf)){
+			if(usuario.getCpf().equals(cpf) && cpf!=null){
 				System.out.println("asdsad");
 				rotorno = usuario;
-				//return usuario;
 			}
 		}
 		return rotorno;
 	}
 	
 	public void editarUsuario(Usuario usuario){
-		if(usuario!=null){
-			for(Usuario us: this.listaUsuario){
-				if (us.getNome().equals(usuario.getNome())){
-					int indice = this.listaUsuario.indexOf(us);
-		            listaUsuario.set(indice, usuario);
-		        }else{
+		for(Usuario us: this.listaUsuario){
+			if (us.getNome().equals(usuario.getNome()) && usuario!=null){
+				int indice = this.listaUsuario.indexOf(us);
+		        listaUsuario.set(indice, usuario);
+		    }else{
 		        	
-		        }
-			}
+		    }
 		}
 	}
 	
 	public void removerUsuario(String cpf){
-		if(cpf!=null){
-			for(Usuario us: listaUsuario){
-				if(us.getCpf().equals(cpf)){
-					this.listaUsuario.remove(us);
-					break;
-				}else{
+		for(Usuario us: listaUsuario){
+			if(us.getCpf().equals(cpf) && cpf!=null){
+				this.listaUsuario.remove(us);
+				break;
+			}else{
 					
-				}
 			}
 		}
 	}

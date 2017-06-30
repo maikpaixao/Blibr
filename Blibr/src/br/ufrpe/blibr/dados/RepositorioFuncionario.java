@@ -30,7 +30,7 @@ public class RepositorioFuncionario {
 	
 	public Funcionario buscarFuncionario(long codFuncionario){
 		for(Funcionario funcionario: listaFuncionario){
-			if(funcionario.getCodFuncionario()==codFuncionario){
+			if(funcionario.getIdFuncionario()==codFuncionario){
 				return funcionario;
 			}
 		}
@@ -38,27 +38,23 @@ public class RepositorioFuncionario {
 	}
 	
 	public void editarFuncionario(Funcionario funcionario){
-		if(funcionario!=null){
-			for(Funcionario func: this.listaFuncionario){
-				if (func.getNome().equals(funcionario.getNome())){
-					int indice = this.listaFuncionario.indexOf(func);
-		            listaFuncionario.set(indice, funcionario);
-		        }else{
+		for(Funcionario func: this.listaFuncionario){
+			if (func.getNome().equals(funcionario.getNome()) && funcionario!=null){
+				int indice = this.listaFuncionario.indexOf(func);
+		        listaFuncionario.set(indice, funcionario);
+		    }else{
 		        	
-		        }
-			}
+		    }
 		}
 	}
 	
 	public void removerUsuario(Long codFuncionario){
-		if(codFuncionario!=null){
-			for(Funcionario func: listaFuncionario){
-				if(func.getCodFuncionario()==codFuncionario){
-					this.listaFuncionario.remove(func);
-					break;
-				}else{
+		for(Funcionario func: listaFuncionario){
+			if(func.getIdFuncionario()==codFuncionario && codFuncionario!=null){
+				this.listaFuncionario.remove(func);
+				break;
+			}else{
 					
-				}
 			}
 		}
 	}

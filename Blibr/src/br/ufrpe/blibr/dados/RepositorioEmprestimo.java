@@ -38,7 +38,6 @@ public class RepositorioEmprestimo {
 			
 			for(Usuario usu: listaUsuario){
 				if(repoUsuario.listarUsuarios().contains(usuario)){
-					System.out.println("funcionou");
 					usuario.setLivro(livro);
 					livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
 					livro.setDataEmprestimo(date);
@@ -60,13 +59,10 @@ public class RepositorioEmprestimo {
 		for(Usuario usu: listaUsuario){
 			for(Livro li: listaLivro){
 				if(listaLivro.contains(usu.getLivro())){
-					System.out.println("Funcionou");
 					retorno = listaUsuario;
 				}
 			}
 		}
 		return retorno;
 	}
-	
-	
 }

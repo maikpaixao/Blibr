@@ -27,7 +27,6 @@ public class ControladorEmprestimo {
 	
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
 		if(livro!=null && usuario!=null){
-			System.out.println("sdasd");
 			repoEmprestimo.emprestarLivro(livro, usuario);
 		}
 	}

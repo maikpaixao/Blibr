@@ -256,9 +256,11 @@ public class TextualUserInterface {
 		editora = sc.next();
 		
 		livro = new Livro();
+		
 		livro.setNomeLivro(nomeLivro);
 		livro.setAutorLivro(autorLivro);
 		livro.setEditora(editora);
+		
 		fachada.adicionarLivro(livro);
 	
 	}
@@ -267,7 +269,7 @@ public class TextualUserInterface {
 		Iterator itr = fachada.listarLivros().iterator();
 		while(itr.hasNext()){
 			Livro li = (Livro)itr.next();
-			System.out.println("Nome: "+li.getNomeLivro()+"Autor: "+li.getAutorLivro()+"Editora: "+li.getEditora());
+			System.out.println(li);
 		}
 	}
 	
@@ -310,22 +312,14 @@ public class TextualUserInterface {
 	public void preencherFuncionario(){
 		
 		funcionario = new Funcionario();
+		
 		funcionario.setNome("Joao");
 		funcionario.setCpf("00011100055");
 		funcionario.setSexo("masculino");
-		funcionario.setIdade("150");
-		funcionario.setCodFuncionario(1909);
+		funcionario.setIdade("50");
 		
 		fachada.adicionarFuncionario(funcionario);
 	
-	}
-	
-	public void listarFuncionario(){
-		Iterator itr = fachada.listarFuncionario().iterator();
-		while(itr.hasNext()){
-			Funcionario func = (Funcionario)itr.next();
-			System.out.println("Codigo Funcionario: "+funcionario.getCodFuncionario()+" Nome: "+func.getNome()+" Cpf: "+func.getCpf()+" Idade: "+func.getIdade()+" Sexo: "+func.getSexo());
-		}
 	}
 	
 	public void listarLivrosEmprestados(){

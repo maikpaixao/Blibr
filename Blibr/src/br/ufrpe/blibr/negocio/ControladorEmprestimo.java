@@ -1,5 +1,6 @@
 package br.ufrpe.blibr.negocio;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,7 +15,7 @@ public class ControladorEmprestimo {
 	
 	private static ControladorEmprestimo instance;
 	private RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();
-	private ControladorMulta  multa = new ControladorMulta();
+	private ControladorMulta  multa = ControladorMulta.getInstance();
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	
 	public static ControladorEmprestimo getInstance(){
@@ -24,7 +25,7 @@ public class ControladorEmprestimo {
 		return instance;
 	}
 	
-	public void emprestarLivro(Livro livro, Usuario usuario){
+	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
 		if(livro!=null && usuario!=null){
 			System.out.println("sdasd");
 			repoEmprestimo.emprestarLivro(livro, usuario);
@@ -35,11 +36,12 @@ public class ControladorEmprestimo {
 		return repoEmprestimo.listarLivrosEmprestados();
 	}
 	
-	public void verificarEmprestimo(String nome){
-		Date data = new Date();
-		if(data.after(repoUsuario.buscarUsuario(nome).getLivro().getDataEmprestimo())){
-			multa.atribuirMulta(nome);
-			System.out.println("funfou");
+	public void verificarEmprestimo(String cpf){
+		if(repoUsuario.buscarUsuario(cpf).getLivro().getDataEmprestimo().equals(repoUsuario.buscarUsuario(cpf).getLivro().getDataDevolucao()) && cpf!=null){
+			multa.atribuirMulta(cpf);
+			System.out.println("O usuario possui uma multa de: "+repoUsuario.buscarUsuario(cpf).getValorMulta());
+		}else{
+			System.out.println("O usuario não possui nenhuma multa");
 		}
 	}
 }

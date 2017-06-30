@@ -1,5 +1,6 @@
 package br.ufrpe.blibr.gui;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class TextualUserInterface {
 	
 	Scanner sc = new Scanner(System.in);
 	
-	public void showInterface(){
+	public void showInterface() throws ParseException{
 		    
 			preencherFuncionario();
 			
@@ -113,7 +114,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void menuEmprestimo(){
+	public void menuEmprestimo() throws ParseException{
 		System.out.println("1 - Emprestar Livro");
 		System.out.println("2 - Livros Emprestados");
 		
@@ -152,7 +153,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void emprestarLivro(){
+	public void emprestarLivro() throws ParseException{
 		String nomeLivro;
 		String cpfUsuario;
 		
@@ -199,7 +200,7 @@ public class TextualUserInterface {
 		Iterator itr = fachada.listarUsuario().iterator();
 		while(itr.hasNext()){
 			Usuario usu = (Usuario)itr.next();
-			System.out.println("Nome: "+usu.getNome()+" CPF: "+usu.getCpf()+" Idade: "+usu.getIdade()+" Sexo: "+usu.getSexo());
+			System.out.println(usu);
 		}
 	}
 	
@@ -277,7 +278,6 @@ public class TextualUserInterface {
 		String editora;
 		int quantidadeLivro;
 		
-		
 		System.out.println("Digite o nome do Livro: ");
 		nomeLivro = sc.next();
 		
@@ -311,10 +311,11 @@ public class TextualUserInterface {
 		
 		funcionario = new Funcionario();
 		funcionario.setNome("Joao");
-		funcionario.setCpf("00011100099");
+		funcionario.setCpf("00011100055");
 		funcionario.setSexo("masculino");
 		funcionario.setIdade("150");
 		funcionario.setCodFuncionario(1909);
+		
 		fachada.adicionarFuncionario(funcionario);
 	
 	}
@@ -331,23 +332,29 @@ public class TextualUserInterface {
 		Iterator itr = fachada.listarLivrosEmprestados().iterator();
 		while(itr.hasNext()){
 			Usuario usu = (Usuario)itr.next();
-			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro()+" Data: "+usu.getLivro().getDataEmprestimo());
+			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro()+" Data Emprestimo: "+usu.getLivro().getDataEmprestimo()+"Data Devolucao: "+usu.getLivro().getDataDevolucao() );
 		}
 	}
 	
-	public void pagarMulta(){
-		String nome;
-		System.out.println("Digite o nome do usuario: ");
-		nome = sc.next();
+	public void verificarMulta(){
+		String cpf;
+		System.out.println("Digite o cpf do usuario: ");
+		cpf = sc.next();
 		
-		fachada.verificarEmprestimo(nome);
+		fachada.verificarEmprestimo(cpf);
 	}
 	
-	public void verificarMulta(){
-		String nome;
-		System.out.println("Digite o nome do usuario: ");
-		nome = sc.next();
-		fachada.verificarEmprestimo(nome);
+	public void pagarMulta(){
+		
+		String cpf;
+		Double valor;
+		
+		System.out.println("Digite o cpf do usuario: ");
+		cpf = sc.next();
+		System.out.println("Digite o valor fornecido: ");
+		valor = sc.nextDouble();
+		
+		fachada.pagarMulta(cpf, valor);
 	}
 	
 }

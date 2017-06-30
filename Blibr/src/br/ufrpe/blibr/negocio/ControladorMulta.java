@@ -5,22 +5,30 @@ import br.ufrpe.blibr.dados.RepositorioUsuario;
 public class ControladorMulta {
 	
 	RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
+	private static ControladorMulta instance;
 	
-	public void atribuirMulta(String nome){
-		if(repoUsuario.buscarUsuario(nome).getNome().equals(nome)){
-			repoUsuario.buscarUsuario(nome).setPendenciaMulta(true);
-			repoUsuario.buscarUsuario(nome).setValorMulta(50);
+	public static ControladorMulta getInstance(){
+		if(instance==null){
+			instance = new ControladorMulta();
+		}
+		return instance;
+	}
+	
+	public void atribuirMulta(String cpf){
+		if(repoUsuario.buscarUsuario(cpf).getNome().equals(cpf) && cpf!=null){
+			repoUsuario.buscarUsuario(cpf).setPendenciaMulta(true);
+			repoUsuario.buscarUsuario(cpf).setValorMulta(50);
 		}
 	}
 	
-	public Double pagarMulta(String nome, Double valor){
-		Double troco = valor - repoUsuario.buscarUsuario(nome).getValorMulta();
-		if(repoUsuario.buscarUsuario(nome).getNome().equals(nome))
-			if(repoUsuario.buscarUsuario(nome).getPendenciaMulta()==true){
-				if(valor>=repoUsuario.buscarUsuario(nome).getValorMulta()){
-					repoUsuario.buscarUsuario(nome).setValorMulta(0);
-				}
-		}
+	public Double pagarMulta(String cpf, Double valor){
+		
+		Double troco = valor - repoUsuario.buscarUsuario(cpf).getValorMulta();
+		
+		if(repoUsuario.buscarUsuario(cpf).getNome().equals(cpf) && repoUsuario.buscarUsuario(cpf).getPendenciaMulta()==true)
+			if(valor>=repoUsuario.buscarUsuario(cpf).getValorMulta()){
+				repoUsuario.buscarUsuario(cpf).setValorMulta(0);
+			}
 		return troco;
 	}
 }

@@ -4,6 +4,7 @@ import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,8 +19,8 @@ public class RepositorioEmprestimo {
 	private ArrayList<Usuario> listaUsuario;
 	private ArrayList<Livro> listaLivro;
 	Calendar cal = Calendar.getInstance();
-	Date date = new Date();
-	private DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	
+	private DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private static RepositorioEmprestimo instance;
 	
@@ -30,21 +31,26 @@ public class RepositorioEmprestimo {
 		return instance;
 	}
 	
-	public void emprestarLivro(Livro livro, Usuario usuario){
+	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
 		listaUsuario = repoUsuario.listarUsuarios();
 		if(livro!=null && usuario!=null){
-			System.out.println("nuuuulll");
-		}
-		
-		for(Usuario usu: listaUsuario){
-			System.out.println("oiii");
-			if(repoUsuario.listarUsuarios().contains(usuario)){
-				System.out.println("funcionou");
-				usuario.setLivro(livro);
-				livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
-				livro.setDataEmprestimo(date);
+			Date date = new Date();
+			
+			for(Usuario usu: listaUsuario){
+				if(repoUsuario.listarUsuarios().contains(usuario)){
+					System.out.println("funcionou");
+					usuario.setLivro(livro);
+					livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
+					livro.setDataEmprestimo(date);
+					
+					cal.setTime(date);
+					cal.add(Calendar.DATE, +7);
+					date=cal.getTime();
+					livro.setDataDevolucao(date);
+				}
 			}
 		}
+		
 	}
 	
 	public ArrayList<Usuario> listarLivrosEmprestados(){
@@ -61,7 +67,6 @@ public class RepositorioEmprestimo {
 		}
 		return retorno;
 	}
-	
 	
 	
 }

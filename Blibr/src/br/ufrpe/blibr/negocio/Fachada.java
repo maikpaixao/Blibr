@@ -1,5 +1,6 @@
 package br.ufrpe.blibr.negocio;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,6 +17,7 @@ public class Fachada {
 	private ControladorLivro controladorL = ControladorLivro.getInstance();
 	private ControladorFuncionario controladorF = ControladorFuncionario.getInstance();
 	private ControladorEmprestimo emprestimoE = ControladorEmprestimo.getInstance();
+	private ControladorMulta controladorM = ControladorMulta.getInstance();
 	
 	public static synchronized Fachada getInstance() {
         if (instance == null) {
@@ -89,7 +91,7 @@ public class Fachada {
 	
 	//////////////////Emprestar///////////////
 	
-	public void emprestarLivro(Livro livro, Usuario usuario) {
+	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException {
 		emprestimoE.emprestarLivro(livro, usuario);
 	}
 	
@@ -97,7 +99,11 @@ public class Fachada {
 		return emprestimoE.listarLivrosEmprestados();
 	}
 	
-	public void verificarEmprestimo(String usuario){
-		emprestimoE.verificarEmprestimo(usuario);
+	public void verificarEmprestimo(String cpf){
+		emprestimoE.verificarEmprestimo(cpf);
+	}
+	
+	public Double pagarMulta(String cpf, Double valor){
+		return controladorM.pagarMulta(cpf, valor);
 	}
 }

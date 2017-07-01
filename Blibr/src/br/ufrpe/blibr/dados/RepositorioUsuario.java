@@ -33,7 +33,6 @@ public class RepositorioUsuario {
 		Usuario rotorno = null;
 		for(Usuario usuario: listaUsuario){
 			if(usuario.getCpf().equals(cpf) && cpf!=null){
-				System.out.println("asdsad");
 				rotorno = usuario;
 			}
 		}

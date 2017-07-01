@@ -28,13 +28,14 @@ public class RepositorioFuncionario {
 		return this.listaFuncionario;
 	}
 	
-	public Funcionario buscarFuncionario(long codFuncionario){
+	public Funcionario buscarFuncionario(int codFuncionario){
+		Funcionario retorno = null;
 		for(Funcionario funcionario: listaFuncionario){
-			if(funcionario.getIdFuncionario()==codFuncionario){
-				return funcionario;
+			if(funcionario.getCodFuncionario() == codFuncionario){
+				retorno =  funcionario;
 			}
 		}
-		return null;
+		return retorno;
 	}
 	
 	public void editarFuncionario(Funcionario funcionario){
@@ -50,7 +51,7 @@ public class RepositorioFuncionario {
 	
 	public void removerUsuario(Long codFuncionario){
 		for(Funcionario func: listaFuncionario){
-			if(func.getIdFuncionario()==codFuncionario && codFuncionario!=null){
+			if(func.getCodFuncionario()==codFuncionario && codFuncionario!=null){
 				this.listaFuncionario.remove(func);
 				break;
 			}else{

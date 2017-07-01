@@ -32,4 +32,8 @@ public class ControladorFuncionario {
 		repoFuncionario.removerUsuario(codFuncionario);
 	}
 	
+	public Funcionario buscarFuncionario(int codFuncionario){
+		return repoFuncionario.buscarFuncionario(codFuncionario);
+	}
+	
 }

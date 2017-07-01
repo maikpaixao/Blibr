@@ -7,6 +7,7 @@ import java.util.Iterator;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.exception.UsuarioExistente;
 import br.ufrpe.blibr.exception.UsuarioNaoExistente;
+import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
@@ -27,7 +28,6 @@ public class Fachada {
     }
 
 	public void adicionarUsuario(Usuario usuario) {
-		System.out.println(usuario);
 		if(usuario!=null){
 			controladorU.adicionarUsuario(usuario);
 		}
@@ -89,14 +89,23 @@ public class Fachada {
 		controladorF.removerUsuario(codFuncionario);
 	}
 	
+	
+	public Funcionario buscarFuncionario(int codFuncionario){
+		return controladorF.buscarFuncionario(codFuncionario);
+	}
+	
 	//////////////////Emprestar///////////////
 	
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException {
 		emprestimoE.emprestarLivro(livro, usuario);
 	}
 	
-	public ArrayList<Usuario> listarLivrosEmprestados(){
-		return emprestimoE.listarLivrosEmprestados();
+	public void registrarEmprestimo(Emprestimo emprestimo){
+		emprestimoE.registrarEmprestimo(emprestimo);
+	}
+	
+	public ArrayList<Emprestimo> listarEmprestimos(){
+		return emprestimoE.listarEmprestimos();
 	}
 	
 	public void verificarEmprestimo(String cpf){

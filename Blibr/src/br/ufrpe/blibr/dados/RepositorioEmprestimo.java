@@ -1,5 +1,7 @@
 package br.ufrpe.blibr.dados;
 
+import br.ufrpe.blibr.negocio.beans.Emprestimo;
+import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
@@ -16,6 +18,7 @@ public class RepositorioEmprestimo {
 	
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
+	ArrayList<Emprestimo> empLista = new ArrayList<Emprestimo>();
 	private ArrayList<Usuario> listaUsuario;
 	private ArrayList<Livro> listaLivro;
 	Calendar cal = Calendar.getInstance();
@@ -32,12 +35,11 @@ public class RepositorioEmprestimo {
 	}
 	
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
+		
 		listaUsuario = repoUsuario.listarUsuarios();
-		if(livro!=null && usuario!=null){
-			Date date = new Date();
-			
+		Date date = new Date();
 			for(Usuario usu: listaUsuario){
-				if(repoUsuario.listarUsuarios().contains(usuario)){
+				if(repoUsuario.listarUsuarios().contains(usuario) && livro!=null && usuario!=null){
 					usuario.setLivro(livro);
 					livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
 					livro.setDataEmprestimo(date);
@@ -48,8 +50,6 @@ public class RepositorioEmprestimo {
 					livro.setDataDevolucao(date);
 				}
 			}
-		}
-		
 	}
 	
 	public ArrayList<Usuario> listarLivrosEmprestados(){
@@ -65,4 +65,13 @@ public class RepositorioEmprestimo {
 		}
 		return retorno;
 	}
+	
+	public ArrayList<Emprestimo> listarEmprestimos(){
+		return this.empLista;
+	}
+	
+	public void registrarEmprestimo(Emprestimo emprestimo){
+		this.empLista.add(emprestimo);
+	}
+	
 }

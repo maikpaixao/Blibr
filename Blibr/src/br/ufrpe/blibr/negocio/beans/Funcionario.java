@@ -2,9 +2,7 @@ package br.ufrpe.blibr.negocio.beans;
 
 public class Funcionario extends Pessoa{
 	
-	private static long nextId = 1;
-	
-	private Long idFuncionario;
+	private int codFuncionario;
 	
 	public Funcionario(String nome, String cpf, String idade, String sexo) {
 		super(nome, cpf, idade, sexo);
@@ -12,21 +10,20 @@ public class Funcionario extends Pessoa{
 	
 	
 	public Funcionario(){
-		this.idFuncionario = nextId;
-        nextId++;
+		
 	}
 
-	public long getIdFuncionario() {
-		return idFuncionario;
+	public int getCodFuncionario() {
+		return codFuncionario;
 	}
 
-	public void setIdFuncionario(long idFuncionario) {
-		this.idFuncionario = idFuncionario;
+	public void setCodFuncionario(int codFuncionario) {
+		this.codFuncionario = codFuncionario;
 	}
 
 
 	public String toString() {
-		return "Funcionario [codFuncionario=" + idFuncionario + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
+		return "Funcionario [codFuncionario=" + codFuncionario + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
 				+ ", getIdade()=" + getIdade() + ", getSexo()=" + getSexo() + "]";
 	}
 	

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import br.ufrpe.blibr.negocio.Fachada;
+import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
@@ -16,6 +17,7 @@ public class TextualUserInterface {
 	private Livro livro;
 	private Usuario usuario;
 	private Funcionario funcionario;
+	private Emprestimo emprestimo;
 	private int opcao;
 	
 	Scanner sc = new Scanner(System.in);
@@ -126,7 +128,8 @@ public class TextualUserInterface {
 			emprestarLivro();
 			break;
 		case 2:
-			listarLivrosEmprestados();
+			listarEmprestimos();
+			//listarLivrosEmprestados();
 			break;
 		default:
 			break;
@@ -156,9 +159,17 @@ public class TextualUserInterface {
 	public void emprestarLivro() throws ParseException{
 		String nomeLivro;
 		String cpfUsuario;
+		int codigoFuncionario;
 		
 		livro = new Livro();
 		usuario = new Usuario();
+		emprestimo = new Emprestimo();
+		funcionario = new Funcionario();
+		
+		System.out.println("Digite o seu código como funcionario: ");//Funcionario preenchido pelo método preencherFuncionario()
+		codigoFuncionario = sc.nextInt();
+		funcionario = fachada.buscarFuncionario(codigoFuncionario);
+		emprestimo.setFuncionario(funcionario);
 		
 		System.out.println("Digite o nome do livro a ser emprestado: ");
 		nomeLivro = sc.next();
@@ -167,7 +178,9 @@ public class TextualUserInterface {
 		System.out.println("Digite o CPF do usuario a emprestar o livro: ");
 		cpfUsuario=sc.next();
 		usuario = fachada.buscarUsuario(cpfUsuario);
+		emprestimo.setUsuario(usuario);
 		
+		fachada.registrarEmprestimo(emprestimo);
 		fachada.emprestarLivro(livro, usuario);
 	}
 	
@@ -313,6 +326,7 @@ public class TextualUserInterface {
 		
 		funcionario = new Funcionario();
 		
+		funcionario.setCodFuncionario(11);
 		funcionario.setNome("Joao");
 		funcionario.setCpf("00011100055");
 		funcionario.setSexo("masculino");
@@ -322,11 +336,11 @@ public class TextualUserInterface {
 	
 	}
 	
-	public void listarLivrosEmprestados(){
-		Iterator itr = fachada.listarLivrosEmprestados().iterator();
+	public void listarEmprestimos(){
+		Iterator itr = fachada.listarEmprestimos().iterator();
 		while(itr.hasNext()){
-			Usuario usu = (Usuario)itr.next();
-			System.out.println("Nome Usuario: "+usu.getNome()+" Nome Livro: "+usu.getLivro().getNomeLivro()+" Data Emprestimo: "+usu.getLivro().getDataEmprestimo()+"Data Devolucao: "+usu.getLivro().getDataDevolucao() );
+			Emprestimo emp = (Emprestimo)itr.next();
+			System.out.println(emp);
 		}
 	}
 	

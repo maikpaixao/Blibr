@@ -33,7 +33,6 @@ public class RepositorioLivro {
 		Livro retorno = null;
 		for(Livro livro: listaLivro){
 			if(livro.getNomeLivro().equals(nome) && nome!=null){
-				System.out.println("asdsad");
 				retorno = livro;
 			}
 		}

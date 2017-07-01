@@ -26,9 +26,7 @@ public class ControladorEmprestimo {
 	}
 	
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
-		if(livro!=null && usuario!=null){
-			repoEmprestimo.emprestarLivro(livro, usuario);
-		}
+		repoEmprestimo.emprestarLivro(livro, usuario);
 	}
 	
 	public ArrayList<Usuario> listarLivrosEmprestados(){
@@ -36,11 +34,8 @@ public class ControladorEmprestimo {
 	}
 	
 	public void verificarEmprestimo(String cpf){
-		if(repoUsuario.buscarUsuario(cpf).getLivro().getDataEmprestimo().equals(repoUsuario.buscarUsuario(cpf).getLivro().getDataDevolucao()) && cpf!=null){
+		if(repoUsuario.buscarUsuario(cpf).getLivro().getDataEmprestimo().equals(repoUsuario.buscarUsuario(cpf).getLivro().getDataDevolucao())){
 			multa.atribuirMulta(cpf);
-			System.out.println("O usuario possui uma multa de: "+repoUsuario.buscarUsuario(cpf).getValorMulta());
-		}else{
-			System.out.println("O usuario não possui nenhuma multa");
 		}
 	}
 }

@@ -22,9 +22,7 @@ public class ControladorMulta {
 	}
 	
 	public Double pagarMulta(String cpf, Double valor){
-		
 		Double troco = valor - repoUsuario.buscarUsuario(cpf).getValorMulta();
-		
 		if(repoUsuario.buscarUsuario(cpf).getNome().equals(cpf) && repoUsuario.buscarUsuario(cpf).getPendenciaMulta()==true)
 			if(valor>=repoUsuario.buscarUsuario(cpf).getValorMulta()){
 				repoUsuario.buscarUsuario(cpf).setValorMulta(0);

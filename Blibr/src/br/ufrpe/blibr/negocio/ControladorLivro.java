@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.blibr.dados.RepositorioLivro;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
+import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Livro;
 
 public class ControladorLivro {
@@ -19,15 +20,41 @@ public class ControladorLivro {
 	}
 
 	public void adicionarLivro(Livro livro){
-		repoLivro.adicionarLivro(livro);
+		try {
+			if(livro==null){
+				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+			}else{
+				repoLivro.adicionarLivro(livro);
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public Livro buscarLivro(String nomeLivro) {
-		return repoLivro.buscarLivrro(nomeLivro);
+		Livro retorno = null;
+		try {
+			if(nomeLivro==null){
+				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+			}else{
+				retorno = repoLivro.buscarLivrro(nomeLivro);
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
+		}
+		return retorno;
 	}
 
 	public void editarLivro(Livro livro){
-		repoLivro.editarLivro(livro);
+		try {
+			if(livro==null){
+				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+			}else{
+				repoLivro.editarLivro(livro);
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public ArrayList<Livro> listarLivros() {
@@ -35,6 +62,14 @@ public class ControladorLivro {
 	}
 
 	public void removerLivro(String nome){
-		repoLivro.removerLivro(nome);
+		try {
+			if(nome==null){
+				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+			}else{
+				repoLivro.removerLivro(nome);
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

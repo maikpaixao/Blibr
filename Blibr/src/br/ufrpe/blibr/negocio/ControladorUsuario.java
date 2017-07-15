@@ -20,7 +20,17 @@ public class ControladorUsuario {
 	}
 	
 	public void adicionarUsuario(Usuario usuario){
-		repoUsuario.adicionarUsuario(usuario);
+		try {
+			if(usuario!=null && repoUsuario.buscarUsuario(usuario.getCpf())!=null){
+				throw new UsuarioExistente("Esse usuário já está cadastrado!");
+			}else{
+				repoUsuario.adicionarUsuario(usuario);
+				
+			}
+		} catch (UsuarioExistente e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 	
 	public ArrayList<Usuario> listarUsuario(){
@@ -28,14 +38,40 @@ public class ControladorUsuario {
 	}
 	
 	public Usuario buscarUsuario(String cpf) {
-		return repoUsuario.buscarUsuario(cpf);
+		Usuario retorno = null;
+		try {
+			if(cpf!=null && repoUsuario.buscarUsuario(cpf)==null){
+				throw new UsuarioNaoExistente("Usuario não existe.");
+			}else{
+				retorno = repoUsuario.buscarUsuario(cpf);
+			}
+		} catch (UsuarioNaoExistente e) {
+			System.out.println(e.getMessage());
+		}
+		return retorno;
 	}
 
 	public void removerUsuario(String cpf){
-		repoUsuario.removerUsuario(cpf);
+		try {
+			if(cpf!=null && repoUsuario.buscarUsuario(cpf)!=null){
+				repoUsuario.removerUsuario(cpf);
+			}else{
+				throw new UsuarioNaoExistente("Usuário não existe.");
+			}
+		} catch (UsuarioNaoExistente e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void editarUsario(Usuario usuario){
-		repoUsuario.editarUsuario(usuario);
+		try {
+			if(usuario!=null && repoUsuario.buscarUsuario(usuario.getCpf())!=null){
+				repoUsuario.editarUsuario(usuario);
+			}else{
+				throw new UsuarioNaoExistente("Usuario não existe!");
+			}
+		} catch (UsuarioNaoExistente e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

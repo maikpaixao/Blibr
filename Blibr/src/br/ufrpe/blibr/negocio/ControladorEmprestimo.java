@@ -7,6 +7,7 @@ import java.util.Date;
 
 import br.ufrpe.blibr.dados.RepositorioEmprestimo;
 import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
@@ -27,11 +28,27 @@ public class ControladorEmprestimo {
 	}
 	
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
-		repoEmprestimo.emprestarLivro(livro, usuario);
+		try {
+			if(livro==null && usuario==null){
+				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+			}else{
+				repoEmprestimo.emprestarLivro(livro, usuario);
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void registrarEmprestimo(Emprestimo emprestimo){
-		repoEmprestimo.registrarEmprestimo(emprestimo);
+		try {
+			if(emprestimo != null){
+				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
+			}else{
+				repoEmprestimo.registrarEmprestimo(emprestimo);
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public ArrayList<Emprestimo> listarEmprestimos(){
@@ -39,8 +56,17 @@ public class ControladorEmprestimo {
 	}
 	
 	public void verificarEmprestimo(String cpf){
-		if(repoUsuario.buscarUsuario(cpf).getLivro().getDataEmprestimo().equals(repoUsuario.buscarUsuario(cpf).getLivro().getDataDevolucao())){
-			multa.atribuirMulta(cpf);
+		try {
+			if(cpf==null){
+				throw new ObjetoInvalidoExcpetion("Descule, mas esse cpf é inválido!");
+			}else{
+				if(repoUsuario.buscarUsuario(cpf).getLivro().getDataEmprestimo().equals(repoUsuario.buscarUsuario(cpf).getLivro().getDataDevolucao())){
+					multa.atribuirMulta(cpf);
+				}
+			}
+		} catch (ObjetoInvalidoExcpetion e) {
+			System.out.println(e.getMessage());
 		}
+		
 	}
 }

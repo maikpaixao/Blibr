@@ -2,7 +2,7 @@ package br.ufrpe.blibr.negocio;
 
 import br.ufrpe.blibr.dados.RepositorioUsuario;
 
-public class ControladorMulta {
+public class ControladorMulta implements IControladorMulta{
 	
 	RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private static ControladorMulta instance;

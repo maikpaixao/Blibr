@@ -13,7 +13,7 @@ import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
-public class ControladorEmprestimo {
+public class ControladorEmprestimo implements IControladorEmprestimo{
 	
 	private static ControladorEmprestimo instance;
 	private RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();

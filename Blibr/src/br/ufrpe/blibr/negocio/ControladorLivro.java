@@ -7,7 +7,7 @@ import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Livro;
 
-public class ControladorLivro {
+public class ControladorLivro implements IControladorLivro{
 	
 	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
 	private static ControladorLivro instance;

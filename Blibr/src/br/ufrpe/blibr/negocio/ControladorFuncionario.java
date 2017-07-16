@@ -6,7 +6,7 @@ import br.ufrpe.blibr.dados.RepositorioFuncionario;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 
-public class ControladorFuncionario {
+public class ControladorFuncionario implements IControladorFuncionario{
 	private RepositorioFuncionario repoFuncionario = RepositorioFuncionario.getInstance();
 	private static ControladorFuncionario instance;
 	
@@ -74,5 +74,4 @@ public class ControladorFuncionario {
 		}
 		return retorno;
 	}
-	
 }

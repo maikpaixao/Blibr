@@ -7,7 +7,7 @@ import br.ufrpe.blibr.exception.UsuarioExistente;
 import br.ufrpe.blibr.exception.UsuarioNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Usuario;;
 
-public class ControladorUsuario {
+public class ControladorUsuario implements IControladorUsuario{
 	
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private static ControladorUsuario instance;

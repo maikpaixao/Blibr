@@ -146,7 +146,7 @@ public class TextualUserInterface {
 		
 		switch (opcao) {
 		case 1:
-			verificarMulta();
+			//verificarMulta();
 			break;
 		case 2:
 			pagarMulta();
@@ -154,34 +154,6 @@ public class TextualUserInterface {
 		default:
 			break;
 		}
-	}
-	
-	public void emprestarLivro() throws ParseException{
-		String nomeLivro;
-		Long cpfUsuario;
-		int codigoFuncionario;
-		
-		livro = new Livro();
-		usuario = new Usuario();
-		emprestimo = new Emprestimo();
-		funcionario = new Funcionario();
-		
-		System.out.println("Digite o seu código como funcionario: ");//Funcionario preenchido pelo método preencherFuncionario()
-		codigoFuncionario = sc.nextInt();
-		funcionario = fachada.buscarFuncionario(codigoFuncionario);
-		emprestimo.setFuncionario(funcionario);
-		
-		System.out.println("Digite o nome do livro a ser emprestado: ");
-		nomeLivro = sc.next();
-		livro = fachada.buscarLivro(nomeLivro);
-		
-		System.out.println("Digite o CPF do usuario a emprestar o livro: ");
-		cpfUsuario=sc.nextLong();
-		usuario = fachada.buscarUsuario(cpfUsuario);
-		emprestimo.setUsuario(usuario);
-		
-		fachada.registrarEmprestimo(emprestimo);
-		fachada.emprestarLivro(livro, usuario);
 	}
 	
 	public void adicionarUsuario(){
@@ -329,6 +301,35 @@ public class TextualUserInterface {
 		fachada.adicionarFuncionario(funcionario);
 	}
 	
+	public void emprestarLivro() throws ParseException{
+		String nomeLivro;
+		Long cpfUsuario;
+		int codigoFuncionario;
+		
+		livro = new Livro();
+		usuario = new Usuario();
+		emprestimo = new Emprestimo();
+		funcionario = new Funcionario();
+		
+		System.out.println("Digite o seu código como funcionario: ");//Funcionario preenchido pelo método preencherFuncionario()
+		codigoFuncionario = sc.nextInt();
+		funcionario = fachada.buscarFuncionario(codigoFuncionario);
+		emprestimo.setFuncionario(funcionario);
+		
+		System.out.println("Digite o nome do livro a ser emprestado: ");
+		nomeLivro = sc.next();
+		livro = fachada.buscarLivro(nomeLivro);
+		emprestimo.setLivro(livro);
+		
+		System.out.println("Digite o CPF do usuario a emprestar o livro: ");
+		cpfUsuario=sc.nextLong();
+		usuario = fachada.buscarUsuario(cpfUsuario);
+		emprestimo.setUsuario(usuario);
+		
+		fachada.registrarEmprestimo(emprestimo);
+		//fachada.emprestarLivro(livro, usuario);
+	}
+	
 	public void listarEmprestimos(){
 		Iterator itr = fachada.listarEmprestimos().iterator();
 		while(itr.hasNext()){
@@ -337,13 +338,13 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void verificarMulta(){
+	/*public void verificarMulta(){
 		Long cpf;
 		System.out.println("Digite o cpf do usuario: ");
 		cpf = sc.nextLong();
 		
 		fachada.verificarEmprestimo(cpf);
-	}
+	}*/
 	
 	public void pagarMulta(){
 		

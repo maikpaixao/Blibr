@@ -97,9 +97,9 @@ public class Fachada {
 	
 	//////////////////Emprestar///////////////
 	
-	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException {
-		emprestimoE.emprestarLivro(livro, usuario);
-	}
+	//public void emprestarLivro(Emprestimo emprestimo) throws ParseException {
+	//	emprestimoE.emprestarLivro(livro, usuario);
+	//}
 	
 	public void registrarEmprestimo(Emprestimo emprestimo){
 		emprestimoE.registrarEmprestimo(emprestimo);
@@ -109,9 +109,9 @@ public class Fachada {
 		return emprestimoE.listarEmprestimos();
 	}
 	
-	public void verificarEmprestimo(Long cpf){
-		emprestimoE.verificarEmprestimo(cpf);
-	}
+	//public void verificarEmprestimo(Long cpf){
+	//	emprestimoE.verificarEmprestimo(cpf);
+	//}
 	
 	public Double pagarMulta(Long cpf, Double valor){
 		return controladorM.pagarMulta(cpf, valor);

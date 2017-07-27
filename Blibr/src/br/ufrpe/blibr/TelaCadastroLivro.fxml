@@ -70,7 +70,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <ChoiceBox prefHeight="33.0" prefWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <ChoiceBox prefHeight="33.0" prefWidth="55.0" style="-fx-background-color: #333;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="200.0" />
                </GridPane.margin>

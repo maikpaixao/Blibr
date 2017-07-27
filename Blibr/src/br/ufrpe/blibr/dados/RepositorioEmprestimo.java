@@ -18,7 +18,7 @@ public class RepositorioEmprestimo {
 	
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
-	ArrayList<Emprestimo> empLista = new ArrayList<Emprestimo>();
+	private ArrayList<Emprestimo> empLista = new ArrayList<Emprestimo>();
 	private ArrayList<Usuario> listaUsuario;
 	private ArrayList<Livro> listaLivro;
 	Calendar cal = Calendar.getInstance();
@@ -34,7 +34,7 @@ public class RepositorioEmprestimo {
 		return instance;
 	}
 	
-	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
+	/*public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
 		
 		listaUsuario = repoUsuario.listarUsuarios();
 		Date date = new Date();
@@ -50,7 +50,7 @@ public class RepositorioEmprestimo {
 					livro.setDataDevolucao(date);
 				}
 			}
-	}
+	}*/
 	
 	public ArrayList<Usuario> listarLivrosEmprestados(){
 		ArrayList<Usuario> retorno = null;
@@ -66,12 +66,20 @@ public class RepositorioEmprestimo {
 		return retorno;
 	}
 	
-	public ArrayList<Emprestimo> listarEmprestimos(){
-		return this.empLista;
+	public void registrarEmprestimo(Emprestimo emprestimo){
+		Date date = new Date();
+		Livro livro = new Livro();
+		livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
+		emprestimo.setDataEmprestimo(date);
+		cal.setTime(date);
+		cal.add(Calendar.DATE, +7);
+		date=cal.getTime();
+		emprestimo.setDataDevolucao(date);
+		this.empLista.add(emprestimo);
 	}
 	
-	public void registrarEmprestimo(Emprestimo emprestimo){
-		this.empLista.add(emprestimo);
+	public ArrayList<Emprestimo> listarEmprestimos(){
+		return this.empLista;
 	}
 	
 }

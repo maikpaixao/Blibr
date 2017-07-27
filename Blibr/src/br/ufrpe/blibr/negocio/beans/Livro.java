@@ -13,8 +13,6 @@ public class Livro implements Serializable{
 	private String nomeLivro;
 	private String autorLivro;
 	private String editora;
-	private Date dataEmprestimo;
-	private Date dataDevolucao;
 	
 	public Livro(String nomeLivro, String autorLivro, String editora){
 		this.nomeLivro = nomeLivro;
@@ -67,22 +65,6 @@ public class Livro implements Serializable{
 
 	public void setQuantidadeLivros(int quantidadeLivros) {
 		this.quantidadeLivros = quantidadeLivros;
-	}
-
-	public Date getDataEmprestimo() {
-		return dataEmprestimo;
-	}
-
-	public void setDataEmprestimo(Date date) {
-		this.dataEmprestimo = date;
-	}
-
-	public Date getDataDevolucao() {
-		return dataDevolucao;
-	}
-
-	public void setDataDevolucao(Date dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
 	}
 
 	@Override

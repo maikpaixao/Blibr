@@ -33,10 +33,4 @@ public class Reserva {
 	public void setEmprestimo(Emprestimo emprestimo) {
 		this.emprestimo = emprestimo;
 	}
-
-	@Override
-	public String toString() {
-		return "Nome Usuário: " + usuario.getNome() + "\nNome Livro: " + livro.getNomeLivro() + "\nData: " + livro.getDataDevolucao();
-	}
-
 }

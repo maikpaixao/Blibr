@@ -10,8 +10,8 @@ import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public interface IControladorEmprestimo {
 	
-	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException;
+	//public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException;
 	public void registrarEmprestimo(Emprestimo emprestimo);
 	public ArrayList<Emprestimo> listarEmprestimos();
-	public void verificarEmprestimo(Long cpf);
+	//public void verificarEmprestimo(Long cpf);
 }

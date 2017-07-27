@@ -28,7 +28,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		return instance;
 	}
 	
-	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
+	/*public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
 		try {
 			if(livro == null || usuario == null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
@@ -40,7 +40,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		} catch (ObjetoInvalidoExcpetion e) {
 			System.out.println(e.getMessage());
 		}
-	}
+	}*/
 	
 	public void registrarEmprestimo(Emprestimo emprestimo){
 		try {
@@ -58,7 +58,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		return repoEmprestimo.listarEmprestimos();
 	}
 	
-	public void verificarEmprestimo(Long cpf){
+	/*public void verificarEmprestimo(Long cpf){
 		try {
 			if(cpf==null){
 				throw new ObjetoInvalidoExcpetion("Descule, mas esse cpf é inválido!");
@@ -71,7 +71,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 			e.printStackTrace();
 		}
 		
-	}
+	}*/
 	
 	public void realizarDevolução(){
 		

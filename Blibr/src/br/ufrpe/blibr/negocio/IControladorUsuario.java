@@ -8,7 +8,7 @@ public interface IControladorUsuario {
 
 	public void adicionarUsuario(Usuario usuario);
 	public ArrayList<Usuario> listarUsuario();
-	public Usuario buscarUsuario(String cpf);
-	public void removerUsuario(String cpf);
+	public Usuario buscarUsuario(Long cpf);
+	public void removerUsuario(Long cpf);
 	public void editarUsario(Usuario usuario);
 }

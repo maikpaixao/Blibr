@@ -13,5 +13,5 @@ public interface IControladorEmprestimo {
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException;
 	public void registrarEmprestimo(Emprestimo emprestimo);
 	public ArrayList<Emprestimo> listarEmprestimos();
-	public void verificarEmprestimo(String cpf);
+	public void verificarEmprestimo(Long cpf);
 }

@@ -5,13 +5,12 @@ import java.io.Serializable;
 public class Usuario extends Pessoa{
 	
 	private static long nextId = 1;
-	
 	private Long idUsuario;
 	private Livro livro;
 	private boolean pendenciaMulta = false;
 	private double valorMulta=0;
 	
-	public Usuario(String nome, String cpf, String sexo, String idade){
+	public Usuario(String nome, Long cpf, String sexo, int idade){
 		super(nome, cpf, idade, sexo);
 	}
 	
@@ -45,7 +44,7 @@ public class Usuario extends Pessoa{
 	}
 
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", livro=" + livro + ", pendenciaMulta=" + pendenciaMulta
+		return "Id do Usuario: " + idUsuario + "Nome do Usuario: "+getNome()+" CPF do Usuario: "+getCpf()+", livro=" + livro + ", pendenciaMulta=" + pendenciaMulta
 				+ ", valorMulta=" + valorMulta + "]";
 	}
 	

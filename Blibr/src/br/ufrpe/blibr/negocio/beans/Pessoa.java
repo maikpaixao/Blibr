@@ -2,13 +2,12 @@ package br.ufrpe.blibr.negocio.beans;
 
 public class Pessoa {
 	
-	private String cpf;
 	private String nome;
-	private String idade;
+	private Long cpf;
+	private int idade;
 	private String sexo;
-	private String senha;
 	
-	public Pessoa(String nome, String cpf, String idade, String sexo){
+	public Pessoa(String nome, Long cpf, int idade, String sexo){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
@@ -27,19 +26,19 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
+	public Long getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 
-	public String getIdade() {
+	public int getIdade() {
 		return idade;
 	}
 
-	public void setIdade(String idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 

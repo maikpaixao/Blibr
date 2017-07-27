@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #111;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <top>
+      <MenuBar style="-fx-background-color: #090909; -fx-text-base-color: white;" BorderPane.alignment="CENTER">
+        <menus>
+            <Menu mnemonicParsing="false" text="Meu Perfil">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Menu Funcionarios">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Sobre">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Sair">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView prefHeight="284.0" prefWidth="750.0" style="-fx-background-color: #191919; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="50.0" text="ID" />
+          <TableColumn minWidth="0.0" prefWidth="152.0" text="Codigo do Funcionario" />
+            <TableColumn minWidth="0.0" prefWidth="242.0" text="Nome do Funcionario" />
+            <TableColumn minWidth="0.0" prefWidth="125.0" text="N° de Usuarios" />
+            <TableColumn minWidth="0.0" prefWidth="140.0" text="N° de Empréstimos" />
+        </columns>
+         <BorderPane.margin>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <bottom>
+      <Pane prefHeight="143.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Cadastrar Funcionario">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="269.0" layoutY="14.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Editar Funcionário">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="515.0" layoutY="14.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="216.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Remover Funcionário">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

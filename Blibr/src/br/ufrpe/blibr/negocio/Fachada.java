@@ -19,6 +19,7 @@ public class Fachada {
 	private ControladorFuncionario controladorF = ControladorFuncionario.getInstance();
 	private ControladorEmprestimo emprestimoE = ControladorEmprestimo.getInstance();
 	private ControladorMulta controladorM = ControladorMulta.getInstance();
+	private ControladorReserva controladorR = ControladorReserva.getInstance();
 	
 	public static synchronized Fachada getInstance() {
         if (instance == null) {
@@ -37,11 +38,11 @@ public class Fachada {
 		return controladorU.listarUsuario();
 	}
 
-	public Usuario buscarUsuario(String cpf) {
+	public Usuario buscarUsuario(Long cpf) {
 		return controladorU.buscarUsuario(cpf);
 	}
 
-	public void removerUsuario(String cpf) {
+	public void removerUsuario(Long cpf) {
 		controladorU.removerUsuario(cpf);
 	}
 
@@ -85,7 +86,7 @@ public class Fachada {
 		controladorF.editarFuncionario(funcionario);
 	}
 
-	public void removerUsuario(Long codFuncionario) {
+	public void removerFuncionario(Long codFuncionario) {
 		controladorF.removerUsuario(codFuncionario);
 	}
 	
@@ -108,11 +109,15 @@ public class Fachada {
 		return emprestimoE.listarEmprestimos();
 	}
 	
-	public void verificarEmprestimo(String cpf){
+	public void verificarEmprestimo(Long cpf){
 		emprestimoE.verificarEmprestimo(cpf);
 	}
 	
-	public Double pagarMulta(String cpf, Double valor){
+	public Double pagarMulta(Long cpf, Double valor){
 		return controladorM.pagarMulta(cpf, valor);
+	}
+	
+	public void reservarLivro(Usuario usuario, Livro livro){
+		controladorR.reservarLivro(usuario, livro);
 	}
 }

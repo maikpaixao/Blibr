@@ -158,7 +158,7 @@ public class TextualUserInterface {
 	
 	public void emprestarLivro() throws ParseException{
 		String nomeLivro;
-		String cpfUsuario;
+		Long cpfUsuario;
 		int codigoFuncionario;
 		
 		livro = new Livro();
@@ -176,7 +176,7 @@ public class TextualUserInterface {
 		livro = fachada.buscarLivro(nomeLivro);
 		
 		System.out.println("Digite o CPF do usuario a emprestar o livro: ");
-		cpfUsuario=sc.next();
+		cpfUsuario=sc.nextLong();
 		usuario = fachada.buscarUsuario(cpfUsuario);
 		emprestimo.setUsuario(usuario);
 		
@@ -186,31 +186,28 @@ public class TextualUserInterface {
 	
 	public void adicionarUsuario(){
 		
-		String nome;
-		String cpf;
 		String sexo;
-		String idade;
+		int idade;
 		
 		System.out.println("Digite o nome do usuario: ");
-		nome = sc.next();
+		String nome = sc.next();
 		System.out.println("Digite o CPF do usuario: ");
-		cpf = sc.next();
+		Long cpf = sc.nextLong();
 		System.out.println("Digite o sexo do usuario: ");
 		sexo = sc.next();
 		System.out.println("Digite o idade do usuario: ");
-		idade = sc.next();
+		idade = sc.nextInt();
 		
 		usuario = new Usuario();
 		usuario.setNome(nome);
 		usuario.setCpf(cpf);
-		usuario.setIdade(sexo);
-		usuario.setSexo(idade);
+		usuario.setSexo(sexo);
+		usuario.setIdade(idade);
 		fachada.adicionarUsuario(usuario);
-	
 	}
 	
 	public void listarUsuario(){
-		Iterator itr = fachada.listarUsuario().iterator();
+		Iterator<Usuario> itr = fachada.listarUsuario().iterator();
 		while(itr.hasNext()){
 			Usuario usu = (Usuario)itr.next();
 			System.out.println(usu);
@@ -218,22 +215,21 @@ public class TextualUserInterface {
 	}
 	
 	public void editarUsuario(){
-		
 		String nome;
-		String cpf;
+		Long cpf;
 		String sexo;
-		String idade;
+		int idade;
 		
-		System.out.println("Digite o nome do usuario: ");
-		nome = sc.next();
+		System.out.println("Digite o CPF do usuario: ");
+		cpf = sc.nextLong();
 		
 		System.out.println("=============================");
-		System.out.println("Digite novo CPF do usuario: ");
-		cpf = sc.next();
+		System.out.println("Digite novo nome do usuario: ");
+		nome = sc.next();
 		System.out.println("Digite novo sexo do usuario: ");
 		sexo = sc.next();
 		System.out.println("Digite nova idade do usuario: ");
-		idade = sc.next();
+		idade = sc.nextInt();
 		
 		Usuario usuario = new Usuario();
 		usuario.setNome(nome);
@@ -245,10 +241,9 @@ public class TextualUserInterface {
 	}
 	
 	public void removerUsuario(){
-		String cpf;
+		Long cpf;
 		System.out.println("Digite o cpf do usuario: ");
-		cpf = sc.next();
-		
+		cpf = sc.nextLong();
 		fachada.removerUsuario(cpf);
 	}
 	
@@ -323,17 +318,15 @@ public class TextualUserInterface {
 	}
 	
 	public void preencherFuncionario(){
-		
 		funcionario = new Funcionario();
 		
 		funcionario.setCodFuncionario(11);
 		funcionario.setNome("Joao");
-		funcionario.setCpf("00011100055");
+		funcionario.setCpf((long) 00011100055);
 		funcionario.setSexo("masculino");
-		funcionario.setIdade("50");
+		funcionario.setIdade(50);
 		
 		fachada.adicionarFuncionario(funcionario);
-	
 	}
 	
 	public void listarEmprestimos(){
@@ -345,20 +338,20 @@ public class TextualUserInterface {
 	}
 	
 	public void verificarMulta(){
-		String cpf;
+		Long cpf;
 		System.out.println("Digite o cpf do usuario: ");
-		cpf = sc.next();
+		cpf = sc.nextLong();
 		
 		fachada.verificarEmprestimo(cpf);
 	}
 	
 	public void pagarMulta(){
 		
-		String cpf;
+		Long cpf;
 		Double valor;
 		
 		System.out.println("Digite o cpf do usuario: ");
-		cpf = sc.next();
+		cpf = sc.nextLong();
 		System.out.println("Digite o valor fornecido: ");
 		valor = sc.nextDouble();
 		

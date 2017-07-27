@@ -29,7 +29,7 @@ public class RepositorioUsuario {
 		return this.listaUsuario;
 	}
 	
-	public Usuario buscarUsuario(String cpf){
+	public Usuario buscarUsuario(Long cpf){
 		Usuario rotorno = null;
 		for(Usuario usuario: listaUsuario){
 			if(usuario.getCpf().equals(cpf) && cpf!=null){
@@ -50,7 +50,7 @@ public class RepositorioUsuario {
 		}
 	}
 	
-	public void removerUsuario(String cpf){
+	public void removerUsuario(Long cpf){
 		for(Usuario us: listaUsuario){
 			if(us.getCpf().equals(cpf) && cpf!=null){
 				this.listaUsuario.remove(us);

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar style="-fx-background-color: #090909; -fx-text-base-color: white; -fx-text-fill: white;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" style="-fx-text-fill: white;" text="Blibr">
+            <items>
+              <MenuItem mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Usuarios">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Livros">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <GridPane style="-fx-background-color: #111;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="333.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="217.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView prefHeight="302.0" prefWidth="438.0" style="-fx-background-color: #191919; -fx-control-inner-background: black; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+              <columns>
+                <TableColumn prefWidth="75.0" style="-fx-background-color: black; -fx-table-cell-border-color: black; -fx-text-base-color: white;" text="Código" />
+                <TableColumn prefWidth="75.0" text="Nome" />
+                  <TableColumn prefWidth="75.0" text="Autor" />
+                  <TableColumn prefWidth="75.0" text="Column X" />
+                  <TableColumn prefWidth="75.0" text="Quantidade" />
+              </columns>
+            </TableView>
+            <TextField prefHeight="39.0" prefWidth="290.0" promptText="Digite o nome do livro...">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="73.0" style="-fx-text-fill: white; -fx-background-color: #2ecc71;" text="Pesquisar" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </center>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #111;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="33.0" layoutY="24.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Emprestar">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Button layoutX="33.0" layoutY="140.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Devolução">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Button layoutX="33.0" layoutY="364.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Sair">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Button layoutX="33.0" layoutY="247.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Multas">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

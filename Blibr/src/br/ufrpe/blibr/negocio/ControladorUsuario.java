@@ -37,7 +37,7 @@ public class ControladorUsuario implements IControladorUsuario{
 		return repoUsuario.listarUsuarios();
 	}
 	
-	public Usuario buscarUsuario(String cpf) {
+	public Usuario buscarUsuario(Long cpf) {
 		Usuario retorno = null;
 		try {
 			if(cpf!=null && repoUsuario.buscarUsuario(cpf)==null){
@@ -51,7 +51,7 @@ public class ControladorUsuario implements IControladorUsuario{
 		return retorno;
 	}
 
-	public void removerUsuario(String cpf){
+	public void removerUsuario(Long cpf){
 		try {
 			if(cpf!=null && repoUsuario.buscarUsuario(cpf)!=null){
 				repoUsuario.removerUsuario(cpf);

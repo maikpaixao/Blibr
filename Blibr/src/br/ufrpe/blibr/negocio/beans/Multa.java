@@ -1,6 +1,7 @@
 package br.ufrpe.blibr.negocio.beans;
 
 public class Multa {
+	
 	private double pagamento;
 	private double divida;
 	private double troco;

@@ -19,7 +19,6 @@ public class Fachada {
 	private ControladorFuncionario controladorF = ControladorFuncionario.getInstance();
 	private ControladorEmprestimo emprestimoE = ControladorEmprestimo.getInstance();
 	private ControladorMulta controladorM = ControladorMulta.getInstance();
-	private ControladorReserva controladorR = ControladorReserva.getInstance();
 	
 	public static synchronized Fachada getInstance() {
         if (instance == null) {
@@ -117,7 +116,7 @@ public class Fachada {
 		return controladorM.pagarMulta(cpf, valor);
 	}
 	
-	public void reservarLivro(Usuario usuario, Livro livro){
-		controladorR.reservarLivro(usuario, livro);
+	public void realizarDevolução(Usuario usuario, Livro livro){
+		emprestimoE.realizarDevolução(usuario, livro);
 	}
 }

@@ -19,7 +19,6 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	private RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();
 	private ControladorMulta  multa = ControladorMulta.getInstance();
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
-	private ControladorReserva ctrReserva = ControladorReserva.getInstance();
 	
 	public static ControladorEmprestimo getInstance(){
 		if(instance==null){
@@ -73,7 +72,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		
 	}*/
 	
-	public void realizarDevolução(){
-		
+	public void realizarDevolução(Usuario usuario, Livro livro){
+		repoEmprestimo.realizarDevolução(usuario, livro);
 	}
 }

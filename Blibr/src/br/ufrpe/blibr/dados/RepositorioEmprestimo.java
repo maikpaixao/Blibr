@@ -82,4 +82,13 @@ public class RepositorioEmprestimo {
 		return this.empLista;
 	}
 	
+	public void realizarDevolução(Usuario usuario, Livro livro){
+		for(Emprestimo emp: empLista){
+			if(emp.getUsuario().getCpf().equals(usuario.getCpf()) && emp.getLivro().getCodigoLivro().equals(livro.getCodigoLivro())){
+				this.empLista.remove(emp);
+				livro.setQuantidadeLivros((livro.getQuantidadeLivros())+1);
+				break;
+			}
+		}
+	}
 }

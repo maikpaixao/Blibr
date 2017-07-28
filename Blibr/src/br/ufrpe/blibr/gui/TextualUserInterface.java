@@ -119,6 +119,7 @@ public class TextualUserInterface {
 	public void menuEmprestimo() throws ParseException{
 		System.out.println("1 - Emprestar Livro");
 		System.out.println("2 - Livros Emprestados");
+		System.out.println("3 - Devolver Livro");
 		
 		System.out.println("Digite a opcao desejada: \n");
 		opcao = sc.nextInt();
@@ -129,7 +130,9 @@ public class TextualUserInterface {
 			break;
 		case 2:
 			listarEmprestimos();
-			//listarLivrosEmprestados();
+			break;
+		case 3:
+			realizarDevolucao();
 			break;
 		default:
 			break;
@@ -330,7 +333,28 @@ public class TextualUserInterface {
 		//fachada.emprestarLivro(livro, usuario);
 	}
 	
+	public void realizarDevolucao(){
+		Long cpfUsuario;
+		String nomeLivro;
+		usuario = new Usuario();
+		livro = new Livro();
+		
+		System.out.println("Digite o CPF do usuario: ");
+		cpfUsuario = sc.nextLong();
+		usuario = fachada.buscarUsuario(cpfUsuario);
+		
+		System.out.println("Digite o nome do livro: ");
+		nomeLivro = sc.next();
+		livro = fachada.buscarLivro(nomeLivro);
+		
+		fachada.realizarDevolução(usuario, livro);
+	}
+	
 	public void listarEmprestimos(){
+		/*for(Emprestimo emp: fachada.listarEmprestimos()){
+			System.out.println(emp);
+		}*/
+		
 		Iterator itr = fachada.listarEmprestimos().iterator();
 		while(itr.hasNext()){
 			Emprestimo emp = (Emprestimo)itr.next();

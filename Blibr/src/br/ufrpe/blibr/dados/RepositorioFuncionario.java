@@ -1,6 +1,8 @@
 package br.ufrpe.blibr.dados;
 
 import java.util.ArrayList;
+
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
@@ -16,11 +18,15 @@ public class RepositorioFuncionario {
 		return instance;
 	}
 	
-	public void adicionarFuncionario(Funcionario funcionario){
-		if(funcionario!=null && !this.listaFuncionario.contains(funcionario)){
-			this.listaFuncionario.add(funcionario);
-		}else{
-			
+	public void adicionarFuncionario(Funcionario funcionario)throws Exception{
+		try {
+			if(funcionario!=null && !this.listaFuncionario.contains(funcionario)){
+				this.listaFuncionario.add(funcionario);
+			}else{
+				throw new ElementoNaoExistente(funcionario);
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 	}
 	
@@ -28,36 +34,49 @@ public class RepositorioFuncionario {
 		return this.listaFuncionario;
 	}
 	
-	public Funcionario buscarFuncionario(int codFuncionario){
+	public Funcionario buscarFuncionario(Long codFuncionario)throws ElementoNaoExistente{
 		Funcionario retorno = null;
-		for(Funcionario funcionario: listaFuncionario){
-			if(funcionario.getCodFuncionario() == codFuncionario){
-				retorno =  funcionario;
+		try {
+			for(Funcionario funcionario: listaFuncionario){
+				if(funcionario.getCodFuncionario() == codFuncionario){
+					retorno =  funcionario;
+				}else{
+					throw new ElementoNaoExistente(buscarFuncionario(codFuncionario));
+				}
 			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 		return retorno;
 	}
 	
-	public void editarFuncionario(Funcionario funcionario){
-		for(Funcionario func: this.listaFuncionario){
-			if (func.getNome().equals(funcionario.getNome()) && funcionario!=null){
-				int indice = this.listaFuncionario.indexOf(func);
-		        listaFuncionario.set(indice, funcionario);
-		    }else{
-		        	
-		    }
-		}
-	}
-	
-	public void removerUsuario(Long codFuncionario){
-		for(Funcionario func: listaFuncionario){
-			if(func.getCodFuncionario()==codFuncionario && codFuncionario!=null){
-				this.listaFuncionario.remove(func);
-				break;
-			}else{
-					
+	public void editarFuncionario(Funcionario funcionario)throws Exception{
+		try {
+			for(Funcionario func: this.listaFuncionario){
+				if (func.getNome().equals(funcionario.getNome()) && funcionario!=null){
+					int indice = this.listaFuncionario.indexOf(func);
+			        listaFuncionario.set(indice, funcionario);
+			    }else{
+			        throw new ElementoNaoExistente(funcionario);
+			    }
 			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 	}
 	
+	public void removerUsuario(Long codFuncionario)throws ElementoNaoExistente{
+		try {
+			for(Funcionario func: listaFuncionario){
+				if(func.getCodFuncionario()==codFuncionario && codFuncionario!=null){
+					this.listaFuncionario.remove(func);
+					break;
+				}else{
+					throw new ElementoNaoExistente(buscarFuncionario(codFuncionario));
+				}
+			}
+		}catch(ElementoNaoExistente e){
+			e.getObj();
+		}
+	}
 }

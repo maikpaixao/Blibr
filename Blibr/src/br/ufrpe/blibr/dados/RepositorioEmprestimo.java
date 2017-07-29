@@ -11,15 +11,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 
 public class RepositorioEmprestimo {
 	
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
 	private ArrayList<Emprestimo> empLista = new ArrayList<Emprestimo>();
-	private ArrayList<Usuario> listaUsuario;
+	private List<Usuario> listaUsuario;
 	private ArrayList<Livro> listaLivro;
 	Calendar cal = Calendar.getInstance();
 	
@@ -52,8 +54,8 @@ public class RepositorioEmprestimo {
 			}
 	}*/
 	
-	public ArrayList<Usuario> listarLivrosEmprestados(){
-		ArrayList<Usuario> retorno = null;
+	public List<Usuario> listarLivrosEmprestados(){
+		List<Usuario> retorno = null;
 		listaUsuario = repoUsuario.listarUsuarios();
 		listaLivro = repoLivro.listarLivros();
 		for(Usuario usu: listaUsuario){
@@ -66,29 +68,43 @@ public class RepositorioEmprestimo {
 		return retorno;
 	}
 	
-	public void registrarEmprestimo(Emprestimo emprestimo){
-		Date date = new Date();
-		Livro livro = new Livro();
-		livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
-		emprestimo.setDataEmprestimo(date);
-		cal.setTime(date);
-		cal.add(Calendar.DATE, +7);
-		date=cal.getTime();
-		emprestimo.setDataDevolucao(date);
-		this.empLista.add(emprestimo);
+	public void registrarEmprestimo(Emprestimo emprestimo)throws ElementoNaoExistente{
+		try {
+			if(emprestimo!=null){
+				Date date = new Date();
+				Livro livro = new Livro();
+				livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
+				emprestimo.setDataEmprestimo(date);
+				cal.setTime(date);
+				cal.add(Calendar.DATE, +7);
+				date=cal.getTime();
+				emprestimo.setDataDevolucao(date);
+				this.empLista.add(emprestimo);
+			}else{
+				throw new ElementoNaoExistente(emprestimo);
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
+		}
 	}
 	
 	public ArrayList<Emprestimo> listarEmprestimos(){
 		return this.empLista;
 	}
 	
-	public void realizarDevolução(Usuario usuario, Livro livro){
-		for(Emprestimo emp: empLista){
-			if(emp.getUsuario().getCpf().equals(usuario.getCpf()) && emp.getLivro().getCodigoLivro().equals(livro.getCodigoLivro())){
-				this.empLista.remove(emp);
-				livro.setQuantidadeLivros((livro.getQuantidadeLivros())+1);
-				break;
+	public void realizarDevolução(Usuario usuario, Livro livro)throws ElementoNaoExistente{
+		try {
+			for(Emprestimo emp: empLista){
+				if(emp.getUsuario().getCpf().equals(usuario.getCpf()) && emp.getLivro().getCodigoLivro().equals(livro.getCodigoLivro())){
+					this.empLista.remove(emp);
+					livro.setQuantidadeLivros((livro.getQuantidadeLivros())+1);
+					break;
+				}else{
+					throw new ElementoNaoExistente(emp);
+				}
 			}
+		}catch(ElementoNaoExistente e){
+			e.getObj();
 		}
 	}
 }

@@ -2,21 +2,15 @@ package br.ufrpe.blibr.negocio.beans;
 
 public class Multa {
 	
-	private double pagamento;
+	private Usuario usuario;
 	private double divida;
-	private double troco;
 	
-	public Multa(double pagamento, double divida){
-		this.pagamento = pagamento;
+	public Multa(double divida){
 		this.divida = divida;
 	}
 	
-	public double getPagamento(){
-		return pagamento;
-	}
-	
-	public void setPagamento(double pagamento){
-		this.pagamento = pagamento;
+	public Multa(){
+		
 	}
 	
 	public double getDivida(){
@@ -26,12 +20,13 @@ public class Multa {
 	public void setDivida(double divida){
 		this.divida = divida;
 	}
-	
-	public double getTroco(){
-		return troco;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
-	public void setTroco(double troco){
-		this.troco = troco;
-	}
 }

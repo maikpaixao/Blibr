@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 import br.ufrpe.blibr.negocio.Fachada;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
@@ -22,7 +23,7 @@ public class TextualUserInterface {
 	
 	Scanner sc = new Scanner(System.in);
 	
-	public void showInterface() throws ParseException{
+	public void showInterface() throws ParseException, Exception{
 		    
 			preencherFuncionario();
 			
@@ -59,7 +60,7 @@ public class TextualUserInterface {
 			
 	}
 	
-	public void menuLivro(){
+	public void menuLivro() throws ElementoNaoExistente{
 		
 		System.out.println("1-Adicionar Livro");
 		System.out.println("2-Listar Livro");
@@ -87,7 +88,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void menuUsuario(){
+	public void menuUsuario() throws ElementoNaoExistente{
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("1-Adicionar Usuario");
@@ -116,7 +117,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void menuEmprestimo() throws ParseException{
+	public void menuEmprestimo() throws ParseException, ElementoNaoExistente{
 		System.out.println("1 - Emprestar Livro");
 		System.out.println("2 - Livros Emprestados");
 		System.out.println("3 - Devolver Livro");
@@ -139,7 +140,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void menuMulta(){
+	public void menuMulta() throws ElementoNaoExistente{
 		
 		System.out.println("1-Verificar Multa");
 		System.out.println("2-Pagar Multa");
@@ -159,7 +160,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void adicionarUsuario(){
+	public void adicionarUsuario() throws ElementoNaoExistente{
 		
 		String sexo;
 		int idade;
@@ -224,7 +225,7 @@ public class TextualUserInterface {
 	
 	//==========================Livro==============================
 	
-	public void adicionarLivro(){
+	public void adicionarLivro() throws ElementoNaoExistente{
 		
 		int codigoLivro;
 		String nomeLivro;
@@ -256,7 +257,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void editarLivro(){
+	public void editarLivro() throws ElementoNaoExistente{
 		
 		String nomeLivro;
 		String autorLivro;
@@ -284,7 +285,7 @@ public class TextualUserInterface {
 		
 	}
 	
-	public void removerLivro(){
+	public void removerLivro() throws ElementoNaoExistente{
 		String nome;
 		System.out.println("Digite o nome do livro: ");
 		nome = sc.next();
@@ -292,7 +293,7 @@ public class TextualUserInterface {
 		fachada.removerLivro(nome);
 	}
 	
-	public void preencherFuncionario(){
+	public void preencherFuncionario() throws Exception{
 		funcionario = new Funcionario();
 		
 		funcionario.setCodFuncionario(11);
@@ -304,10 +305,10 @@ public class TextualUserInterface {
 		fachada.adicionarFuncionario(funcionario);
 	}
 	
-	public void emprestarLivro() throws ParseException{
+	public void emprestarLivro() throws ParseException, ElementoNaoExistente{
 		String nomeLivro;
 		Long cpfUsuario;
-		int codigoFuncionario;
+		Long codigoFuncionario;
 		
 		livro = new Livro();
 		usuario = new Usuario();
@@ -315,7 +316,7 @@ public class TextualUserInterface {
 		funcionario = new Funcionario();
 		
 		System.out.println("Digite o seu código como funcionario: ");//Funcionario preenchido pelo método preencherFuncionario()
-		codigoFuncionario = sc.nextInt();
+		codigoFuncionario = sc.nextLong();
 		funcionario = fachada.buscarFuncionario(codigoFuncionario);
 		emprestimo.setFuncionario(funcionario);
 		
@@ -333,7 +334,7 @@ public class TextualUserInterface {
 		//fachada.emprestarLivro(livro, usuario);
 	}
 	
-	public void realizarDevolucao(){
+	public void realizarDevolucao() throws ElementoNaoExistente{
 		Long cpfUsuario;
 		String nomeLivro;
 		usuario = new Usuario();
@@ -370,7 +371,7 @@ public class TextualUserInterface {
 		fachada.verificarEmprestimo(cpf);
 	}*/
 	
-	public void pagarMulta(){
+	public void pagarMulta() throws ElementoNaoExistente{
 		
 		Long cpf;
 		Double valor;

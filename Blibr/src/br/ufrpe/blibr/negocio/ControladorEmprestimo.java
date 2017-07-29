@@ -7,6 +7,7 @@ import java.util.Date;
 
 import br.ufrpe.blibr.dados.RepositorioEmprestimo;
 import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
@@ -41,7 +42,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		}
 	}*/
 	
-	public void registrarEmprestimo(Emprestimo emprestimo){
+	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExistente{
 		try {
 			if(emprestimo == null){
 				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
@@ -72,7 +73,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		
 	}*/
 	
-	public void realizarDevolução(Usuario usuario, Livro livro){
+	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExistente{
 		repoEmprestimo.realizarDevolução(usuario, livro);
 	}
 }

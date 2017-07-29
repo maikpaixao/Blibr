@@ -3,10 +3,11 @@ package br.ufrpe.blibr.negocio;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.exception.UsuarioExistente;
-import br.ufrpe.blibr.exception.UsuarioNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
@@ -27,13 +28,13 @@ public class Fachada {
         return instance;
     }
 
-	public void adicionarUsuario(Usuario usuario) {
+	public void adicionarUsuario(Usuario usuario) throws ElementoNaoExistente {
 		if(usuario!=null){
 			controladorU.adicionarUsuario(usuario);
 		}
 	}
 
-	public ArrayList<Usuario> listarUsuario() {
+	public List<Usuario> listarUsuario() {
 		return controladorU.listarUsuario();
 	}
 
@@ -51,15 +52,15 @@ public class Fachada {
 
 	////////////////Livro////////////////////
 	
-	public void adicionarLivro(Livro livro){
+	public void adicionarLivro(Livro livro) throws ElementoNaoExistente{
 		controladorL.adicionarLivro(livro);
 	}
 
-	public Livro buscarLivro(String nomeLivro) {
+	public Livro buscarLivro(String nomeLivro) throws ElementoNaoExistente {
 		return controladorL.buscarLivro(nomeLivro);
 	}
 
-	public void editarLivro(Livro livro){
+	public void editarLivro(Livro livro) throws ElementoNaoExistente{
 		controladorL.editarLivro(livro);
 	}
 
@@ -67,13 +68,13 @@ public class Fachada {
 		return controladorL.listarLivros();
 	}
 
-	public void removerLivro(String nome){
+	public void removerLivro(String nome) throws ElementoNaoExistente{
 		controladorL.removerLivro(nome);
 	}
 	
 	///////////////Funcionario////////////////////////
 	
-	public void adicionarFuncionario(Funcionario funcionario) {
+	public void adicionarFuncionario(Funcionario funcionario) throws Exception {
 		controladorF.adicionarFuncionario(funcionario);
 	}
 
@@ -81,16 +82,16 @@ public class Fachada {
 		return controladorF.listarFuncionario();
 	}
 
-	public void editarFuncionario(Funcionario funcionario) {
+	public void editarFuncionario(Funcionario funcionario) throws Exception {
 		controladorF.editarFuncionario(funcionario);
 	}
 
-	public void removerFuncionario(Long codFuncionario) {
+	public void removerFuncionario(Long codFuncionario) throws ElementoNaoExistente {
 		controladorF.removerUsuario(codFuncionario);
 	}
 	
 	
-	public Funcionario buscarFuncionario(int codFuncionario){
+	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExistente{
 		return controladorF.buscarFuncionario(codFuncionario);
 	}
 	
@@ -100,7 +101,7 @@ public class Fachada {
 	//	emprestimoE.emprestarLivro(livro, usuario);
 	//}
 	
-	public void registrarEmprestimo(Emprestimo emprestimo){
+	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExistente{
 		emprestimoE.registrarEmprestimo(emprestimo);
 	}
 	
@@ -112,11 +113,11 @@ public class Fachada {
 	//	emprestimoE.verificarEmprestimo(cpf);
 	//}
 	
-	public Double pagarMulta(Long cpf, Double valor){
+	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExistente{
 		return controladorM.pagarMulta(cpf, valor);
 	}
 	
-	public void realizarDevolução(Usuario usuario, Livro livro){
+	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExistente{
 		emprestimoE.realizarDevolução(usuario, livro);
 	}
 }

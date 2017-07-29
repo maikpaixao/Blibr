@@ -1,14 +1,18 @@
 package br.ufrpe.blibr.dados;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-import br.ufrpe.blibr.exception.UsuarioNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class RepositorioUsuario {
 	
 	private static RepositorioUsuario instance;
-	private ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
+	protected List<Usuario> listaUsuario;
 	
 	public static synchronized RepositorioUsuario getInstance(){
 		if(instance == null){
@@ -17,48 +21,70 @@ public class RepositorioUsuario {
 		return instance;
 	}
 	
-	public void adicionarUsuario(Usuario usuario){
-		if(usuario!=null && !this.listaUsuario.contains(usuario)){
-			this.listaUsuario.add(usuario);
-		}else{
-			
+	public RepositorioUsuario(){
+		this.listaUsuario =  new ArrayList<>();
+	}
+	
+	
+	public void adicionarUsuario(Usuario usuario) throws ElementoNaoExistente{
+		try {
+			if(usuario!=null && !this.listaUsuario.contains(usuario)){
+				this.listaUsuario.add(usuario);
+			}else{
+				throw new ElementoNaoExistente(usuario);
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 	}
 	
-	public ArrayList<Usuario> listarUsuarios(){
-		return this.listaUsuario;
+	public List<Usuario> listarUsuarios(){
+		return listaUsuario;
 	}
 	
-	public Usuario buscarUsuario(Long cpf){
+	public Usuario buscarUsuario(Long cpf) throws ElementoNaoExistente{
 		Usuario rotorno = null;
-		for(Usuario usuario: listaUsuario){
-			if(usuario.getCpf().equals(cpf) && cpf!=null){
-				rotorno = usuario;
+		try {
+			for(Usuario usuario: listaUsuario){
+				if(usuario.getCpf().equals(cpf) && cpf!=null){
+					rotorno = usuario;
+				}else{
+					throw new ElementoNaoExistente(usuario);
+				}
 			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 		return rotorno;
 	}
 	
-	public void editarUsuario(Usuario usuario){
-		for(Usuario us: this.listaUsuario){
-			if (us.getNome().equals(usuario.getNome()) && usuario!=null){
-				int indice = this.listaUsuario.indexOf(us);
-		        listaUsuario.set(indice, usuario);
-		    }else{
-		        	
-		    }
-		}
-	}
-	
-	public void removerUsuario(Long cpf){
-		for(Usuario us: listaUsuario){
-			if(us.getCpf().equals(cpf) && cpf!=null){
-				this.listaUsuario.remove(us);
-				break;
-			}else{
-					
+	public void editarUsuario(Usuario usuario)throws ElementoNaoExistente{
+		try {
+			for(Usuario us: this.listaUsuario){
+				if (us.getNome().equals(usuario.getNome()) && usuario!=null){
+					int indice = this.listaUsuario.indexOf(us);
+			        listaUsuario.set(indice, usuario);
+			    }else{
+			    	throw new ElementoNaoExistente(usuario);
+			    }
 			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 	}
 	
+	public void removerUsuario(Long cpf) throws ElementoNaoExistente{
+		try {
+			for(Usuario us: listaUsuario){
+				if(us.getCpf().equals(cpf) && cpf!=null){
+					this.listaUsuario.remove(us);
+					break;
+				}else{
+					throw new ElementoNaoExistente(buscarUsuario(cpf));
+				}
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
+		}
+	}
 }

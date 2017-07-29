@@ -3,6 +3,7 @@ package br.ufrpe.blibr.negocio;
 import java.util.ArrayList;
 
 import br.ufrpe.blibr.dados.RepositorioFuncionario;
+import br.ufrpe.blibr.exception.ElementoNaoExistente;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 
@@ -17,7 +18,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		return instance;
 	}
 
-	public void adicionarFuncionario(Funcionario funcionario) {
+	public void adicionarFuncionario(Funcionario funcionario) throws Exception {
 		try {
 			if(funcionario!=null){
 				repoFuncionario.adicionarFuncionario(funcionario);
@@ -34,7 +35,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		return repoFuncionario.listarFuncionario();
 	}
 
-	public void editarFuncionario(Funcionario funcionario) {
+	public void editarFuncionario(Funcionario funcionario) throws Exception {
 		try {
 			if(funcionario!=null){
 				repoFuncionario.editarFuncionario(funcionario);
@@ -47,7 +48,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		}
 	}
 
-	public void removerUsuario(Long codFuncionario) {
+	public void removerUsuario(Long codFuncionario) throws ElementoNaoExistente {
 		try {
 			if(codFuncionario!=null){
 				repoFuncionario.removerUsuario(codFuncionario);
@@ -60,7 +61,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		}
 	}
 	
-	public Funcionario buscarFuncionario(int codFuncionario){
+	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExistente{
 		Funcionario retorno = null;
 		try {
 			if(codFuncionario!=0){

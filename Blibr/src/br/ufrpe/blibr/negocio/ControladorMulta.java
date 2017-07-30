@@ -18,8 +18,14 @@ public class ControladorMulta implements IControladorMulta{
 	}
 	
 	public void atribuirMulta(Long cpf) throws ElementoNaoExistente{
-		if(repoEmprestimo.buscarEmprestimo(cpf)!=null){
-			repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(50);
+		try {
+			if(cpf!=null && cpf==repoEmprestimo.buscarEmprestimo(cpf).getUsuario().getCpf()){
+				repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(50);
+			}else{
+				
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
 		}
 	}
 	

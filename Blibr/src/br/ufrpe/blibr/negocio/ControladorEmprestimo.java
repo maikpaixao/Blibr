@@ -71,10 +71,17 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		} catch (ObjetoInvalidoExcpetion e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExistente{
-		repoEmprestimo.realizarDevolução(usuario, livro);
+		try {
+			if(usuario!=null && livro!=null){
+				repoEmprestimo.realizarDevolução(usuario, livro);
+			}else{
+				
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
+		}
 	}
 }

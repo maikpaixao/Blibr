@@ -26,12 +26,10 @@ public class ControladorUsuario implements IControladorUsuario{
 				throw new UsuarioExistente("Esse usuário já está cadastrado!");
 			}else{
 				repoUsuario.adicionarUsuario(usuario);
-				
 			}
 		} catch (UsuarioExistente e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 	
 	public List<Usuario> listarUsuario(){

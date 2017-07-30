@@ -64,7 +64,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExistente{
 		Funcionario retorno = null;
 		try {
-			if(codFuncionario!=0){
+			if(codFuncionario!=null){
 				retorno = repoFuncionario.buscarFuncionario(codFuncionario);
 			}else{
 				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"

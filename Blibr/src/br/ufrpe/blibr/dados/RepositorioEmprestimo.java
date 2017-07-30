@@ -88,6 +88,22 @@ public class RepositorioEmprestimo {
 		}
 	}
 	
+	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExistente{
+		Emprestimo rotorno = null;
+		try {
+			for(Emprestimo emprestimo: empLista){
+				if(emprestimo.getUsuario().getCpf().equals(cpf) && cpf!=null){
+					rotorno = emprestimo;
+				}else{
+					throw new ElementoNaoExistente(emprestimo);
+				}
+			}
+		} catch (ElementoNaoExistente e) {
+			e.getObj();
+		}
+		return rotorno;
+	}
+	
 	public ArrayList<Emprestimo> listarEmprestimos(){
 		return this.empLista;
 	}

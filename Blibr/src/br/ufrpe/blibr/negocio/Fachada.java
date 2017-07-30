@@ -109,9 +109,9 @@ public class Fachada {
 		return emprestimoE.listarEmprestimos();
 	}
 	
-	//public void verificarEmprestimo(Long cpf){
-	//	emprestimoE.verificarEmprestimo(cpf);
-	//}
+	public void verificarEmprestimo(Long cpf) throws ElementoNaoExistente{
+		emprestimoE.verificarEmprestimo(cpf);
+	}
 	
 	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExistente{
 		return controladorM.pagarMulta(cpf, valor);

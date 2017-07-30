@@ -2,7 +2,6 @@ package br.ufrpe.blibr.negocio.beans;
 
 public class Multa {
 	
-	private Usuario usuario;
 	private double divida;
 	
 	public Multa(double divida){
@@ -10,7 +9,7 @@ public class Multa {
 	}
 	
 	public Multa(){
-		
+		this.divida=0;
 	}
 	
 	public double getDivida(){
@@ -21,12 +20,8 @@ public class Multa {
 		this.divida = divida;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	@Override
+	public String toString() {
+		return "Multa: "+getDivida();
 	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
 }

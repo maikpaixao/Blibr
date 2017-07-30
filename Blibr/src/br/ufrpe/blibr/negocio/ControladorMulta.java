@@ -1,11 +1,13 @@
 package br.ufrpe.blibr.negocio;
 
+import br.ufrpe.blibr.dados.RepositorioEmprestimo;
 import br.ufrpe.blibr.dados.RepositorioUsuario;
 import br.ufrpe.blibr.exception.ElementoNaoExistente;
 
 public class ControladorMulta implements IControladorMulta{
 	
 	RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
+	RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();
 	private static ControladorMulta instance;
 	
 	public static ControladorMulta getInstance(){
@@ -16,19 +18,21 @@ public class ControladorMulta implements IControladorMulta{
 	}
 	
 	public void atribuirMulta(Long cpf) throws ElementoNaoExistente{
-		if(repoUsuario.buscarUsuario(cpf)!=null && cpf!=null){
-			
-			repoUsuario.buscarUsuario(cpf).setPendenciaMulta(true);
-			repoUsuario.buscarUsuario(cpf).setValorMulta(50);
+		if(repoEmprestimo.buscarEmprestimo(cpf)!=null){
+			repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(50);
 		}
 	}
 	
 	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExistente{
-		Double troco = valor - repoUsuario.buscarUsuario(cpf).getValorMulta();
-		if(repoUsuario.buscarUsuario(cpf).getNome().equals(cpf) && repoUsuario.buscarUsuario(cpf).getPendenciaMulta()==true)
-			if(valor>=repoUsuario.buscarUsuario(cpf).getValorMulta()){
-				repoUsuario.buscarUsuario(cpf).setValorMulta(0);
+		Double troco = null;
+		if(repoEmprestimo.buscarEmprestimo(cpf)!=null){
+			if(valor >= repoEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida()){
+				troco = valor - repoEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida();
+				repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(0);
+			}else{
+				System.out.println("Valor nao e suficiente!");
 			}
+		}
 		return troco;
 	}
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="236.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="242.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="313.0" minHeight="7.0" prefHeight="78.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField prefHeight="39.0" prefWidth="334.0" promptText="Digite o nome do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="66.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Remover" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label prefHeight="39.0" prefWidth="277.0" style="-fx-text-fill: #fff;" text="Remover Funcionario" GridPane.rowIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <TableView prefHeight="250.0" prefWidth="290.0" GridPane.rowIndex="3">
+              <columns>
+                <TableColumn prefWidth="109.0" text="Nome" />
+                <TableColumn prefWidth="113.0" text="CPF" />
+                  <TableColumn prefWidth="106.0" text="Sexo" />
+                  <TableColumn prefWidth="66.0" text="Idade" />
+              </columns>
+            </TableView>
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="330.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </GridPane>
+   </center>
+   <left>
+      <Pane prefHeight="500.0" prefWidth="265.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="-8.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@im.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </left>
+</BorderPane>

@@ -150,7 +150,7 @@ public class TextualUserInterface {
 		
 		switch (opcao) {
 		case 1:
-			//verificarMulta();
+			verificarMulta();
 			break;
 		case 2:
 			pagarMulta();
@@ -363,13 +363,13 @@ public class TextualUserInterface {
 		}
 	}
 	
-	/*public void verificarMulta(){
+	public void verificarMulta() throws ElementoNaoExistente{
 		Long cpf;
 		System.out.println("Digite o cpf do usuario: ");
 		cpf = sc.nextLong();
 		
 		fachada.verificarEmprestimo(cpf);
-	}*/
+	}
 	
 	public void pagarMulta() throws ElementoNaoExistente{
 		

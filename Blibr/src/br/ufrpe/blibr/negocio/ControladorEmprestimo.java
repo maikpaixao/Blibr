@@ -58,12 +58,13 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		return repoEmprestimo.listarEmprestimos();
 	}
 	
-	/*public void verificarEmprestimo(Long cpf){
+	public void verificarEmprestimo(Long cpf) throws ElementoNaoExistente{
 		try {
+			Date date = new Date();
 			if(cpf==null){
 				throw new ObjetoInvalidoExcpetion("Descule, mas esse cpf é inválido!");
 			}else{
-				if(repoUsuario.buscarUsuario(cpf).getLivro().getDataEmprestimo().equals(repoUsuario.buscarUsuario(cpf).getLivro().getDataDevolucao())){
+				if(repoEmprestimo.buscarEmprestimo(cpf).getDataDevolucao()==date){
 					multa.atribuirMulta(cpf);
 				}
 			}
@@ -71,7 +72,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 			e.printStackTrace();
 		}
 		
-	}*/
+	}
 	
 	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExistente{
 		repoEmprestimo.realizarDevolução(usuario, livro);

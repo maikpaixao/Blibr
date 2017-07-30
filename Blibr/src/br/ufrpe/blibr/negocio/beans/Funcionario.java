@@ -3,11 +3,11 @@ package br.ufrpe.blibr.negocio.beans;
 public class Funcionario extends Pessoa{
 	
 	private int codFuncionario;
+	private String senha;
 	
 	public Funcionario(String nome, Long cpf, int idade, String sexo) {
 		super(nome, cpf, idade, sexo);
 	}
-	
 	
 	public Funcionario(){
 		
@@ -21,6 +21,13 @@ public class Funcionario extends Pessoa{
 		this.codFuncionario = codFuncionario;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	public String toString() {
 		return "Funcionario [codFuncionario=" + codFuncionario + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="398.0" minWidth="2.0" prefWidth="40.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="279.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="398.0" minWidth="10.0" prefWidth="70.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="208.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="299.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="299.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="74.0" minHeight="1.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="321.0" minHeight="7.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="7.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="313.0" minHeight="7.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="9.0" prefHeight="12.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField prefHeight="43.0" prefWidth="357.0" promptText="Atualizar cpf do Funcionário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Atualizar nome do Funcionário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Atualizar idade do Funcionário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label prefHeight="39.0" prefWidth="275.0" style="-fx-text-fill: #fff;" text="Atualizar Funcionário" GridPane.columnIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <ComboBox prefHeight="42.0" prefWidth="326.0" promptText="Atualizar sexo do Funcionário,,," style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="NOME" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label text="CPF" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label text="SEXO" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="IDADE" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Procurar CPF do Funcionário" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Atualizar senha do Funcionário" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label text="SENHA" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+         </children>
+      </GridPane>
+   </center>
+   <left>
+      <Pane prefHeight="500.0" prefWidth="307.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="13.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@im.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </left>
+</BorderPane>

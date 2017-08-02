@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="400.0" prefWidth="400.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="177.0" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="209.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="313.0" minHeight="7.0" prefHeight="155.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Remover" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label prefHeight="39.0" prefWidth="277.0" style="-fx-text-fill: #fff;" text="Devoluçao Livro" GridPane.rowIndex="1">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <TextField prefHeight="39.0" prefWidth="450.0" promptText="Digite o nome do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField prefHeight="39.0" prefWidth="450.0" promptText="Digite o CPF do Usuario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </GridPane>
+   </center>
+</BorderPane>

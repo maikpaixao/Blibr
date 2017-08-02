@@ -1,4 +1,4 @@
-package br.ufrpe.blibr;
+package br.ufrpe.blibr.gui;
 
 import java.io.IOException;
 
@@ -28,10 +28,9 @@ public class Tela extends Application {
 	}
 	
 	public void showTelaView() throws IOException{
-		Parent t = FXMLLoader.load(getClass().getResource("TelaView.fxml"));
+		Parent t = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
 		Scene scene = new Scene(t);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
 }

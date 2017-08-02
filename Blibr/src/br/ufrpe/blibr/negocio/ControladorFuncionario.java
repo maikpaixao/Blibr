@@ -1,9 +1,10 @@
 package br.ufrpe.blibr.negocio;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.ufrpe.blibr.dados.RepositorioFuncionario;
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 
@@ -21,7 +22,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	public void adicionarFuncionario(Funcionario funcionario) throws Exception {
 		try {
 			if(funcionario!=null){
-				repoFuncionario.adicionarFuncionario(funcionario);
+				repoFuncionario.adicionar(funcionario);
 			}else{
 				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
 						+ " os dados fornecidos são inválidos!");
@@ -31,14 +32,14 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		}
 	}
 
-	public ArrayList<Funcionario> listarFuncionario() {
-		return repoFuncionario.listarFuncionario();
+	public List<Funcionario> listarFuncionario() {
+		return repoFuncionario.listar();
 	}
 
 	public void editarFuncionario(Funcionario funcionario) throws Exception {
 		try {
 			if(funcionario!=null){
-				repoFuncionario.editarFuncionario(funcionario);
+				repoFuncionario.atualizar(funcionario);
 			}else{
 				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
 						+ " os dados fornecidos são inválidos!");
@@ -48,10 +49,10 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		}
 	}
 
-	public void removerUsuario(Long codFuncionario) throws ElementoNaoExistente {
+	public void removerUsuario(Long codFuncionario) throws ElementoNaoExisteException {
 		try {
 			if(codFuncionario!=null){
-				repoFuncionario.removerUsuario(codFuncionario);
+				repoFuncionario.remover(repoFuncionario.buscarFuncionario(codFuncionario));
 			}else{
 				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
 						+ " os dados fornecidos são inválidos!");
@@ -61,7 +62,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		}
 	}
 	
-	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExistente{
+	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExisteException{
 		Funcionario retorno = null;
 		try {
 			if(codFuncionario!=null){

@@ -5,10 +5,6 @@ public class Funcionario extends Pessoa{
 	private int codFuncionario;
 	private String senha;
 	
-	public Funcionario(String nome, Long cpf, int idade, String sexo) {
-		super(nome, cpf, idade, sexo);
-	}
-	
 	public Funcionario(){
 		
 	}
@@ -30,8 +26,11 @@ public class Funcionario extends Pessoa{
 	}
 
 	public String toString() {
-		return "Funcionario [codFuncionario=" + codFuncionario + ", getNome()=" + getNome() + ", getCpf()=" + getCpf()
-				+ ", getIdade()=" + getIdade() + ", getSexo()=" + getSexo() + "]";
+		return "Codigo do Funcionario: " + codFuncionario + "\n"
+				+"Nome do Funcionario: " + getNome() + "\n"
+				+"CPF do Funcionario: " + getCpf() + "\n"
+				+"Sexo do Funcionario: " + getSexo() + "\n"
+				+"Idade do Funcionario: " + getIdade() + "\n"
+				+"Senha do Funcionario: "+ getSenha();
 	}
-	
 }

@@ -7,29 +7,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #111;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #111;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaPainelAdmController">
    <top>
       <MenuBar style="-fx-background-color: #090909; -fx-text-base-color: white;" BorderPane.alignment="CENTER">
         <menus>
             <Menu mnemonicParsing="false" text="Meu Perfil">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" style="-fx-text-base-color: black;" text="Delete" />
+                  <MenuItem fx:id="sair" mnemonicParsing="false" onAction="#sair" style="-fx-text-base-color: black;" text="Sair" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="Menu Funcionarios">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="Sobre">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Sair">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" style="-fx-text-base-color: black;" text="Delete" />
             </items>
           </Menu>
         </menus>
@@ -52,17 +42,17 @@
    <bottom>
       <Pane prefHeight="143.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Cadastrar Funcionario">
+            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaCadastroFuncionario" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Cadastrar Funcionario">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="269.0" layoutY="14.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Editar Funcionário">
+            <Button layoutX="269.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaAtualzarFuncionario" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Editar Funcionário">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="515.0" layoutY="14.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="216.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Remover Funcionário">
+            <Button layoutX="515.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaRemoverFuncionario" prefHeight="108.0" prefWidth="216.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Remover Funcionário">
                <font>
                   <Font size="20.0" />
                </font>

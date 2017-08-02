@@ -1,8 +1,8 @@
 package br.ufrpe.blibr.exception;
 
-public class ElementoNaoExistente extends Exception{
+public class ElementoNaoExisteException extends Exception{
 	Object obj;
-	public ElementoNaoExistente(Object obj){
+	public ElementoNaoExisteException(Object obj){
 		super("Objeto nao existe no repositorio!");
 		this.obj = obj;
 	}

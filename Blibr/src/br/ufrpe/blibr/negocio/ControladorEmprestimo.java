@@ -4,10 +4,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import br.ufrpe.blibr.dados.RepositorioEmprestimo;
 import br.ufrpe.blibr.dados.RepositorioUsuario;
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
@@ -42,23 +43,25 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		}
 	}*/
 	
-	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExistente{
+	
+	//As tretas das datas tem q fazer aqui e nao no repositorio
+	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExisteException{
 		try {
 			if(emprestimo == null){
 				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
 			}else{
-				repoEmprestimo.registrarEmprestimo(emprestimo);
+				repoEmprestimo.adicionar(emprestimo);
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
 			e.getMessage();
 		}
 	}
 	
-	public ArrayList<Emprestimo> listarEmprestimos(){
-		return repoEmprestimo.listarEmprestimos();
+	public List<Emprestimo> listarEmprestimos(){
+		return repoEmprestimo.listar();
 	}
 	
-	public void verificarEmprestimo(Long cpf) throws ElementoNaoExistente{
+	public void verificarEmprestimo(Long cpf) throws ElementoNaoExisteException{
 		try {
 			Date date = new Date();
 			if(cpf==null){
@@ -73,14 +76,15 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		}
 	}
 	
-	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExistente{
+	//Mesma problema do adicionar
+	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExisteException{
 		try {
 			if(usuario!=null && livro!=null){
-				repoEmprestimo.realizarDevolução(usuario, livro);
+				repoEmprestimo.remover(usuario, livro);
 			}else{
 				
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 	}

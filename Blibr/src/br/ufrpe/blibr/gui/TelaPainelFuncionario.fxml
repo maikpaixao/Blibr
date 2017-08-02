@@ -8,23 +8,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaPainelFuncionarioController">
    <top>
-      <MenuBar style="-fx-background-color: #090909; -fx-text-base-color: white; -fx-text-fill: white;" BorderPane.alignment="CENTER">
+      <MenuBar fx:id="myMenuBar" style="-fx-background-color: #090909; -fx-text-base-color: white; -fx-text-fill: white;" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" style="-fx-text-fill: white;" text="Blibr">
-            <items>
-              <MenuItem mnemonicParsing="false" style="-fx-text-fill: #fff;" text="Close" />
-            </items>
+          <Menu mnemonicParsing="false" text="Blibr">
+               <items>
+              <MenuItem mnemonicParsing="false" style="-fx-text-base-color: black;" text="About" />
+               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Usuarios">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#showTelaCadastroUsuario" style="-fx-text-base-color: black;" text="Cadastrar Usuario" />
+                  <MenuItem mnemonicParsing="false" onAction="#showTelaAtualizarUsuario" style="-fx-text-base-color: black;" text="Atualizar Usuario" />
+                  <MenuItem mnemonicParsing="false" onAction="#showTelaRemoverUsuario" style="-fx-text-base-color: black;" text="Remover Usuario" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Livros">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#showTelaCadastroLivro" style="-fx-text-base-color: black;" text="Cadastrar Livro" />
+                  <MenuItem mnemonicParsing="false" onAction="#showTelaAtualizarLivro" style="-fx-text-base-color: black;" text="Atualizar Livro" />
+                  <MenuItem mnemonicParsing="false" onAction="#showTelaRemoverLivro" style="-fx-text-base-color: black;" text="Remover Livro" />
             </items>
           </Menu>
         </menus>
@@ -56,7 +60,7 @@
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="73.0" style="-fx-text-fill: white; -fx-background-color: #2ecc71;" text="Pesquisar" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="73.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Pesquisar" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -70,19 +74,19 @@
    <left>
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #111;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="33.0" layoutY="24.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Emprestar">
+            <Button layoutX="33.0" layoutY="24.0" mnemonicParsing="false" onAction="#showTelaEmprestimo" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Emprestar">
                <font>
                   <Font size="22.0" />
                </font></Button>
-            <Button layoutX="33.0" layoutY="140.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Devolução">
+            <Button layoutX="33.0" layoutY="140.0" mnemonicParsing="false" onAction="#showTelaDevolucao" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Devolução">
                <font>
                   <Font size="22.0" />
                </font></Button>
-            <Button layoutX="33.0" layoutY="364.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Sair">
+            <Button layoutX="33.0" layoutY="364.0" mnemonicParsing="false" onAction="#sair" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Sair">
                <font>
                   <Font size="22.0" />
                </font></Button>
-            <Button layoutX="33.0" layoutY="247.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Multas">
+            <Button layoutX="33.0" layoutY="247.0" mnemonicParsing="false" onAction="#showTelaMulta" prefHeight="88.0" prefWidth="134.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Multas">
                <font>
                   <Font size="22.0" />
                </font></Button>

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.PainelFController">
+<BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaLoginController">
    <center>
       <GridPane style="-fx-focus: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -29,17 +29,17 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="41.0" prefWidth="285.0" promptText="Digite seu Login..." style="-fx-border-color: none;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="user" prefHeight="41.0" prefWidth="285.0" promptText="Digite seu Login..." style="-fx-border-color: none;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField prefHeight="41.0" prefWidth="285.0" promptText="********" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="pass" prefHeight="41.0" prefWidth="285.0" promptText="********" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <Button mnemonicParsing="false" onAction="#showPainelF" prefHeight="38.0" prefWidth="287.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Entrar" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Button fx:id="btn" mnemonicParsing="false" onAction="#showPainelF" prefHeight="38.0" prefWidth="287.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Entrar" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font size="17.0" />
                </font>

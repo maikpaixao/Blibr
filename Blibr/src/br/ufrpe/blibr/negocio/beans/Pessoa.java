@@ -1,6 +1,6 @@
 package br.ufrpe.blibr.negocio.beans;
 
-public class Pessoa {
+public abstract class Pessoa {
 	
 	private String nome;
 	private Long cpf;
@@ -50,9 +50,11 @@ public class Pessoa {
 		this.sexo = sexo;
 	}
 
-	public String toString() {
-		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + ", sexo=" + sexo + "]";
+	public boolean equals(Object o){
+		boolean retorno = false;
+		if(this.getCpf()==((Pessoa) o).getCpf()){
+			retorno=true;
+		}
+		return retorno;
 	}
-	
-	
 }

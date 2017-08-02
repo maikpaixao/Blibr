@@ -5,7 +5,8 @@ import java.util.List;
 
 import br.ufrpe.blibr.dados.RepositorioUsuario;
 import br.ufrpe.blibr.exception.UsuarioExistente;
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoJaExisteException;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.negocio.beans.Usuario;;
 
 public class ControladorUsuario implements IControladorUsuario{
@@ -20,31 +21,31 @@ public class ControladorUsuario implements IControladorUsuario{
 		return instance;
 	}
 	
-	public void adicionarUsuario(Usuario usuario) throws ElementoNaoExistente{
+	public void adicionarUsuario(Usuario usuario) throws ElementoJaExisteException, ElementoNaoExisteException{
 		try{
 			if(usuario!=null && repoUsuario.buscarUsuario(usuario.getCpf())!=null){
-				throw new UsuarioExistente("Esse usuário já está cadastrado!");
+				throw new ElementoJaExisteException("Esse usuário já está cadastrado!");
 			}else{
-				repoUsuario.adicionarUsuario(usuario);
+				repoUsuario.adicionar(usuario);
 			}
-		} catch (UsuarioExistente e) {
+		} catch (ElementoJaExisteException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
 	public List<Usuario> listarUsuario(){
-		return repoUsuario.listarUsuarios();
+		return repoUsuario.listar();
 	}
 	
 	public Usuario buscarUsuario(Long cpf) {
 		Usuario retorno = null;
 		try {
 			if(cpf!=null && repoUsuario.buscarUsuario(cpf)==null){
-				throw new ElementoNaoExistente(repoUsuario.buscarUsuario(cpf));
+				throw new ElementoNaoExisteException(repoUsuario.buscarUsuario(cpf));
 			}else{
 				retorno = repoUsuario.buscarUsuario(cpf);
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 		return retorno;
@@ -53,11 +54,11 @@ public class ControladorUsuario implements IControladorUsuario{
 	public void removerUsuario(Long cpf){
 		try{
 			if(cpf!=null && repoUsuario.buscarUsuario(cpf)!=null){
-				repoUsuario.removerUsuario(cpf);
+				repoUsuario.remover(repoUsuario.buscarUsuario(cpf));
 			}else{
-				throw new ElementoNaoExistente(repoUsuario.buscarUsuario(cpf));
+				throw new ElementoNaoExisteException(repoUsuario.buscarUsuario(cpf));
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 	}
@@ -65,11 +66,11 @@ public class ControladorUsuario implements IControladorUsuario{
 	public void editarUsario(Usuario usuario){
 		try{
 			if(usuario!=null && repoUsuario.buscarUsuario(usuario.getCpf())!=null){
-				repoUsuario.editarUsuario(usuario);
+				repoUsuario.atualizar(usuario);
 			}else{
-				throw new ElementoNaoExistente(usuario);
+				throw new ElementoNaoExisteException(usuario);
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 	}

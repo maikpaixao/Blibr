@@ -3,7 +3,7 @@ package br.ufrpe.blibr.negocio;
 import java.util.ArrayList;
 
 import br.ufrpe.blibr.dados.RepositorioLivro;
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Livro;
@@ -20,7 +20,7 @@ public class ControladorLivro implements IControladorLivro{
 		return instance;
 	}
 
-	public void adicionarLivro(Livro livro) throws ElementoNaoExistente{
+	public void adicionarLivro(Livro livro) throws ElementoNaoExisteException{
 		try {
 			if(livro==null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
@@ -32,7 +32,7 @@ public class ControladorLivro implements IControladorLivro{
 		}
 	}
 
-	public Livro buscarLivro(String nomeLivro) throws ElementoNaoExistente {
+	public Livro buscarLivro(String nomeLivro) throws ElementoNaoExisteException {
 		Livro retorno = null;
 		try {
 			if(nomeLivro==null){
@@ -46,7 +46,7 @@ public class ControladorLivro implements IControladorLivro{
 		return retorno;
 	}
 
-	public void editarLivro(Livro livro) throws ElementoNaoExistente{
+	public void editarLivro(Livro livro) throws ElementoNaoExisteException{
 		try {
 			if(livro==null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
@@ -62,7 +62,7 @@ public class ControladorLivro implements IControladorLivro{
 		return repoLivro.listarLivros();
 	}
 
-	public void removerLivro(String nome) throws ElementoNaoExistente{
+	public void removerLivro(String nome) throws ElementoNaoExisteException{
 		try {
 			if(nome==null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");

@@ -2,7 +2,7 @@ package br.ufrpe.blibr;
 
 import java.text.ParseException;
 
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.gui.TextualUserInterface;
 
 public class BlibrApp {

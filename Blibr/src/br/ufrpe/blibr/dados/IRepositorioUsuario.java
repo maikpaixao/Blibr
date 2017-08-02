@@ -1,5 +1,9 @@
 package br.ufrpe.blibr.dados;
 
-public interface IRepositorioUsuario {
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
+import br.ufrpe.blibr.negocio.beans.Usuario;
 
+public interface IRepositorioUsuario {
+	
+	public Usuario buscarUsuario(Long cpf) throws ElementoNaoExisteException;
 }

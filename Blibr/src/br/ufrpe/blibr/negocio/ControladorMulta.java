@@ -2,7 +2,7 @@ package br.ufrpe.blibr.negocio;
 
 import br.ufrpe.blibr.dados.RepositorioEmprestimo;
 import br.ufrpe.blibr.dados.RepositorioUsuario;
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 
 public class ControladorMulta implements IControladorMulta{
 	
@@ -17,19 +17,19 @@ public class ControladorMulta implements IControladorMulta{
 		return instance;
 	}
 	
-	public void atribuirMulta(Long cpf) throws ElementoNaoExistente{
+	public void atribuirMulta(Long cpf) throws ElementoNaoExisteException{
 		try {
 			if(cpf!=null && cpf==repoEmprestimo.buscarEmprestimo(cpf).getUsuario().getCpf()){
 				repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(50);
 			}else{
 				
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 	}
 	
-	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExistente{
+	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExisteException{
 		Double troco = null;
 		if(repoEmprestimo.buscarEmprestimo(cpf)!=null){
 			if(valor >= repoEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida()){

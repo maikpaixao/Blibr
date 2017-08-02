@@ -14,9 +14,9 @@ import java.util.Date;
 import java.util.List;
 
 import br.ufrpe.blibr.dados.RepositorioUsuario;
-import br.ufrpe.blibr.exception.ElementoNaoExistente;
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 
-public class RepositorioEmprestimo {
+public class RepositorioEmprestimo extends RepositorioGenerico<Emprestimo>{
 	
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
 	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
@@ -54,21 +54,15 @@ public class RepositorioEmprestimo {
 			}
 	}*/
 	
-	public List<Usuario> listarLivrosEmprestados(){
-		List<Usuario> retorno = null;
-		listaUsuario = repoUsuario.listarUsuarios();
-		listaLivro = repoLivro.listarLivros();
-		for(Usuario usu: listaUsuario){
-			for(Livro li: listaLivro){
-				if(listaLivro.contains(usu.getLivro())){
-					retorno = listaUsuario;
-				}
-			}
-		}
-		return retorno;
-	}
+//	public List<Livro> listarLivrosEmprestados(){
+//		List<Livro> retorno = null;
+//		for(Emprestimo emp: empLista){
+//			retorno.add(emp.getLivro());
+//		}
+//		return retorno;
+//	}
 	
-	public void registrarEmprestimo(Emprestimo emprestimo)throws ElementoNaoExistente{
+	public void adicionar(Emprestimo emprestimo)throws ElementoNaoExisteException{
 		try {
 			if(emprestimo!=null){
 				Date date = new Date();
@@ -81,34 +75,30 @@ public class RepositorioEmprestimo {
 				emprestimo.setDataDevolucao(date);
 				this.empLista.add(emprestimo);
 			}else{
-				throw new ElementoNaoExistente(emprestimo);
+				throw new ElementoNaoExisteException(emprestimo);
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 	}
 	
-	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExistente{
+	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExisteException{
 		Emprestimo rotorno = null;
 		try {
 			for(Emprestimo emprestimo: empLista){
 				if(emprestimo.getUsuario().getCpf().equals(cpf) && cpf!=null){
 					rotorno = emprestimo;
 				}else{
-					throw new ElementoNaoExistente(emprestimo);
+					throw new ElementoNaoExisteException(emprestimo);
 				}
 			}
-		} catch (ElementoNaoExistente e) {
+		} catch (ElementoNaoExisteException e) {
 			e.getObj();
 		}
 		return rotorno;
 	}
 	
-	public ArrayList<Emprestimo> listarEmprestimos(){
-		return this.empLista;
-	}
-	
-	public void realizarDevolução(Usuario usuario, Livro livro)throws ElementoNaoExistente{
+	public void remover(Usuario usuario, Livro livro)throws ElementoNaoExisteException{
 		try {
 			for(Emprestimo emp: empLista){
 				if(emp.getUsuario().getCpf().equals(usuario.getCpf()) && emp.getLivro().getCodigoLivro().equals(livro.getCodigoLivro())){
@@ -116,10 +106,10 @@ public class RepositorioEmprestimo {
 					livro.setQuantidadeLivros((livro.getQuantidadeLivros())+1);
 					break;
 				}else{
-					throw new ElementoNaoExistente(emp);
+					throw new ElementoNaoExisteException(emp);
 				}
 			}
-		}catch(ElementoNaoExistente e){
+		}catch(ElementoNaoExisteException e){
 			e.getObj();
 		}
 	}

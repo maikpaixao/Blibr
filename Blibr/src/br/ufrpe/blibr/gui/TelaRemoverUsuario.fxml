@@ -39,12 +39,12 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" GridPane.rowIndex="3">
+            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-base: black; -fx-background-color: #212121; -fx-padding: 0px; -fx-table-header-border-color: #111;" GridPane.rowIndex="3">
               <columns>
                 <TableColumn prefWidth="109.0" text="Nome" />
                 <TableColumn prefWidth="113.0" text="CPF" />
-                  <TableColumn prefWidth="75.0" text="Sexo" />
-                  <TableColumn prefWidth="75.0" text="Idade" />
+                  <TableColumn prefWidth="84.0" text="Sexo" />
+                  <TableColumn prefWidth="89.0" text="Idade" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.rowIndex="2">
@@ -64,12 +64,12 @@
    <left>
       <Pane prefHeight="500.0" prefWidth="265.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="-8.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="261.0" fitWidth="250.0" layoutX="8.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@delete.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="68.0" fitWidth="253.0" layoutX="6.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

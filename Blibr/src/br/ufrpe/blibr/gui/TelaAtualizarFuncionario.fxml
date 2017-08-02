@@ -48,7 +48,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <font>
                   <Font size="17.0" />
                </font>
@@ -80,7 +80,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="OK" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="17.0" />
                </font>
@@ -98,14 +98,14 @@
       </GridPane>
    </center>
    <left>
-      <Pane prefHeight="500.0" prefWidth="307.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="500.0" prefWidth="307.0" style="-fx-background-color: #f1c40f;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="13.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="264.0" fitWidth="264.0" layoutX="22.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@edit.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="77.0" fitWidth="281.0" layoutX="13.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

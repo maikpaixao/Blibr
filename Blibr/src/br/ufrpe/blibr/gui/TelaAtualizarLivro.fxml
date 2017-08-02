@@ -83,7 +83,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
-            <ChoiceBox prefHeight="41.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <ChoiceBox prefHeight="41.0" prefWidth="150.0" style="-fx-background-color: #121212;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="210.0" />
                </GridPane.margin>
@@ -99,12 +99,12 @@
    <left>
       <Pane prefHeight="500.0" prefWidth="307.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="13.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="269.0" fitWidth="264.0" layoutX="22.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@edit.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="291.0" layoutX="8.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

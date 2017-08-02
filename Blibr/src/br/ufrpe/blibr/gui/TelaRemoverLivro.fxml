@@ -39,7 +39,7 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" GridPane.rowIndex="3">
+            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.rowIndex="3">
               <columns>
                   <TableColumn prefWidth="75.0" text="Id" />
                 <TableColumn prefWidth="109.0" text="Nome" />
@@ -64,12 +64,12 @@
    <left>
       <Pane prefHeight="500.0" prefWidth="265.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="-8.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="236.0" fitWidth="233.0" layoutX="16.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@delete.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="53.0" fitWidth="250.0" layoutX="16.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

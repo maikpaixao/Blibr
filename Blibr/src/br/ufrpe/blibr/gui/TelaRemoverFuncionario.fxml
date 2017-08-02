@@ -29,7 +29,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Remover" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="Remover" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" GridPane.rowIndex="3">
+            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.rowIndex="3">
               <columns>
                 <TableColumn prefWidth="109.0" text="Nome" />
                 <TableColumn prefWidth="113.0" text="CPF" />
@@ -47,7 +47,7 @@
                   <TableColumn prefWidth="66.0" text="Idade" />
               </columns>
             </TableView>
-            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="OK" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
@@ -62,14 +62,14 @@
       </GridPane>
    </center>
    <left>
-      <Pane prefHeight="500.0" prefWidth="265.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="500.0" prefWidth="265.0" style="-fx-background-color: #f1c40f;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="-8.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="240.0" fitWidth="243.0" layoutX="13.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@delete.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="77.0" fitWidth="250.0" layoutX="8.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

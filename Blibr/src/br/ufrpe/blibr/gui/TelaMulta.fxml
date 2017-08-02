@@ -39,7 +39,7 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" GridPane.rowIndex="3">
+            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-base: black; -fx-padding: 0px; -fx-table-header-border-color: #111;" GridPane.rowIndex="3">
               <columns>
                 <TableColumn prefWidth="109.0" text="Nome" />
                 <TableColumn prefWidth="113.0" text="CPF" />
@@ -55,7 +55,7 @@
                   <Insets left="330.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="voltarBtn" mnemonicParsing="false" onAction="#voltarPainelFuncionario" prefHeight="40.0" prefWidth="81.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Voltar" GridPane.rowIndex="4">
+            <Button fx:id="voltarBtn" mnemonicParsing="false" onAction="#voltarPainelFuncionario" prefHeight="40.0" prefWidth="81.0" style="-fx-text-fill: white; -fx-background-color: #e74c3c;" text="Voltar" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font>
@@ -75,12 +75,12 @@
    <left>
       <Pane prefHeight="500.0" prefWidth="265.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="-8.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="241.0" fitWidth="234.0" layoutX="16.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@pay.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="58.0" fitWidth="261.0" layoutX="5.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

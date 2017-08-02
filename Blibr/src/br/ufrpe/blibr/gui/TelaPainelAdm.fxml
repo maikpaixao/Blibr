@@ -42,17 +42,17 @@
    <bottom>
       <Pane prefHeight="143.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaCadastroFuncionario" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Cadastrar Funcionario">
+            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaCadastroFuncionario" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #f1c40f; -fx-text-fill: white;" text="Cadastrar Funcionario">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="269.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaAtualzarFuncionario" prefHeight="108.0" prefWidth="221.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Editar Funcionário">
+            <Button layoutX="271.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaAtualzarFuncionario" prefHeight="108.0" prefWidth="216.0" style="-fx-background-color: #f1c40f; -fx-text-fill: white;" text="Editar Funcionário">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="515.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaRemoverFuncionario" prefHeight="108.0" prefWidth="216.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="Remover Funcionário">
+            <Button layoutX="515.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTelaRemoverFuncionario" prefHeight="108.0" prefWidth="216.0" style="-fx-background-color: #f1c40f; -fx-text-fill: white;" text="Remover Funcionário">
                <font>
                   <Font size="20.0" />
                </font>

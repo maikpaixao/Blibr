@@ -48,7 +48,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <font>
                   <Font size="17.0" />
                </font>
@@ -97,14 +97,14 @@
       </GridPane>
    </center>
    <left>
-      <Pane prefHeight="500.0" prefWidth="342.0" style="-fx-background-color: #9b59b6;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="500.0" prefWidth="342.0" style="-fx-background-color: #f1c40f;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="281.0" fitWidth="295.0" layoutX="31.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@im.png" />
+                  <Image url="@add.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="71.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="77.0" fitWidth="281.0" layoutX="31.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>

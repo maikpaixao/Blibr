@@ -9,7 +9,7 @@
 
 <BorderPane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #111;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaPainelAdmController">
    <top>
-      <MenuBar style="-fx-background-color: #090909; -fx-text-base-color: white;" BorderPane.alignment="CENTER">
+      <MenuBar fx:id="menuBar" style="-fx-background-color: #090909; -fx-text-base-color: white;" BorderPane.alignment="CENTER">
         <menus>
             <Menu mnemonicParsing="false" text="Meu Perfil">
                <items>

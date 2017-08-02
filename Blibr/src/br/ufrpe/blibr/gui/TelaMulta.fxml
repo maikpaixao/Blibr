@@ -29,7 +29,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="188.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Realizar Pagamento" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#showTelaMultaPagamento" prefHeight="40.0" prefWidth="188.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Realizar Pagamento" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font>

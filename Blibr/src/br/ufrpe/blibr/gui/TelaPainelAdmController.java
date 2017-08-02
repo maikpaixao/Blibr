@@ -6,7 +6,6 @@ import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,7 +13,8 @@ import javafx.stage.Stage;
 
 public class TelaPainelAdmController {
 	
-	private MenuItem sair;
+	@FXML
+	private MenuBar menuBar;
 	
 	public void showTelaCadastroFuncionario(ActionEvent event) throws IOException{
 		Parent t2 = FXMLLoader.load(getClass().getResource("TelaCadastroFuncionario.fxml"));
@@ -41,6 +41,12 @@ public class TelaPainelAdmController {
 	}
 	
 	public void sair(ActionEvent event) throws IOException, ElementoNaoExisteException{
+		Stage win = (Stage)menuBar.getScene().getWindow();
+		win.close();
 		
+		Parent t2 = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
+		Scene scene2 = new Scene(t2);
+		win.setScene(scene2);
+		win.show();
 	}
 }

@@ -19,7 +19,7 @@ public class TelaPainelFuncionarioController {
 	public void showTelaEmprestimo(ActionEvent event) throws IOException{
 		Parent t2 = FXMLLoader.load(getClass().getResource("TelaEmprestimo.fxml"));
 		Scene scene2 = new Scene(t2);
-		Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
+		Stage win = new Stage();
 		win.setScene(scene2);
 		win.show();
 	}
@@ -27,7 +27,7 @@ public class TelaPainelFuncionarioController {
 	public void showTelaDevolucao(ActionEvent event) throws IOException{
 		Parent t2 = FXMLLoader.load(getClass().getResource("TelaDevolucao.fxml"));
 		Scene scene2 = new Scene(t2);
-		Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
+		Stage win = new Stage();
 		win.setScene(scene2);
 		win.show();
 	}
@@ -36,6 +36,14 @@ public class TelaPainelFuncionarioController {
 		Parent t2 = FXMLLoader.load(getClass().getResource("TelaMulta.fxml"));
 		Scene scene2 = new Scene(t2);
 		Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
+		win.setScene(scene2);
+		win.show();
+	}
+	
+	public void showTelaMultaPagamento(ActionEvent event) throws IOException{
+		Parent t2 = FXMLLoader.load(getClass().getResource("TelaMultaPagamento.fxml"));
+		Scene scene2 = new Scene(t2);
+		Stage win = new Stage();
 		win.setScene(scene2);
 		win.show();
 	}

@@ -163,23 +163,25 @@ public class TextualUserInterface {
 	
 	public void adicionarUsuario() throws ElementoNaoExisteException, ElementoJaExisteException{
 		
+		String nome;
+		Long cpf;
 		String sexo;
-		int idade;
+		String dataNascimento;
 		
 		System.out.println("Digite o nome do usuario: ");
-		String nome = sc.next();
+		nome = sc.next();
 		System.out.println("Digite o CPF do usuario: ");
-		Long cpf = sc.nextLong();
+		cpf = sc.nextLong();
 		System.out.println("Digite o sexo do usuario: ");
 		sexo = sc.next();
-		System.out.println("Digite o idade do usuario: ");
-		idade = sc.nextInt();
+		System.out.println("Digite a data de nascimento do usuario: ");
+		dataNascimento = sc.next();
 		
 		usuario = new Usuario();
 		usuario.setNome(nome);
 		usuario.setCpf(cpf);
 		usuario.setSexo(sexo);
-		usuario.setIdade(idade);
+		usuario.setDataNascimento(dataNascimento);
 		fachada.adicionarUsuario(usuario);
 	}
 	
@@ -195,7 +197,7 @@ public class TextualUserInterface {
 		String nome;
 		Long cpf;
 		String sexo;
-		int idade;
+		String dataNascimento;
 		
 		System.out.println("Digite o CPF do usuario: ");
 		cpf = sc.nextLong();
@@ -206,15 +208,14 @@ public class TextualUserInterface {
 		System.out.println("Digite novo sexo do usuario: ");
 		sexo = sc.next();
 		System.out.println("Digite nova idade do usuario: ");
-		idade = sc.nextInt();
+		dataNascimento = sc.next();
 		
 		Usuario usuario = new Usuario();
 		usuario.setNome(nome);
-		usuario.setIdade(idade);
+		usuario.setDataNascimento(dataNascimento);
 		usuario.setSexo(sexo);
 		usuario.setCpf(cpf);
 		fachada.editarUsario(usuario);
-		
 	}
 	
 	public void removerUsuario(){
@@ -301,7 +302,7 @@ public class TextualUserInterface {
 		funcionario.setNome("Joao");
 		funcionario.setCpf((long) 00011100055);
 		funcionario.setSexo("masculino");
-		funcionario.setIdade(50);
+		funcionario.setDataNascimento("22/02/1990");
 		
 		fachada.adicionarFuncionario(funcionario);
 	}

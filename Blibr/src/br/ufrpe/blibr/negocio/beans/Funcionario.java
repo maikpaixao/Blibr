@@ -1,6 +1,6 @@
 package br.ufrpe.blibr.negocio.beans;
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Usuario{
 	
 	private int codFuncionario;
 	private String senha;

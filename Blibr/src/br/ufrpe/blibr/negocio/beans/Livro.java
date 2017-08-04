@@ -66,11 +66,21 @@ public class Livro implements Serializable{
 	public void setQuantidadeLivros(int quantidadeLivros) {
 		this.quantidadeLivros = quantidadeLivros;
 	}
-
-	@Override
-	public String toString() {
-		return "| Codigo do Livro: " + codigoLivro + "| Quantidade de Livros(Estoque): " + quantidadeLivros +
-				"| Nome do Livro=" + nomeLivro + "| Autor do Livro=" + autorLivro + "| Editora=" + editora;
+	
+	public boolean equals(Object o){
+		boolean retorno = false;
+		if(this.getCodigoLivro()==((Livro) o).getCodigoLivro()){
+			retorno=true;
+		}
+		return retorno;
 	}
 	
+	@Override
+	public String toString() {
+		return "Codigo do Livro: " + codigoLivro + "\n"
+				+"Quantidade de Livros(Estoque): "+ quantidadeLivros + "\n"
+				+"Nome do Livro: " + nomeLivro + "\n"
+				+"Autor do Livro: " + autorLivro + "\n"
+				+"Editora: " + editora;
+	}
 }

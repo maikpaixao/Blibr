@@ -20,13 +20,6 @@ public class Usuario {
 		this.idUsuario = nextId;
 		nextId++;
 	}
-	
-	public Usuario(String nome, Long cpf, int idade, String sexo){
-		this.nome = nome;
-		this.cpf = cpf;
-		this.idade = idade;
-		this.sexo = sexo;
-	}
 
 	public String getNome() {
 		return nome;

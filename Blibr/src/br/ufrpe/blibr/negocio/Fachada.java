@@ -2,6 +2,7 @@ package br.ufrpe.blibr.negocio;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class Fachada {
 
 	////////////////Livro////////////////////
 	
-	public void adicionarLivro(Livro livro) throws ElementoNaoExisteException{
+	public void adicionarLivro(Livro livro) throws ElementoNaoExisteException, ElementoJaExisteException{
 		controladorL.adicionarLivro(livro);
 	}
 
@@ -65,7 +66,7 @@ public class Fachada {
 		controladorL.editarLivro(livro);
 	}
 
-	public ArrayList<Livro> listarLivros() {
+	public List<Livro> listarLivros() {
 		return controladorL.listarLivros();
 	}
 
@@ -96,14 +97,8 @@ public class Fachada {
 		return controladorF.buscarFuncionario(codFuncionario);
 	}
 	
-	//////////////////Emprestar///////////////
-	
-	//public void emprestarLivro(Emprestimo emprestimo) throws ParseException {
-	//	emprestimoE.emprestarLivro(livro, usuario);
-	//}
-	
-	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExisteException{
-		emprestimoE.registrarEmprestimo(emprestimo);
+	public void registrarEmprestimo(Emprestimo emprestimo, Date date) throws ElementoNaoExisteException, ElementoJaExisteException{
+		emprestimoE.registrarEmprestimo(emprestimo, date);
 	}
 	
 	public List<Emprestimo> listarEmprestimos(){
@@ -118,7 +113,7 @@ public class Fachada {
 		return controladorM.pagarMulta(cpf, valor);
 	}
 	
-	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExisteException{
-		emprestimoE.realizarDevolução(usuario, livro);
+	public void realizarDevolução(Emprestimo emprestimo) throws ElementoNaoExisteException{
+		emprestimoE.realizarDevolução(emprestimo);
 	}
 }

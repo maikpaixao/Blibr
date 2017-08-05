@@ -2,12 +2,14 @@ package br.ufrpe.blibr.gui;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.negocio.Fachada;
+import br.ufrpe.blibr.negocio.beans.Autor;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
@@ -61,7 +63,7 @@ public class TextualUserInterface {
 			
 	}
 	
-	public void menuLivro() throws ElementoNaoExisteException{
+	public void menuLivro() throws ElementoNaoExisteException, ElementoJaExisteException{
 		
 		System.out.println("1-Adicionar Livro");
 		System.out.println("2-Listar Livro");
@@ -118,7 +120,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void menuEmprestimo() throws ParseException, ElementoNaoExisteException{
+	public void menuEmprestimo() throws ParseException, ElementoNaoExisteException, ElementoJaExisteException{
 		System.out.println("1 - Emprestar Livro");
 		System.out.println("2 - Livros Emprestados");
 		System.out.println("3 - Devolver Livro");
@@ -227,17 +229,20 @@ public class TextualUserInterface {
 	
 	//==========================Livro==============================
 	
-	public void adicionarLivro() throws ElementoNaoExisteException{
+	public void adicionarLivro() throws ElementoNaoExisteException, ElementoJaExisteException{
+		
+		Autor autorLivro = new Autor();
 		
 		int codigoLivro;
 		String nomeLivro;
-		String autorLivro;
+		String nomeAutor;
 		String editora;
 		
 		System.out.println("Digite o nome do livro: ");
 		nomeLivro = sc.next();
-		System.out.println("Digite o autor do livro: ");
-		autorLivro = sc.next();
+		System.out.println("Digite o nome autor do livro: ");
+		nomeAutor = sc.next();
+		autorLivro.setNome(nomeAutor);
 		System.out.println("Digite a editora do livro: ");
 		editora = sc.next();
 		
@@ -246,7 +251,6 @@ public class TextualUserInterface {
 		livro.setNomeLivro(nomeLivro);
 		livro.setAutorLivro(autorLivro);
 		livro.setEditora(editora);
-		
 		fachada.adicionarLivro(livro);
 	
 	}
@@ -261,8 +265,10 @@ public class TextualUserInterface {
 	
 	public void editarLivro() throws ElementoNaoExisteException{
 		
+		Autor autorLivro = new Autor();
+		
 		String nomeLivro;
-		String autorLivro;
+		String nomeAutor;
 		String editora;
 		int quantidadeLivro;
 		
@@ -271,7 +277,8 @@ public class TextualUserInterface {
 		
 		System.out.println("=============================");
 		System.out.println("Digite novo autor do Livro: ");
-		autorLivro = sc.next();
+		nomeAutor = sc.next();
+		autorLivro.setNome(nomeAutor);
 		System.out.println("Digite nova editora do Livro: ");
 		editora = sc.next();
 		System.out.println("Digite nova quantidade de Livros: ");
@@ -297,7 +304,6 @@ public class TextualUserInterface {
 	
 	public void preencherFuncionario() throws Exception{
 		funcionario = new Funcionario();
-		
 		funcionario.setCodFuncionario(11);
 		funcionario.setNome("Joao");
 		funcionario.setCpf((long) 00011100055);
@@ -307,11 +313,12 @@ public class TextualUserInterface {
 		fachada.adicionarFuncionario(funcionario);
 	}
 	
-	public void emprestarLivro() throws ParseException, ElementoNaoExisteException{
+	public void emprestarLivro() throws ParseException, ElementoNaoExisteException, ElementoJaExisteException{
 		String nomeLivro;
 		Long cpfUsuario;
 		Long codigoFuncionario;
 		
+		Date date = new Date();
 		livro = new Livro();
 		usuario = new Usuario();
 		emprestimo = new Emprestimo();
@@ -332,25 +339,31 @@ public class TextualUserInterface {
 		usuario = fachada.buscarUsuario(cpfUsuario);
 		emprestimo.setUsuario(usuario);
 		
-		fachada.registrarEmprestimo(emprestimo);
+		emprestimo.setDataEmprestimo(date);
+		
+		fachada.registrarEmprestimo(emprestimo, date);
 		//fachada.emprestarLivro(livro, usuario);
 	}
 	
 	public void realizarDevolucao() throws ElementoNaoExisteException{
 		Long cpfUsuario;
 		String nomeLivro;
+		emprestimo = new Emprestimo();
 		usuario = new Usuario();
 		livro = new Livro();
 		
 		System.out.println("Digite o CPF do usuario: ");
 		cpfUsuario = sc.nextLong();
 		usuario = fachada.buscarUsuario(cpfUsuario);
+		emprestimo.setUsuario(usuario);
 		
 		System.out.println("Digite o nome do livro: ");
 		nomeLivro = sc.next();
 		livro = fachada.buscarLivro(nomeLivro);
+		emprestimo.setLivro(livro);
 		
-		fachada.realizarDevolução(usuario, livro);
+		////se liga para desfazer////
+		fachada.realizarDevolução(emprestimo);
 	}
 	
 	public void listarEmprestimos(){

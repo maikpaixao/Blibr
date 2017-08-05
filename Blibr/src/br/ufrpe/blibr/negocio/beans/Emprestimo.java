@@ -63,9 +63,22 @@ public class Emprestimo {
 		this.multa = multa;
 	}
 
-	public String toString() {
-		return "\n"+"| Código do funcionario: " + funcionario.getCodFuncionario()+"| Nome do funcionario: "+funcionario.getNome() +"\n"+
-				"| Nome do usuario: " + usuario.getNome() + "| Cpf do usuario: " + usuario.getCpf() + "\n"+
-				"| Livro emprestado: "+getLivro().getNomeLivro()+"\n"+"| Data emprestimo: "+ getDataEmprestimo() +" | Data Devolucao: "+getDataDevolucao()+"\n"+" | Multa: "+getMulta()+"\n"+"---------------------------------------------------"+"\n";
+	@Override
+	public boolean equals(Object o){
+		boolean retorno = false;
+		if(this.getUsuario().equals(((Emprestimo) o).getUsuario()) &&
+				this.getLivro().equals(((Emprestimo) o).getLivro())){
+			retorno=true;
+		}
+		return retorno;
+	}
+
+	@Override
+	public String toString(){
+		return "Nome do Funcionario: "+funcionario.getNome()+"\n"
+				+"Nome do Livro: "+livro.getNomeLivro()+"\n"
+				+"Nome do Usuario: "+usuario.getNome()+"\n"
+				+"Data de Emprestimo: "+getDataEmprestimo()+"\n"
+				+"Data de Devolução: "+getDataDevolucao();
 	}
 }

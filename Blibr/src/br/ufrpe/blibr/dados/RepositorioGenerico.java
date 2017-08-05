@@ -8,14 +8,18 @@ import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 
 public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
 	
-	protected List<T> lista = new ArrayList<T>();
+	protected List<T> lista;
+	
+	public RepositorioGenerico(){
+		this.lista = new ArrayList<>();
+	}
 
-	public void adicionar(T entidade)throws ElementoJaExisteException, ElementoNaoExisteException{
+	public void adicionar(T entidade)throws ElementoJaExisteException{
 		try {
-			if(entidade==null || this.lista.contains(entidade)){
-				throw new ElementoJaExisteException(entidade);
+			if(!this.lista.contains(entidade)){
+				this.lista.add(entidade);
 			}else{
-				lista.add(entidade);
+				throw new ElementoJaExisteException(entidade);
 			}
 		} catch (ElementoJaExisteException e) {
 			e.getObj();
@@ -28,11 +32,9 @@ public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
 	
 	public void atualizar(T entidade)throws ElementoNaoExisteException{
 		try {
-			if(entidade!=null && this.lista.contains(entidade)){
-				for(T obj: lista){
-					int indice = this.lista.indexOf(entidade);
-					this.lista.set(indice, entidade);
-				}
+			if(this.lista.contains(entidade)){
+				int indice = this.lista.indexOf(entidade);
+				this.lista.set(indice, entidade);
 			}else{
 				throw new ElementoNaoExisteException(entidade);
 			}
@@ -43,8 +45,8 @@ public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
 	
 	public void remover(T entidade)throws ElementoNaoExisteException{
 		try {
-			if(entidade!=null && this.lista.contains(entidade)){
-				lista.remove(entidade);
+			if(this.lista.contains(entidade)){
+				this.lista.remove(this.lista.indexOf(entidade));
 			}else{
 				throw new ElementoNaoExisteException(entidade);
 			}

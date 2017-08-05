@@ -18,15 +18,6 @@ import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 
 public class RepositorioEmprestimo extends RepositorioGenerico<Emprestimo>{
 	
-	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
-	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
-	private ArrayList<Emprestimo> empLista = new ArrayList<Emprestimo>();
-	private List<Usuario> listaUsuario;
-	private ArrayList<Livro> listaLivro;
-	Calendar cal = Calendar.getInstance();
-	
-	private DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
 	private static RepositorioEmprestimo instance;
 	
 	public static synchronized RepositorioEmprestimo getInstance(){
@@ -61,31 +52,23 @@ public class RepositorioEmprestimo extends RepositorioGenerico<Emprestimo>{
 //		}
 //		return retorno;
 //	}
-	
-	public void adicionar(Emprestimo emprestimo)throws ElementoNaoExisteException{
-		try {
-			if(emprestimo!=null){
-				Date date = new Date();
-				Livro livro = new Livro();
-				livro.setQuantidadeLivros((livro.getQuantidadeLivros())-1);
-				emprestimo.setDataEmprestimo(date);
-				cal.setTime(date);
-				cal.add(Calendar.DATE, +7);
-				date=cal.getTime();
-				emprestimo.setDataDevolucao(date);
-				this.empLista.add(emprestimo);
-			}else{
-				throw new ElementoNaoExisteException(emprestimo);
-			}
-		} catch (ElementoNaoExisteException e) {
-			e.getObj();
-		}
-	}
+//	@Override
+//	public void adicionar(Emprestimo emprestimo)throws ElementoNaoExisteException{
+//		try {
+//			if(emprestimo!=null){
+//				empLista.add(emprestimo);
+//			}else{
+//				throw new ElementoNaoExisteException(emprestimo);
+//			}
+//		} catch (ElementoNaoExisteException e) {
+//			e.getObj();
+//		}
+//	}
 	
 	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExisteException{
 		Emprestimo rotorno = null;
 		try {
-			for(Emprestimo emprestimo: empLista){
+			for(Emprestimo emprestimo: this.lista){
 				if(emprestimo.getUsuario().getCpf().equals(cpf) && cpf!=null){
 					rotorno = emprestimo;
 				}else{
@@ -98,19 +81,19 @@ public class RepositorioEmprestimo extends RepositorioGenerico<Emprestimo>{
 		return rotorno;
 	}
 	
-	public void remover(Usuario usuario, Livro livro)throws ElementoNaoExisteException{
-		try {
-			for(Emprestimo emp: empLista){
-				if(emp.getUsuario().getCpf().equals(usuario.getCpf()) && emp.getLivro().getCodigoLivro().equals(livro.getCodigoLivro())){
-					this.empLista.remove(emp);
-					livro.setQuantidadeLivros((livro.getQuantidadeLivros())+1);
-					break;
-				}else{
-					throw new ElementoNaoExisteException(emp);
-				}
-			}
-		}catch(ElementoNaoExisteException e){
-			e.getObj();
-		}
-	}
+//	public void remover(Usuario usuario, Livro livro)throws ElementoNaoExisteException{
+//		try {
+//			for(Emprestimo emp: empLista){
+//				if(emp.getUsuario().getCpf().equals(usuario.getCpf()) && emp.getLivro().getCodigoLivro().equals(livro.getCodigoLivro())){
+//					this.empLista.remove(emp);
+//					livro.setQuantidadeLivros((livro.getQuantidadeLivros())+1);
+//					break;
+//				}else{
+//					throw new ElementoNaoExisteException(emp);
+//				}
+//			}
+//		}catch(ElementoNaoExisteException e){
+//			e.getObj();
+//		}
+//	}
 }

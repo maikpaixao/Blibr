@@ -9,7 +9,6 @@ import br.ufrpe.blibr.negocio.beans.Usuario;
 public class RepositorioFuncionario extends RepositorioGenerico<Funcionario>{
 	
 	private static RepositorioFuncionario instance;
-	private ArrayList<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
 
 	public static synchronized RepositorioFuncionario getInstance(){
 		if(instance == null){
@@ -37,7 +36,7 @@ public class RepositorioFuncionario extends RepositorioGenerico<Funcionario>{
 	public Funcionario buscarFuncionario(Long codFuncionario)throws ElementoNaoExisteException{
 		Funcionario retorno = null;
 		try {
-			for(Funcionario funcionario: listaFuncionario){
+			for(Funcionario funcionario: this.lista){
 				if(funcionario.getCodFuncionario() == codFuncionario){
 					retorno =  funcionario;
 				}else{

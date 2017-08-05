@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 import br.ufrpe.blibr.dados.RepositorioEmprestimo;
+import br.ufrpe.blibr.dados.RepositorioLivro;
 import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
@@ -18,9 +20,11 @@ import br.ufrpe.blibr.negocio.beans.Usuario;
 public class ControladorEmprestimo implements IControladorEmprestimo{
 	
 	private static ControladorEmprestimo instance;
+	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
 	private RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();
 	private ControladorMulta  multa = ControladorMulta.getInstance();
 	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
+	Calendar cal = Calendar.getInstance();
 	
 	public static ControladorEmprestimo getInstance(){
 		if(instance==null){
@@ -29,27 +33,19 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		return instance;
 	}
 	
-	/*public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException{
-		try {
-			if(livro == null || usuario == null){
-				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
-			}else if((livro!=null && usuario!=null) && livro.getQuantidadeLivros()==0){
-				ctrReserva.reservarLivro(usuario, livro);
-			}else{
-				repoEmprestimo.emprestarLivro(livro, usuario);
-			}
-		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
-		}
-	}*/
-	
-	
-	//As tretas das datas tem q fazer aqui e nao no repositorio
-	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExisteException{
+	public void registrarEmprestimo(Emprestimo emprestimo, Date date) throws ElementoNaoExisteException, ElementoJaExisteException{
 		try {
 			if(emprestimo == null){
 				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
 			}else{
+				repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
+				(repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()-1);
+				
+				cal.setTime(date);
+				cal.add(Calendar.DATE, +7);
+				date=cal.getTime();
+				emprestimo.setDataDevolucao(date);
+				
 				repoEmprestimo.adicionar(emprestimo);
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
@@ -63,11 +59,11 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	
 	public void verificarEmprestimo(Long cpf) throws ElementoNaoExisteException{
 		try {
-			Date date = new Date();
 			if(cpf==null){
 				throw new ObjetoInvalidoExcpetion("Descule, mas esse cpf é inválido!");
 			}else{
-				if(repoEmprestimo.buscarEmprestimo(cpf).getDataDevolucao()==date){
+				if(repoEmprestimo.buscarEmprestimo(cpf).getDataDevolucao().compareTo
+						(repoEmprestimo.buscarEmprestimo(cpf).getDataEmprestimo())>0){
 					multa.atribuirMulta(cpf);
 				}
 			}
@@ -75,12 +71,13 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 			e.printStackTrace();
 		}
 	}
-	
-	//Mesma problema do adicionar
-	public void realizarDevolução(Usuario usuario, Livro livro) throws ElementoNaoExisteException{
+
+	public void realizarDevolução(Emprestimo emprestimo) throws ElementoNaoExisteException{
 		try {
-			if(usuario!=null && livro!=null){
-				repoEmprestimo.remover(usuario, livro);
+			if(emprestimo!=null){
+				repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
+				(repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()+1);
+				repoEmprestimo.remover(emprestimo);
 			}else{
 				
 			}

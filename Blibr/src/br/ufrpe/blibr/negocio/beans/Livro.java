@@ -6,24 +6,13 @@ import java.util.Date;
 
 public class Livro implements Serializable{
 	
-	private static long nextCod = 1;
-	
 	private Long codigoLivro;
 	private int quantidadeLivros;
 	private String nomeLivro;
-	private String autorLivro;
+	private Autor autorLivro;
 	private String editora;
 	
-	public Livro(String nomeLivro, String autorLivro, String editora){
-		this.nomeLivro = nomeLivro;
-		this.autorLivro = autorLivro;
-		this.editora = editora;
-	}
-	
 	public Livro(){
-		this.codigoLivro = nextCod;
-		nextCod++;
-		
 		this.quantidadeLivros = 10;
 	}
 
@@ -43,11 +32,11 @@ public class Livro implements Serializable{
 		this.nomeLivro = nomeLivro;
 	}
 
-	public String getAutorLivro() {
+	public Autor getAutorLivro() {
 		return autorLivro;
 	}
 
-	public void setAutorLivro(String autorLivro) {
+	public void setAutorLivro(Autor autorLivro) {
 		this.autorLivro = autorLivro;
 	}
 	
@@ -76,11 +65,11 @@ public class Livro implements Serializable{
 	}
 	
 	@Override
-	public String toString() {
+	public String toString(){
 		return "Codigo do Livro: " + codigoLivro + "\n"
 				+"Quantidade de Livros(Estoque): "+ quantidadeLivros + "\n"
 				+"Nome do Livro: " + nomeLivro + "\n"
-				+"Autor do Livro: " + autorLivro + "\n"
+				+"Autor do Livro: " + autorLivro.getNome() + "\n"
 				+"Editora: " + editora;
 	}
 }

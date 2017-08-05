@@ -12,7 +12,7 @@ public class Emprestimo {
 	private Date dataDevolucao;
 	
 	public Emprestimo(){
-		
+		multa = new Multa();
 	}
 
 	public Usuario getUsuario() {

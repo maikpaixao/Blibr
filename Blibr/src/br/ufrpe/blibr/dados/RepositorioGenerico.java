@@ -6,11 +6,11 @@ import java.util.List;
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 
-public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
+public class RepositorioGenerico<T> implements IRepositorio<T>{
 	
 	protected List<T> lista;
 	
-	public RepositorioGenerico(){
+	public RepositorioGenerico(String name){
 		this.lista = new ArrayList<>();
 	}
 
@@ -22,7 +22,7 @@ public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
 				throw new ElementoJaExisteException(entidade);
 			}
 		} catch (ElementoJaExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}
 	
@@ -39,7 +39,7 @@ public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
 				throw new ElementoNaoExisteException(entidade);
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}
 	
@@ -51,7 +51,7 @@ public abstract class RepositorioGenerico<T> implements IRepositorio<T>{
 				throw new ElementoNaoExisteException(entidade);
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}
 }

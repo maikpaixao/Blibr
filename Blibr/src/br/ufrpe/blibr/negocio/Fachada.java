@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import br.ufrpe.blibr.exception.LivroNaoExistente;
+import br.ufrpe.blibr.exception.ValidadeEmprestimoException;
 import br.ufrpe.blibr.exception.UsuarioExistente;
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
@@ -105,7 +106,7 @@ public class Fachada {
 		return emprestimoE.listarEmprestimos();
 	}
 	
-	public void verificarEmprestimo(Long cpf) throws ElementoNaoExisteException{
+	public void verificarEmprestimo(Long cpf) throws ElementoNaoExisteException, ValidadeEmprestimoException{
 		emprestimoE.verificarEmprestimo(cpf);
 	}
 	

@@ -6,12 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import br.ufrpe.blibr.dados.RepositorioEmprestimo;
-import br.ufrpe.blibr.dados.RepositorioLivro;
-import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.dados.IRepositorio;
+import br.ufrpe.blibr.dados.RepositorioGenerico;
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
+import br.ufrpe.blibr.exception.ValidadeEmprestimoException;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
@@ -20,11 +20,17 @@ import br.ufrpe.blibr.negocio.beans.Usuario;
 public class ControladorEmprestimo implements IControladorEmprestimo{
 	
 	private static ControladorEmprestimo instance;
-	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
-	private RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();
-	private ControladorMulta  multa = ControladorMulta.getInstance();
-	private RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
+	private IRepositorio<Livro> repoLivro;
+	private IRepositorio<Emprestimo> repoEmprestimo;
+	private ControladorLivro controllerLivro = ControladorLivro.getInstance();
+	private IRepositorio<Usuario> repoUsuario;
 	Calendar cal = Calendar.getInstance();
+	
+	private ControladorEmprestimo(){
+		repoEmprestimo = new RepositorioGenerico<>("sad");
+		repoUsuario = new RepositorioGenerico<>("sad");
+		repoLivro = new RepositorioGenerico<>("sad");
+	}
 	
 	public static ControladorEmprestimo getInstance(){
 		if(instance==null){
@@ -35,21 +41,19 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	
 	public void registrarEmprestimo(Emprestimo emprestimo, Date date) throws ElementoNaoExisteException, ElementoJaExisteException{
 		try {
-			if(emprestimo == null){
+			if(emprestimo == null && buscarEmprestimo(emprestimo.getUsuario().getCpf()).getMulta()==null){
 				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
 			}else{
-				repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
-				(repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()-1);
-				
+				controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
+				(controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()-1);
 				cal.setTime(date);
 				cal.add(Calendar.DATE, +7);
 				date=cal.getTime();
 				emprestimo.setDataDevolucao(date);
-				
 				repoEmprestimo.adicionar(emprestimo);
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			e.getMessage();
+			e.printStackTrace();
 		}
 	}
 	
@@ -57,32 +61,51 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 		return repoEmprestimo.listar();
 	}
 	
-	public void verificarEmprestimo(Long cpf) throws ElementoNaoExisteException{
+	public void verificarEmprestimo(Long cpf) throws ValidadeEmprestimoException, ElementoNaoExisteException{
 		try {
-			if(cpf==null){
-				throw new ObjetoInvalidoExcpetion("Descule, mas esse cpf é inválido!");
+			if(cpf!=null && buscarEmprestimo(cpf).getDataDevolucao().compareTo
+				(buscarEmprestimo(cpf).getDataEmprestimo())>0){
+				throw new ValidadeEmprestimoException(buscarEmprestimo(cpf));
 			}else{
-				if(repoEmprestimo.buscarEmprestimo(cpf).getDataDevolucao().compareTo
-						(repoEmprestimo.buscarEmprestimo(cpf).getDataEmprestimo())>0){
-					multa.atribuirMulta(cpf);
-				}
+				ControladorMulta  multa = ControladorMulta.getInstance();
+				Date dDe = buscarEmprestimo(cpf).getDataDevolucao();
+				Date dEm = buscarEmprestimo(cpf).getDataEmprestimo();
+				Long subDias = (dDe.getTime()-dEm.getTime());
+				Long dias = subDias/86400000L;
+				multa.atribuirMulta(cpf, dias);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ValidadeEmprestimoException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExisteException{
+		Emprestimo rotorno = null;
+		try {
+			for(Emprestimo emprestimo: listarEmprestimos()){
+				if(emprestimo.getUsuario().getCpf().equals(cpf)){
+					rotorno = emprestimo;
+				}else{
+					throw new ElementoNaoExisteException(emprestimo);
+				}
+			}
+		} catch (ElementoNaoExisteException e) {
+			e.getObj();
+		}
+		return rotorno;
 	}
 
 	public void realizarDevolução(Emprestimo emprestimo) throws ElementoNaoExisteException{
 		try {
 			if(emprestimo!=null){
-				repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
-				(repoLivro.buscarLivrro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()+1);
+				controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
+				(controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()+1);
 				repoEmprestimo.remover(emprestimo);
 			}else{
 				
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}
 }

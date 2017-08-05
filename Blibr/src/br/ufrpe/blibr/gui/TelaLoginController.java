@@ -2,8 +2,6 @@ package br.ufrpe.blibr.gui;
 
 import java.io.IOException;
 
-import br.ufrpe.blibr.dados.IRepositorioUsuario;
-import br.ufrpe.blibr.dados.RepositorioUsuario;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

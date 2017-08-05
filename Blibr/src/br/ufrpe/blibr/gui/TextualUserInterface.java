@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
+import br.ufrpe.blibr.exception.ValidadeEmprestimoException;
 import br.ufrpe.blibr.negocio.Fachada;
 import br.ufrpe.blibr.negocio.beans.Autor;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
@@ -143,7 +144,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void menuMulta() throws ElementoNaoExisteException{
+	public void menuMulta() throws ElementoNaoExisteException, ValidadeEmprestimoException{
 		
 		System.out.println("1-Verificar Multa");
 		System.out.println("2-Pagar Multa");
@@ -362,7 +363,6 @@ public class TextualUserInterface {
 		livro = fachada.buscarLivro(nomeLivro);
 		emprestimo.setLivro(livro);
 		
-		////se liga para desfazer////
 		fachada.realizarDevolução(emprestimo);
 	}
 	
@@ -378,7 +378,7 @@ public class TextualUserInterface {
 		}
 	}
 	
-	public void verificarMulta() throws ElementoNaoExisteException{
+	public void verificarMulta() throws ElementoNaoExisteException, ValidadeEmprestimoException{
 		Long cpf;
 		System.out.println("Digite o cpf do usuario: ");
 		cpf = sc.nextLong();

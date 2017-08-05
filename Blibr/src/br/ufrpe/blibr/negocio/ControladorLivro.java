@@ -3,7 +3,8 @@ package br.ufrpe.blibr.negocio;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.blibr.dados.RepositorioLivro;
+import br.ufrpe.blibr.dados.IRepositorio;
+import br.ufrpe.blibr.dados.RepositorioGenerico;
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
@@ -12,8 +13,12 @@ import br.ufrpe.blibr.negocio.beans.Livro;
 
 public class ControladorLivro implements IControladorLivro{
 	
-	private RepositorioLivro repoLivro = RepositorioLivro.getInstance();
+	private IRepositorio<Livro> repoLivro;
 	private static ControladorLivro instance;
+	
+	private ControladorLivro(){
+		repoLivro = new RepositorioGenerico<>("sad");
+	}
 	
 	public static ControladorLivro getInstance(){
 		if(instance==null){
@@ -40,7 +45,12 @@ public class ControladorLivro implements IControladorLivro{
 			if(nomeLivro==null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
 			}else{
-				retorno = repoLivro.buscarLivrro(nomeLivro);
+				//retorno = repoLivro.buscarLivrro(nomeLivro);
+				for(Livro livro: listarLivros()){
+					if(livro.getNomeLivro().equals(nomeLivro)){
+						retorno = livro;
+					}
+				}
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
 			System.out.println(e.getMessage());
@@ -69,7 +79,7 @@ public class ControladorLivro implements IControladorLivro{
 			if(nome==null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
 			}else{
-				repoLivro.remover(repoLivro.buscarLivrro(nome));
+				repoLivro.remover(buscarLivro(nome));
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
 			System.out.println(e.getMessage());

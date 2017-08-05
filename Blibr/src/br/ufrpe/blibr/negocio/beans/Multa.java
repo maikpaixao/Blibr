@@ -1,7 +1,7 @@
 package br.ufrpe.blibr.negocio.beans;
 
 public class Multa {
-	
+	public static final Double valorMulta = 50.00;
 	private double divida;
 	
 	public Multa(double divida){

@@ -1,5 +1,5 @@
 package br.ufrpe.blibr.dados;
 
-public interface IRepositorioLivro {
+public class RepositorioArquivo {
 
 }

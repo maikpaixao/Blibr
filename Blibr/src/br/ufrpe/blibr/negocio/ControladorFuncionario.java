@@ -3,14 +3,19 @@ package br.ufrpe.blibr.negocio;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.blibr.dados.RepositorioFuncionario;
+import br.ufrpe.blibr.dados.IRepositorio;
+import br.ufrpe.blibr.dados.RepositorioGenerico;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 
 public class ControladorFuncionario implements IControladorFuncionario{
-	private RepositorioFuncionario repoFuncionario = RepositorioFuncionario.getInstance();
+	private IRepositorio<Funcionario> repoFuncionario;
 	private static ControladorFuncionario instance;
+	
+	private ControladorFuncionario(){
+		repoFuncionario = new RepositorioGenerico<>("sad");
+	}
 	
 	public static synchronized ControladorFuncionario getInstance(){
 		if(instance==null){
@@ -52,7 +57,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	public void removerUsuario(Long codFuncionario) throws ElementoNaoExisteException {
 		try {
 			if(codFuncionario!=null){
-				repoFuncionario.remover(repoFuncionario.buscarFuncionario(codFuncionario));
+				repoFuncionario.remover(buscarFuncionario(codFuncionario));
 			}else{
 				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
 						+ " os dados fornecidos são inválidos!");
@@ -66,7 +71,11 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		Funcionario retorno = null;
 		try {
 			if(codFuncionario!=null){
-				retorno = repoFuncionario.buscarFuncionario(codFuncionario);
+				for(Funcionario funcionario: listarFuncionario()){
+					if(funcionario.getCodFuncionario() == codFuncionario){
+						retorno =  funcionario;
+					}
+				}
 			}else{
 				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
 						+ " os dados fornecidos são inválidos!");

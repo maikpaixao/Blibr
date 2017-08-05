@@ -1,13 +1,14 @@
 package br.ufrpe.blibr.negocio;
 
-import br.ufrpe.blibr.dados.RepositorioEmprestimo;
-import br.ufrpe.blibr.dados.RepositorioUsuario;
+import br.ufrpe.blibr.dados.IRepositorio;
+import br.ufrpe.blibr.dados.RepositorioGenerico;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
+import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class ControladorMulta implements IControladorMulta{
 	
-	RepositorioUsuario repoUsuario = RepositorioUsuario.getInstance();
-	RepositorioEmprestimo repoEmprestimo = RepositorioEmprestimo.getInstance();
+	private IRepositorio<Usuario> repoUsuario;
+	private ControladorEmprestimo controllerEmprestimo = ControladorEmprestimo.getInstance();
 	private static ControladorMulta instance;
 	
 	public static ControladorMulta getInstance(){
@@ -17,10 +18,14 @@ public class ControladorMulta implements IControladorMulta{
 		return instance;
 	}
 	
-	public void atribuirMulta(Long cpf) throws ElementoNaoExisteException{
+	private ControladorMulta(){
+		this.repoUsuario = new RepositorioGenerico<>("asd");
+	}
+	
+	public void atribuirMulta(Long cpf, Long dias) throws ElementoNaoExisteException{
 		try {
-			if(cpf!=null && cpf==repoEmprestimo.buscarEmprestimo(cpf).getUsuario().getCpf()){
-				repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(50);
+			if(cpf!=null){
+				controllerEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(10);
 			}else{
 				
 			}
@@ -31,10 +36,10 @@ public class ControladorMulta implements IControladorMulta{
 	
 	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExisteException{
 		Double troco = null;
-		if(repoEmprestimo.buscarEmprestimo(cpf)!=null){
-			if(valor >= repoEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida()){
-				troco = valor - repoEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida();
-				repoEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(0);
+		if(controllerEmprestimo.buscarEmprestimo(cpf)!=null){
+			if(valor >= controllerEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida()){
+				troco = valor - controllerEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida();
+				controllerEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(0);
 			}else{
 				System.out.println("Valor nao e suficiente!");
 			}

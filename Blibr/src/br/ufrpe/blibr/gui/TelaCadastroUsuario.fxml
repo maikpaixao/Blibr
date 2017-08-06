@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaCadastroUsuarioControlador">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -31,22 +31,18 @@
             <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="43.0" prefWidth="357.0" promptText="Digite seu cpf..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="cpfUsuario" prefHeight="43.0" prefWidth="357.0" promptText="Digite seu cpf..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Digite seu nome..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="nomeUsuario" prefHeight="43.0" prefWidth="321.0" promptText="Digite seu nome..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Digite sua idade..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Button fx:id="btnUsuario" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <font>
                   <Font size="17.0" />
                </font>
@@ -56,7 +52,7 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <ComboBox prefHeight="42.0" prefWidth="326.0" promptText="Selecione o sexo" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="sexoUsuario" prefHeight="42.0" prefWidth="326.0" promptText="Selecione o sexo" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label text="NOME" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="13.0" />
@@ -73,6 +69,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
+            <DatePicker fx:id="nascimentoUsuario" prefHeight="33.0" prefWidth="246.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
          </children>
       </GridPane>
    </center>

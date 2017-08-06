@@ -184,7 +184,7 @@ public class TextualUserInterface {
 		usuario.setNome(nome);
 		usuario.setCpf(cpf);
 		usuario.setSexo(sexo);
-		usuario.setDataNascimento(dataNascimento);
+		//usuario.setDataNascimento(dataNascimento);
 		fachada.adicionarUsuario(usuario);
 	}
 	
@@ -215,7 +215,7 @@ public class TextualUserInterface {
 		
 		Usuario usuario = new Usuario();
 		usuario.setNome(nome);
-		usuario.setDataNascimento(dataNascimento);
+		//usuario.setDataNascimento(dataNascimento);
 		usuario.setSexo(sexo);
 		usuario.setCpf(cpf);
 		fachada.editarUsario(usuario);
@@ -309,7 +309,7 @@ public class TextualUserInterface {
 		funcionario.setNome("Joao");
 		funcionario.setCpf((long) 00011100055);
 		funcionario.setSexo("masculino");
-		funcionario.setDataNascimento("22/02/1990");
+		//funcionario.setDataNascimento("22/02/1990");
 		
 		fachada.adicionarFuncionario(funcionario);
 	}

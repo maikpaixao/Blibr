@@ -2,6 +2,7 @@ package br.ufrpe.blibr.negocio.beans;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -11,7 +12,7 @@ public class Usuario {
 	private String nome;
 	private Long cpf;
 	private int idade;
-	private String dataNascimento;
+	private LocalDate dataNascimento;
 	private String sexo;
 	private static long nextId = 0;
 	private Long idUsuario;
@@ -37,26 +38,26 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 	
-	 public int getIdade(){
-		 	
-		 	Integer idade = null;
-			try {
-				String formato = "dd/MM/yyyy";
-			 	Date data;
-				data = new SimpleDateFormat(formato).parse(getDataNascimento());
-				GregorianCalendar hj=new GregorianCalendar();
-				GregorianCalendar nascimento=new GregorianCalendar();
-				if(getDataNascimento()!=null){
-					nascimento.setTime(data);
-				}		
-				int anohj=hj.get(Calendar.YEAR);
-				int anoNascimento=nascimento.get(Calendar.YEAR);
-				idade = anohj-anoNascimento;
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return idade;
-		}
+//	 public int getIdade(){
+//		 	
+//		 	Integer idade = null;
+//			try {
+//				String formato = "dd/MM/yyyy";
+//			 	Date data;
+//				data = new SimpleDateFormat(formato).parse(getDataNascimento());
+//				GregorianCalendar hj=new GregorianCalendar();
+//				GregorianCalendar nascimento=new GregorianCalendar();
+//				if(getDataNascimento()!=null){
+//					nascimento.setTime(data);
+//				}		
+//				int anohj=hj.get(Calendar.YEAR);
+//				int anoNascimento=nascimento.get(Calendar.YEAR);
+//				idade = anohj-anoNascimento;
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			return idade;
+//		}
 
 	public String getSexo() {
 		return sexo;
@@ -70,11 +71,11 @@ public class Usuario {
 		return idUsuario;
 	}
 	
-	public void setDataNascimento(String dataNascimento){
-		this.dataNascimento = dataNascimento;
+	public void setDataNascimento(LocalDate localDate){
+		this.dataNascimento = localDate;
 	}
 	
-	public String getDataNascimento(){
+	public LocalDate getDataNascimento(){
 		return dataNascimento;
 	}
 
@@ -91,7 +92,7 @@ public class Usuario {
 		return  "ID do Usuário: " + getId() + "\n"
 				+"Nome do Usuáro: " + getNome() + "\n"
 				+"CPF do Usuário: "+ getCpf() + "\n"
-				+"Idade do Usuário: " + getIdade() + "\n"
+				+"Idade do Usuário: " + getDataNascimento() + "\n"
 				+"Sexo do Usuário: " + getSexo();
 	}
 }

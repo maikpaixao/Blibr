@@ -90,22 +90,22 @@ public class ControladorUsuario implements IControladorUsuario{
 			e.getObj();
 		}
 	}
-	/*public void salvarListaDeUsuarios(){
+	public void salvarListaDeUsuarios(){
 		try {
-			FileOutputStream out = new FileOutputStream("C:/Users/Anthonny/Desktop/BCC/JAVA/Prog 2 PROJETO/Usuarios");
+			FileOutputStream out = new FileOutputStream("Lista de Usuarios");
 			ObjectOutputStream objOut =  new ObjectOutputStream(out);
 			
 			objOut.writeObject(repoUsuario);
 			objOut.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			
 		}catch (IOException e)
 		{
-			e.printStackTrace();		
+					
 		}
 		
 	}
 	public void recebeListaDeUsuarios(IRepositorio<Usuario	>listaSalva){
 			repoUsuario = listaSalva;
-	}*/
+	}
 }

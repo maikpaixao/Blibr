@@ -1,5 +1,9 @@
 package br.ufrpe.blibr.negocio;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +14,7 @@ import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Livro;
+import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class ControladorLivro implements IControladorLivro{
 	
@@ -84,5 +89,24 @@ public class ControladorLivro implements IControladorLivro{
 		} catch (ObjetoInvalidoExcpetion e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void salvarListaDeLivros(){
+		try {
+			FileOutputStream out = new FileOutputStream("Lista de Livros");
+			ObjectOutputStream objOut =  new ObjectOutputStream(out);
+			
+			objOut.writeObject(repoLivro);
+			objOut.close();
+		} catch (FileNotFoundException e) {
+			
+		}catch (IOException e)
+		{
+					
+		}
+		
+	}
+	public void recebeListaDeLivro(IRepositorio<Livro>listaSalva){
+			repoLivro = listaSalva;
 	}
 }

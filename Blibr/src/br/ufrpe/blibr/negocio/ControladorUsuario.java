@@ -1,5 +1,11 @@
 package br.ufrpe.blibr.negocio;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,4 +90,22 @@ public class ControladorUsuario implements IControladorUsuario{
 			e.getObj();
 		}
 	}
+	/*public void salvarListaDeUsuarios(){
+		try {
+			FileOutputStream out = new FileOutputStream("C:/Users/Anthonny/Desktop/BCC/JAVA/Prog 2 PROJETO/Usuarios");
+			ObjectOutputStream objOut =  new ObjectOutputStream(out);
+			
+			objOut.writeObject(repoUsuario);
+			objOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}catch (IOException e)
+		{
+			e.printStackTrace();		
+		}
+		
+	}
+	public void recebeListaDeUsuarios(IRepositorio<Usuario	>listaSalva){
+			repoUsuario = listaSalva;
+	}*/
 }

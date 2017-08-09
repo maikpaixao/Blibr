@@ -1,8 +1,11 @@
 package br.ufrpe.blibr.negocio;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,21 +95,29 @@ public class ControladorLivro implements IControladorLivro{
 	}
 	
 	public void salvarListaDeLivros(){
+		File file = new File("ListaDeLivros.txt");
 		try {
-			FileOutputStream out = new FileOutputStream("Lista de Livros");
-			ObjectOutputStream objOut =  new ObjectOutputStream(out);
-			
-			objOut.writeObject(repoLivro);
-			objOut.close();
-		} catch (FileNotFoundException e) {
-			
-		}catch (IOException e)
-		{
-					
+		
+			FileOutputStream fos = new FileOutputStream(file);
+			ObjectOutputStream ous = new ObjectOutputStream(fos);
+			ous.writeObject(repoLivro);
+			ous.close();
+		} catch (IOException e) {
+		
 		}
 		
 	}
-	public void recebeListaDeLivro(IRepositorio<Livro>listaSalva){
-			repoLivro = listaSalva;
+	public void LendoListaDeLivros(){
+		File file = new File("ListaDeLivros.txt");
+		
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			Livro clone = (Livro) o;
+			ois.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }

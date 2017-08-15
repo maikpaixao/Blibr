@@ -19,8 +19,9 @@ import javafx.stage.Stage;
 public class TelaLoginController {
 	
 	private ControladorFuncionario cF = ControladorFuncionario.getInstance();
-	private Funcionario funcionario;
+	public static Funcionario funcionario;
 	TextualUserInterface t = new TextualUserInterface();
+	
 	@FXML
 	private TextField user;
 	@FXML
@@ -37,9 +38,9 @@ public class TelaLoginController {
 			Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
 			win.setScene(scene2);
 			win.show();
-		}else if(login==11
-				//cF.buscarFuncionario(login).getCodFuncionario()
-				&& pass.getText().equals("123")){
+		}else if(login==11 && pass.getText().equals("123")){
+			//cF.buscarFuncionario(login).getCodFuncionario()
+			funcionario = getFuncionaio();
 			Parent t2 = FXMLLoader.load(getClass().getResource("TelaPainelAdm.fxml"));
 			Scene scene2 = new Scene(t2);
 			Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -53,7 +54,7 @@ public class TelaLoginController {
 	
 	//Vai funcionar para pegar o currentLoing do funcionario logado e setar no emprestimo
 	public Funcionario getFuncionaio() throws ElementoNaoExisteException{
-		Long cpf = Long.parseLong(user.getText());
+		Long cpf = Long.parseLong(user.getText().toString());
 		return cF.buscarFuncionario(cpf);
 	}
 }

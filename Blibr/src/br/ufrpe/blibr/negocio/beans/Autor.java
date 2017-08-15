@@ -1,8 +1,11 @@
 package br.ufrpe.blibr.negocio.beans;
 
-public class Autor extends Usuario{
+import java.io.Serializable;
+
+public class Autor implements Serializable{
 	
 	private String nomeAutor;
+	private static final long serialVersionUID = 5882184175404246169L;
 	
 	public String getNomeAutor() {
 		return nomeAutor;
@@ -10,5 +13,10 @@ public class Autor extends Usuario{
 	
 	public void setNomeAutor(String nomeAutor) {
 		this.nomeAutor = nomeAutor;
+	}
+	
+	@Override
+	public String toString() {
+		return nomeAutor;
 	}
 }

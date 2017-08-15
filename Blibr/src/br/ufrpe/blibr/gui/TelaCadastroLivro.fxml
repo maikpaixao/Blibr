@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaLivroController">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -30,22 +30,22 @@
             <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="43.0" prefWidth="357.0" promptText="Digite o autor do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="autorLivro" prefHeight="43.0" prefWidth="357.0" promptText="Digite o autor do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Digite o nome do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="nomeLivro" prefHeight="43.0" prefWidth="321.0" promptText="Digite o nome do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Digite a editora do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <TextField fx:id="editoraLivro" prefHeight="43.0" prefWidth="400.0" promptText="Digite a editora do Livro..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Button mnemonicParsing="false" onAction="#cadastrarLivro" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="17.0" />
                </font>
@@ -70,16 +70,16 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <ChoiceBox prefHeight="33.0" prefWidth="55.0" style="-fx-background-color: #333;" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <GridPane.margin>
-                  <Insets left="200.0" />
-               </GridPane.margin>
-            </ChoiceBox>
             <Label text="Quantidade de Livros" textFill="#c3baba" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <ComboBox fx:id="quantidadeLiv" prefHeight="33.0" prefWidth="49.0" style="-fx-background-color: #111;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="200.0" />
+               </GridPane.margin>
+            </ComboBox>
          </children>
       </GridPane>
    </center>

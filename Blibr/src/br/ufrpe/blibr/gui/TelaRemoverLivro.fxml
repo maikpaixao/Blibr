@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaLivroController">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -39,12 +39,12 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.rowIndex="3">
+            <TableView fx:id="livroTable" prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.rowIndex="3">
               <columns>
                   <TableColumn prefWidth="75.0" text="Id" />
-                <TableColumn prefWidth="109.0" text="Nome" />
-                <TableColumn prefWidth="113.0" text="Autor" />
-                  <TableColumn prefWidth="97.0" text="Editora" />
+                <TableColumn fx:id="nomeColuna" prefWidth="109.0" text="Nome" />
+                <TableColumn fx:id="autorColuna" prefWidth="113.0" text="Autor" />
+                  <TableColumn fx:id="editoraColuna" prefWidth="97.0" text="Editora" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.rowIndex="2">

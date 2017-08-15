@@ -6,14 +6,15 @@ import java.util.Date;
 
 public class Livro implements Serializable{
 	
-	private Long codigoLivro;
+	private Long codigoLivro = 1L;
 	private int quantidadeLivros;
 	private String nomeLivro;
-	private Autor autorLivro;
+	private String nomeAutor;
 	private String editora;
+	private static final long serialVersionUID = -9084900373440737932L;
 	
 	public Livro(){
-		this.quantidadeLivros = 10;
+		codigoLivro = codigoLivro+1;
 	}
 
 	public Long getCodigoLivro() {
@@ -32,12 +33,12 @@ public class Livro implements Serializable{
 		this.nomeLivro = nomeLivro;
 	}
 
-	public Autor getAutorLivro() {
-		return autorLivro;
+	public String getAutorLivro() {
+		return nomeAutor;
 	}
 
-	public void setAutorLivro(Autor autorLivro) {
-		this.autorLivro = autorLivro;
+	public void setAutorLivro(String nomeAutor) {
+		this.nomeAutor = nomeAutor;
 	}
 	
 	public String getEditora() {
@@ -69,7 +70,7 @@ public class Livro implements Serializable{
 		return "Codigo do Livro: " + codigoLivro + "\n"
 				+"Quantidade de Livros(Estoque): "+ quantidadeLivros + "\n"
 				+"Nome do Livro: " + nomeLivro + "\n"
-				+"Autor do Livro: " + autorLivro.getNome() + "\n"
+				+"Autor do Livro: " + nomeAutor + "\n"
 				+"Editora: " + editora;
 	}
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaCadastroUsuarioControlador">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -29,7 +29,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Remover" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#removerUsuario" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Remover" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font>
@@ -39,12 +39,12 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-base: black; -fx-background-color: #212121; -fx-padding: 0px; -fx-table-header-border-color: #111;" GridPane.rowIndex="3">
+            <TableView fx:id="usuarioTable" prefHeight="250.0" prefWidth="290.0" style="-fx-base: black; -fx-background-color: #212121; -fx-padding: 0px; -fx-table-header-border-color: #111;" GridPane.rowIndex="3">
               <columns>
-                <TableColumn prefWidth="109.0" text="Nome" />
-                <TableColumn prefWidth="113.0" text="CPF" />
-                  <TableColumn prefWidth="84.0" text="Sexo" />
-                  <TableColumn prefWidth="89.0" text="Idade" />
+                <TableColumn fx:id="nomeColuna" prefWidth="109.0" text="Nome" />
+                <TableColumn fx:id="cpfColuna" prefWidth="113.0" text="CPF" />
+                  <TableColumn fx:id="sexoColuna" prefWidth="84.0" text="Sexo" />
+                  <TableColumn fx:id="idadeColuna" prefWidth="89.0" text="Idade" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.rowIndex="2">

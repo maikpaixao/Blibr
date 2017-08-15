@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaCadastroUsuarioControlador">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -21,8 +21,6 @@
             <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="208.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="299.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="299.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="74.0" minHeight="1.0" prefHeight="50.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="321.0" minHeight="7.0" prefHeight="25.0" vgrow="SOMETIMES" />
@@ -31,22 +29,14 @@
             <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="43.0" prefWidth="357.0" promptText="Atualizar cpf do usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Atualizar nome do usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="atualizarNome" prefHeight="43.0" prefWidth="321.0" promptText="Atualizar nome do usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Atualizar idade do usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="17.0" />
                </font>
@@ -56,29 +46,24 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <ComboBox prefHeight="42.0" prefWidth="326.0" promptText="Atualizar sexo do usuário" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="atualizarSexo" prefHeight="42.0" prefWidth="326.0" promptText="Atualizar sexo do usuário" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="NOME" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label text="CPF" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label text="SEXO" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="IDADE" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label text="SEXO" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="IDADE" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Procurar CPF do usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="buscaCpf" prefHeight="43.0" prefWidth="321.0" promptText="Procurar CPF do usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#atualzarUsuario" prefHeight="40.0" prefWidth="53.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="OK" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="17.0" />
                </font>
@@ -86,6 +71,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
+            <DatePicker fx:id="atualizarData" prefHeight="38.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </center>

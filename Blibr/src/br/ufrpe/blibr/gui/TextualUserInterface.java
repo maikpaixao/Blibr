@@ -233,8 +233,6 @@ public class TextualUserInterface {
 	
 	public void adicionarLivro() throws ElementoNaoExisteException, ElementoJaExisteException{
 		
-		Autor autorLivro = new Autor();
-		
 		int codigoLivro;
 		String nomeLivro;
 		String nomeAutor;
@@ -244,14 +242,13 @@ public class TextualUserInterface {
 		nomeLivro = sc.next();
 		System.out.println("Digite o nome autor do livro: ");
 		nomeAutor = sc.next();
-		autorLivro.setNome(nomeAutor);
 		System.out.println("Digite a editora do livro: ");
 		editora = sc.next();
 		
 		livro = new Livro();
 		
 		livro.setNomeLivro(nomeLivro);
-		livro.setAutorLivro(autorLivro);
+		livro.setAutorLivro(nomeAutor);
 		livro.setEditora(editora);
 		fachada.adicionarLivro(livro);
 	
@@ -267,8 +264,6 @@ public class TextualUserInterface {
 	
 	public void editarLivro() throws ElementoNaoExisteException{
 		
-		Autor autorLivro = new Autor();
-		
 		String nomeLivro;
 		String nomeAutor;
 		String editora;
@@ -280,7 +275,6 @@ public class TextualUserInterface {
 		System.out.println("=============================");
 		System.out.println("Digite novo autor do Livro: ");
 		nomeAutor = sc.next();
-		autorLivro.setNome(nomeAutor);
 		System.out.println("Digite nova editora do Livro: ");
 		editora = sc.next();
 		System.out.println("Digite nova quantidade de Livros: ");
@@ -288,7 +282,7 @@ public class TextualUserInterface {
 		
 		Livro livro = new Livro();
 		livro.setNomeLivro(nomeLivro);
-		livro.setAutorLivro(autorLivro);
+		livro.setAutorLivro(nomeAutor);
 		livro.setEditora(editora);
 		livro.setQuantidadeLivros(quantidadeLivro);
 		

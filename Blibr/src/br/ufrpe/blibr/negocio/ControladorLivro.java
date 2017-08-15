@@ -1,5 +1,12 @@
 package br.ufrpe.blibr.negocio;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +17,7 @@ import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.LivroNaoExistente;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Livro;
+import br.ufrpe.blibr.negocio.beans.Usuario;
 
 public class ControladorLivro implements IControladorLivro{
 	
@@ -83,6 +91,33 @@ public class ControladorLivro implements IControladorLivro{
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
 			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void salvarListaDeLivros(){
+		File file = new File("ListaDeLivros.txt");
+		try {
+		
+			FileOutputStream fos = new FileOutputStream(file);
+			ObjectOutputStream ous = new ObjectOutputStream(fos);
+			ous.writeObject(repoLivro);
+			ous.close();
+		} catch (IOException e) {
+		
+		}
+		
+	}
+	public void LendoListaDeLivros(){
+		File file = new File("ListaDeLivros.txt");
+		
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			Livro clone = (Livro) o;
+			ois.close();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 }

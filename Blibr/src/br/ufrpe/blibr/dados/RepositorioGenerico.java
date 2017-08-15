@@ -64,4 +64,5 @@ public class RepositorioGenerico<T> implements IRepositorio<T>{
 			e.printStackTrace();
 		}
 	}
+	
 }

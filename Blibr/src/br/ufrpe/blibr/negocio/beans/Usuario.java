@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 	
 	private String nome;
 	private Long cpf;

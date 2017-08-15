@@ -1,6 +1,7 @@
 package br.ufrpe.blibr.negocio;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -98,8 +99,8 @@ public class Fachada {
 		return controladorF.buscarFuncionario(codFuncionario);
 	}
 	
-	public void registrarEmprestimo(Emprestimo emprestimo, Date date) throws ElementoNaoExisteException, ElementoJaExisteException{
-		emprestimoE.registrarEmprestimo(emprestimo, date);
+	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExisteException, ElementoJaExisteException{
+		emprestimoE.registrarEmprestimo(emprestimo);
 	}
 	
 	public List<Emprestimo> listarEmprestimos(){

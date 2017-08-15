@@ -1,15 +1,17 @@
 package br.ufrpe.blibr.negocio.beans;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
-public class Emprestimo {
+public class Emprestimo implements Serializable{
 	
 	private Funcionario funcionario;
 	private Usuario usuario;
 	private Livro livro;
 	private Multa multa;
-	private Date dataEmprestimo;
-	private Date dataDevolucao;
+	private LocalDate dataEmprestimo;
+	private LocalDate dataDevolucao;
 	
 	public Emprestimo(){
 		multa = new Multa();
@@ -39,19 +41,19 @@ public class Emprestimo {
 		this.livro = livro;
 	}
 	
-	public Date getDataEmprestimo() {
+	public LocalDate getDataEmprestimo() {
 		return dataEmprestimo;
 	}
 
-	public void setDataEmprestimo(Date date) {
+	public void setDataEmprestimo(LocalDate date) {
 		this.dataEmprestimo = date;
 	}
 
-	public Date getDataDevolucao() {
+	public LocalDate getDataDevolucao() {
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(LocalDate dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 	
@@ -78,7 +80,7 @@ public class Emprestimo {
 		return "Nome do Funcionario: "+funcionario.getNome()+"\n"
 				+"Nome do Livro: "+livro.getNomeLivro()+"\n"
 				+"Nome do Usuario: "+usuario.getNome()+"\n"
-				+"Data de Emprestimo: "+getDataEmprestimo()+"\n"
-				+"Data de Devolução: "+getDataDevolucao();
+				+"Data de Emprestimo: "+this.dataEmprestimo+"\n"
+				+"Data de Devolução: "+this.dataDevolucao;
 	}
 }

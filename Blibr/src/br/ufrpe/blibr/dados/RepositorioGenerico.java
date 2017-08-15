@@ -9,9 +9,16 @@ import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 public class RepositorioGenerico<T> implements IRepositorio<T>{
 	
 	protected List<T> lista;
-	
+	private String name;
+	 
 	public RepositorioGenerico(String name){
-		this.lista = new ArrayList<>();
+		this.name = name;
+        this.lista = new ArrayList<>();
+        
+        Object listaElementos = RepositorioArquivo.lerDoArquivo(this.name); 
+        if (listaElementos != null && listaElementos instanceof List<?>){
+            this.lista = (List<T>) listaElementos;
+        }
 	}
 
 	public void adicionar(T entidade)throws ElementoJaExisteException{
@@ -21,6 +28,7 @@ public class RepositorioGenerico<T> implements IRepositorio<T>{
 			}else{
 				throw new ElementoJaExisteException(entidade);
 			}
+			RepositorioArquivo.salvarArquivo(this.lista, this.name);
 		} catch (ElementoJaExisteException e) {
 			e.printStackTrace();
 		}
@@ -38,6 +46,7 @@ public class RepositorioGenerico<T> implements IRepositorio<T>{
 			}else{
 				throw new ElementoNaoExisteException(entidade);
 			}
+		//	RepositorioArquivo.salvarArquivo(lista, this.name);
 		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
@@ -50,6 +59,7 @@ public class RepositorioGenerico<T> implements IRepositorio<T>{
 			}else{
 				throw new ElementoNaoExisteException(entidade);
 			}
+			//RepositorioArquivo.salvarArquivo(lista, this.name);
 		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}

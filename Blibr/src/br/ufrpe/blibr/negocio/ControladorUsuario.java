@@ -16,7 +16,7 @@ public class ControladorUsuario implements IControladorUsuario{
 	private static ControladorUsuario instance;
 	
 	private ControladorUsuario(){
-		this.repoUsuario = new RepositorioGenerico<>("sad");
+		this.repoUsuario = new RepositorioGenerico<>("usuario.arq");
 	}
 	
 	public static synchronized ControladorUsuario getInstance(){

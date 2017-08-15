@@ -19,7 +19,7 @@ public class ControladorMulta implements IControladorMulta{
 	}
 	
 	private ControladorMulta(){
-		this.repoUsuario = new RepositorioGenerico<>("asd");
+		this.repoUsuario = new RepositorioGenerico<>("emprestimo.txt");
 	}
 	
 	public void atribuirMulta(Long cpf, Long dias) throws ElementoNaoExisteException{

@@ -3,6 +3,8 @@ package br.ufrpe.blibr.gui;
 import java.io.IOException;
 
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
+import br.ufrpe.blibr.negocio.ControladorFuncionario;
+import br.ufrpe.blibr.negocio.beans.Funcionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,20 +18,28 @@ import javafx.stage.Stage;
 
 public class TelaLoginController {
 	
+	private ControladorFuncionario cF = ControladorFuncionario.getInstance();
+	private Funcionario funcionario;
+	TextualUserInterface t = new TextualUserInterface();
 	@FXML
 	private TextField user;
 	@FXML
 	private TextField pass;
 
 	@FXML
-	public void showPainelF(ActionEvent event) throws IOException, ElementoNaoExisteException{
-		if(user.getText().equals("funcionario") && pass.getText().equals("123")){
+	public void showPainelF(ActionEvent event) throws Exception{
+		t.preencherFuncionario();
+		Long login = Long.parseLong(user.getText());
+		
+		if(login==12 && pass.getText().equals("123")){
 			Parent t2 = FXMLLoader.load(getClass().getResource("TelaPainelFuncionario.fxml"));
 			Scene scene2 = new Scene(t2);
 			Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
 			win.setScene(scene2);
 			win.show();
-		}else if(user.getText().equals("adm") && pass.getText().equals("123")){
+		}else if(login==11
+				//cF.buscarFuncionario(login).getCodFuncionario()
+				&& pass.getText().equals("123")){
 			Parent t2 = FXMLLoader.load(getClass().getResource("TelaPainelAdm.fxml"));
 			Scene scene2 = new Scene(t2);
 			Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -39,5 +49,11 @@ public class TelaLoginController {
 			Alert alert = new Alert(AlertType.ERROR, "Login ou senha errado");
 			alert.show();
 		}
+	}
+	
+	//Vai funcionar para pegar o currentLoing do funcionario logado e setar no emprestimo
+	public Funcionario getFuncionaio() throws ElementoNaoExisteException{
+		Long cpf = Long.parseLong(user.getText());
+		return cF.buscarFuncionario(cpf);
 	}
 }

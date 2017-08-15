@@ -17,7 +17,7 @@ public class ControladorLivro implements IControladorLivro{
 	private static ControladorLivro instance;
 	
 	private ControladorLivro(){
-		repoLivro = new RepositorioGenerico<>("sad");
+		repoLivro = new RepositorioGenerico<>("livro.txt");
 	}
 	
 	public static ControladorLivro getInstance(){

@@ -1,6 +1,7 @@
 package br.ufrpe.blibr.gui;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -319,7 +320,7 @@ public class TextualUserInterface {
 		Long cpfUsuario;
 		Long codigoFuncionario;
 		
-		Date date = new Date();
+		LocalDate date = LocalDate.now();
 		livro = new Livro();
 		usuario = new Usuario();
 		emprestimo = new Emprestimo();
@@ -341,8 +342,9 @@ public class TextualUserInterface {
 		emprestimo.setUsuario(usuario);
 		
 		emprestimo.setDataEmprestimo(date);
+		emprestimo.setDataDevolucao(date.plusDays(1));
 		
-		fachada.registrarEmprestimo(emprestimo, date);
+		fachada.registrarEmprestimo(emprestimo);
 		//fachada.emprestarLivro(livro, usuario);
 	}
 	

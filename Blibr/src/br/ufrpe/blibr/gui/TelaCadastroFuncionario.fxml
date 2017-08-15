@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.Xcu">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -33,22 +33,18 @@
             <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="43.0" prefWidth="357.0" promptText="Digite o CPF do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="cpfUsuario" prefHeight="43.0" prefWidth="357.0" promptText="Digite o CPF do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="321.0" promptText="Digite o nome do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="nomeUsuario" prefHeight="43.0" prefWidth="321.0" promptText="Digite o nome do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Digite o sexo do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Button mnemonicParsing="false" onAction="#cadastrarFuncionario" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #f1c40f;" text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <font>
                   <Font size="17.0" />
                </font>
@@ -73,17 +69,12 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Digite a idade do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <Label text="IDADE FUNCIONARIO" textFill="#c5c5c5" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField prefHeight="43.0" prefWidth="400.0" promptText="Digite a senha do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <TextField fx:id="senhaUsuario" prefHeight="43.0" prefWidth="400.0" promptText="Digite a senha do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <font>
                   <Font size="14.0" />
                </font>
@@ -93,6 +84,8 @@
                   <Font size="13.0" />
                </font>
             </Label>
+            <DatePicker fx:id="nascimentoUsuario" prefHeight="31.0" prefWidth="246.0" style="-fx-background-color: #171717; -fx-control-inner-background: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <ComboBox fx:id="sexoUsuario" prefHeight="33.0" prefWidth="246.0" style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </center>

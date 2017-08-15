@@ -14,7 +14,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	private static ControladorFuncionario instance;
 	
 	private ControladorFuncionario(){
-		repoFuncionario = new RepositorioGenerico<>("sad");
+		repoFuncionario = new RepositorioGenerico<>("funcionario.txt");
 	}
 	
 	public static synchronized ControladorFuncionario getInstance(){

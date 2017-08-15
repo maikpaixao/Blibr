@@ -1,13 +1,17 @@
 package br.ufrpe.blibr.negocio.beans;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Usuario {
+import javafx.beans.property.SimpleStringProperty;
+
+public class Usuario implements Serializable{
 	
 	private String nome;
 	private Long cpf;
@@ -38,26 +42,11 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 	
-//	 public int getIdade(){
-//		 	
-//		 	Integer idade = null;
-//			try {
-//				String formato = "dd/MM/yyyy";
-//			 	Date data;
-//				data = new SimpleDateFormat(formato).parse(getDataNascimento());
-//				GregorianCalendar hj=new GregorianCalendar();
-//				GregorianCalendar nascimento=new GregorianCalendar();
-//				if(getDataNascimento()!=null){
-//					nascimento.setTime(data);
-//				}		
-//				int anohj=hj.get(Calendar.YEAR);
-//				int anoNascimento=nascimento.get(Calendar.YEAR);
-//				idade = anohj-anoNascimento;
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//			return idade;
-//		}
+	public int getIdade(){
+		LocalDate ld = LocalDate.now();
+		int idade = Period.between ( this.getDataNascimento() , ld ).getYears();
+		return idade;
+	}
 
 	public String getSexo() {
 		return sexo;

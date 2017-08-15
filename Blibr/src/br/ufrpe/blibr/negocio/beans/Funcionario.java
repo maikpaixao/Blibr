@@ -1,6 +1,8 @@
 package br.ufrpe.blibr.negocio.beans;
 
-public class Funcionario extends Usuario{
+import java.io.Serializable;
+
+public class Funcionario extends Usuario implements Serializable{
 	
 	private int codFuncionario;
 	private String senha;
@@ -30,7 +32,7 @@ public class Funcionario extends Usuario{
 				+"Nome do Funcionario: " + getNome() + "\n"
 				+"CPF do Funcionario: " + getCpf() + "\n"
 				+"Sexo do Funcionario: " + getSexo() + "\n"
-				//+"Idade do Funcionario: " + getIdade() + "\n"
+				+"Idade do Funcionario: " + getDataNascimento() + "\n"
 				+"Senha do Funcionario: "+ getSenha();
 	}
 }

@@ -1,6 +1,8 @@
 package br.ufrpe.blibr.negocio.beans;
 
-public class Multa {
+import java.io.Serializable;
+
+public class Multa implements Serializable{
 	public static final Double valorMulta = 50.00;
 	private double divida;
 	

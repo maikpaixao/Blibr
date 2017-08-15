@@ -1,5 +1,6 @@
 package br.ufrpe.blibr.negocio;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,6 @@ public interface IControladorFuncionario {
 	public void adicionarFuncionario(Funcionario funcionario) throws Exception;
 	public List<Funcionario> listarFuncionario();
 	public void editarFuncionario(Funcionario funcionario) throws Exception;
-	public void removerUsuario(Long codFuncionario) throws ElementoNaoExisteException;
+	public void removerUsuario(Long codFuncionario) throws ElementoNaoExisteException, IOException;
 	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExisteException;
 }

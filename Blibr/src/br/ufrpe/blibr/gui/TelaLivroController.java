@@ -62,7 +62,7 @@ public class TelaLivroController {
 			nomeColuna.setCellValueFactory(new PropertyValueFactory<>("nomeLivro"));
 			autorColuna.setCellValueFactory(new PropertyValueFactory<>("nomeAutor"));
 			editoraColuna.setCellValueFactory(new PropertyValueFactory<>("editora"));
-			//quantLivro.setCellValueFactory(new PropertyValueFactory<>("quantidadeLivros"));
+			quantLivro.setCellValueFactory(new PropertyValueFactory<>("quantidadeLivros"));
 			livroTable.setItems(cbList2);
 		}
 		if(quantidadeLiv!=null){

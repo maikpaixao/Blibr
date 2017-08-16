@@ -12,6 +12,7 @@ public class Emprestimo implements Serializable{
 	private Multa multa;
 	private LocalDate dataEmprestimo;
 	private LocalDate dataDevolucao;
+	private static final long serialVersionUID = 3563751937153246732L;
 	
 	public Emprestimo(){
 		multa = new Multa();
@@ -65,22 +66,11 @@ public class Emprestimo implements Serializable{
 		this.multa = multa;
 	}
 
-	@Override
 	public boolean equals(Object o){
 		boolean retorno = false;
-		if(this.getUsuario().equals(((Emprestimo) o).getUsuario()) &&
-				this.getLivro().equals(((Emprestimo) o).getLivro())){
+		if(this.getUsuario().equals(((Emprestimo) o).getUsuario()) && this.getLivro().equals(((Emprestimo) o).getLivro())){
 			retorno=true;
 		}
 		return retorno;
-	}
-
-	@Override
-	public String toString(){
-		return "Nome do Funcionario: "+funcionario.getNome()+"\n"
-				+"Nome do Livro: "+livro.getNomeLivro()+"\n"
-				+"Nome do Usuario: "+usuario.getNome()+"\n"
-				+"Data de Emprestimo: "+this.dataEmprestimo+"\n"
-				+"Data de Devolução: "+this.dataDevolucao;
 	}
 }

@@ -47,13 +47,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView prefHeight="302.0" prefWidth="438.0" style="-fx-background-color: #191919; -fx-control-inner-background: black; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+            <TableView fx:id="emprestimoTable" prefHeight="302.0" prefWidth="438.0" style="-fx-background-color: #191919; -fx-control-inner-background: black; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
               <columns>
-                <TableColumn prefWidth="75.0" style="-fx-background-color: black; -fx-table-cell-border-color: black; -fx-text-base-color: white;" text="Código" />
-                <TableColumn prefWidth="75.0" text="Nome" />
-                  <TableColumn prefWidth="75.0" text="Autor" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Quantidade" />
+                <TableColumn fx:id="nomeLivro" prefWidth="116.0" style="-fx-background-color: black; -fx-table-cell-border-color: black; -fx-text-base-color: white;" text="Código" />
+                <TableColumn fx:id="nomeUsuario" prefWidth="112.0" text="Nome" />
+                  <TableColumn fx:id="dataEmp" prefWidth="126.0" text="Autor" />
+                  <TableColumn fx:id="dataDev" prefWidth="117.0" text="Column X" />
+                  <TableColumn fx:id="multa" prefWidth="79.0" text="Quantidade" />
               </columns>
             </TableView>
             <TextField prefHeight="39.0" prefWidth="290.0" promptText="Digite o nome do livro...">

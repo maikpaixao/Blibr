@@ -1,5 +1,7 @@
 package br.ufrpe.blibr.gui;
 
+import java.time.LocalDate;
+
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.negocio.Fachada;
@@ -19,6 +21,7 @@ public class TelaEmprestimoController {
 	private TextField nomeLivro;
 	@FXML
 	private TextField cpfUsuario;
+	
 	@FXML
 	private TextField cpfDev;
 	@FXML
@@ -29,10 +32,13 @@ public class TelaEmprestimoController {
 		Emprestimo emprestimo = new Emprestimo();
 		String livro1 = nomeLivro.getText().toString();
 		Long cpf = Long.parseLong(cpfUsuario.getText().toString());
+		LocalDate date = LocalDate.now();
 		
 		emprestimo.setLivro(f.buscarLivro(livro1));
 		emprestimo.setUsuario(f.buscarUsuario(cpf));
 		emprestimo.setFuncionario(TelaLoginController.funcionario);
+		emprestimo.setDataEmprestimo(date);
+		emprestimo.setDataDevolucao(date.plusDays(1));
 		f.registrarEmprestimo(emprestimo);
 		
 		Alert alert = new Alert(AlertType.WARNING, "Emprestimo realizado com sucesso!");
@@ -43,12 +49,17 @@ public class TelaEmprestimoController {
 	}
 	
 	public void realizarDevolucao() throws ElementoNaoExisteException{
+		
 		Emprestimo emprestimo = new Emprestimo();
-		emprestimo.setUsuario(f.buscarUsuario(Long.parseLong(cpfDev.getText().toString())));
-		emprestimo.setLivro(f.buscarLivro(livroDev.getText().toString()));
+		String livro1 = livroDev.getText().toString();
+		Long cpf = Long.parseLong(cpfDev.getText().toString());
+		
+		emprestimo.setLivro(f.buscarLivro(livro1));
+		emprestimo.setUsuario(f.buscarUsuario(cpf));
+		emprestimo.setFuncionario(TelaLoginController.funcionario);
 		f.realizarDevolução(emprestimo);
 		
-		Alert alert = new Alert(AlertType.WARNING, "Devolução realizada com sucesso!");
+		Alert alert = new Alert(AlertType.WARNING, "Devolução realizado com sucesso!");
 		alert.show();
 	}
 	

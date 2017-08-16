@@ -53,7 +53,6 @@ public class ControladorLivro implements IControladorLivro{
 			if(nomeLivro==null){
 				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
 			}else{
-				//retorno = repoLivro.buscarLivrro(nomeLivro);
 				for(Livro livro: listarLivros()){
 					if(livro.getNomeLivro().equals(nomeLivro)){
 						retorno = livro;
@@ -94,30 +93,30 @@ public class ControladorLivro implements IControladorLivro{
 		}
 	}
 	
-	public void salvarListaDeLivros(){
-		File file = new File("ListaDeLivros.txt");
-		try {
-		
-			FileOutputStream fos = new FileOutputStream(file);
-			ObjectOutputStream ous = new ObjectOutputStream(fos);
-			ous.writeObject(repoLivro);
-			ous.close();
-		} catch (IOException e) {
-		
-		}
-		
-	}
-	public void LendoListaDeLivros(){
-		File file = new File("ListaDeLivros.txt");
-		
-		try {
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			Object o = ois.readObject();
-			Livro clone = (Livro) o;
-			ois.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+//	public void salvarListaDeLivros(){
+//		File file = new File("ListaDeLivros.txt");
+//		try {
+//		
+//			FileOutputStream fos = new FileOutputStream(file);
+//			ObjectOutputStream ous = new ObjectOutputStream(fos);
+//			ous.writeObject(repoLivro);
+//			ous.close();
+//		} catch (IOException e) {
+//		
+//		}
+//		
+//	}
+//	public void LendoListaDeLivros(){
+//		File file = new File("ListaDeLivros.txt");
+//		
+//		try {
+//			FileInputStream fis = new FileInputStream(file);
+//			ObjectInputStream ois = new ObjectInputStream(fis);
+//			Object o = ois.readObject();
+//			Livro clone = (Livro) o;
+//			ois.close();
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//	}
 }

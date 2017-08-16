@@ -59,7 +59,7 @@ public class Livro implements Serializable{
 	
 	public boolean equals(Object o){
 		boolean retorno = false;
-		if(this.getCodigoLivro()==((Livro) o).getCodigoLivro()){
+		if(this.getNomeLivro()==((Livro) o).getNomeLivro()){
 			retorno=true;
 		}
 		return retorno;

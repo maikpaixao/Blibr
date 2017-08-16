@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaPainelFuncionarioController">
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaMultaController">
    <center>
       <GridPane prefHeight="391.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -22,7 +22,7 @@
             <RowConstraints maxHeight="313.0" minHeight="7.0" prefHeight="78.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="39.0" prefWidth="334.0" promptText="Digite o nome do Usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="2">
+            <TextField fx:id="nomeUsuario" prefHeight="39.0" prefWidth="334.0" promptText="Digite o nome do Usuário..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="66.0" />
                </GridPane.margin>
@@ -39,7 +39,7 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <TableView prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-base: black; -fx-padding: 0px; -fx-table-header-border-color: #111;" GridPane.rowIndex="3">
+            <TableView fx:id="multaTable" prefHeight="250.0" prefWidth="290.0" style="-fx-background-color: #212121; -fx-base: black; -fx-padding: 0px; -fx-table-header-border-color: #111;" GridPane.rowIndex="3">
               <columns>
                 <TableColumn prefWidth="109.0" text="Nome" />
                 <TableColumn prefWidth="113.0" text="CPF" />

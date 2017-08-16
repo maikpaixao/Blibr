@@ -92,31 +92,31 @@ public class ControladorUsuario implements IControladorUsuario{
 			e.getObj();
 		}
 	}	
-	public void salvarListaDeUsuarios(){
-		File file = new File("ListaDeUsuarios.txt");
-		try {
-		
-			FileOutputStream fos = new FileOutputStream(file);
-			ObjectOutputStream ous = new ObjectOutputStream(fos);
-			ous.writeObject(repoUsuario);
-			ous.close();
-		} catch (IOException e) {
-		
-		}
-		
-	}
-	public void LendoListaDeUsuarios(){
-		File file = new File("ListaDeUsuarios.txt");
-		
-		try {
-			FileInputStream fis = new FileInputStream(file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			Object o = ois.readObject();
-			Usuario clone = (Usuario) o;
-			ois.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+//	public void salvarListaDeUsuarios(){
+//		File file = new File("ListaDeUsuarios.txt");
+//		try {
+//		
+//			FileOutputStream fos = new FileOutputStream(file);
+//			ObjectOutputStream ous = new ObjectOutputStream(fos);
+//			ous.writeObject(repoUsuario);
+//			ous.close();
+//		} catch (IOException e) {
+//		
+//		}
+//		
+//	}
+//	public void LendoListaDeUsuarios(){
+//		File file = new File("ListaDeUsuarios.txt");
+//		
+//		try {
+//			FileInputStream fis = new FileInputStream(file);
+//			ObjectInputStream ois = new ObjectInputStream(fis);
+//			Object o = ois.readObject();
+//			Usuario clone = (Usuario) o;
+//			ois.close();
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//	}
 	
 }

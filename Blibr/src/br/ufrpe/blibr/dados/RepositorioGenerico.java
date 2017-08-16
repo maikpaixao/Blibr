@@ -46,7 +46,7 @@ public class RepositorioGenerico<T> implements IRepositorio<T>{
 			}else{
 				throw new ElementoNaoExisteException(entidade);
 			}
-		//	RepositorioArquivo.salvarArquivo(lista, this.name);
+		RepositorioArquivo.salvarArquivo(lista, this.name);
 		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +59,7 @@ public class RepositorioGenerico<T> implements IRepositorio<T>{
 			}else{
 				throw new ElementoNaoExisteException(entidade);
 			}
-			//RepositorioArquivo.salvarArquivo(lista, this.name);
+			RepositorioArquivo.salvarArquivo(lista, this.name);
 		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}

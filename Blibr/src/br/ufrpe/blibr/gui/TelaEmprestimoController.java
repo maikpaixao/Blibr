@@ -56,7 +56,6 @@ public class TelaEmprestimoController {
 		
 		emprestimo.setLivro(f.buscarLivro(livro1));
 		emprestimo.setUsuario(f.buscarUsuario(cpf));
-		emprestimo.setFuncionario(TelaLoginController.funcionario);
 		f.realizarDevolução(emprestimo);
 		
 		Alert alert = new Alert(AlertType.WARNING, "Devolução realizado com sucesso!");

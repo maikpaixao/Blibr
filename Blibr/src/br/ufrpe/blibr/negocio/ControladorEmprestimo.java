@@ -28,7 +28,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	private IRepositorio<Usuario> repoUsuario;
 	
 	private ControladorEmprestimo(){
-		repoEmprestimo = new RepositorioGenerico<>("emprestimo.txt");
+		repoEmprestimo = new RepositorioGenerico<>("emprestimo.arq");
 		repoUsuario = new RepositorioGenerico<>("usuario.arq");
 		repoLivro = new RepositorioGenerico<>("livro.txt");
 	}
@@ -42,12 +42,12 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	
 	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExisteException, ElementoJaExisteException{
 		try {
-			if(emprestimo == null && buscarEmprestimo(emprestimo.getUsuario().getCpf()).getMulta()==null){
+			if(emprestimo == null && 
+			   buscarEmprestimo(emprestimo.getUsuario().getCpf()).getMulta().getDivida()>(0.0)){
 				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
 			}else{
 				controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
 				(controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()-1);
-				//emprestimo.setDataDevolucao(date.plusDays(1));
 				repoEmprestimo.adicionar(emprestimo);
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
@@ -87,7 +87,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 				}
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 		return rotorno;
 	}

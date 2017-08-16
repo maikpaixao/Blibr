@@ -111,6 +111,10 @@ public class Fachada {
 		emprestimoE.verificarEmprestimo(cpf);
 	}
 	
+	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExisteException{
+		return emprestimoE.buscarEmprestimo(cpf);
+	}
+	
 	public Double pagarMulta(Long cpf, Double valor) throws ElementoNaoExisteException{
 		return controladorM.pagarMulta(cpf, valor);
 	}

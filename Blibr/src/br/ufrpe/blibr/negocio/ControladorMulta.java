@@ -19,7 +19,7 @@ public class ControladorMulta implements IControladorMulta{
 	}
 	
 	private ControladorMulta(){
-		this.repoUsuario = new RepositorioGenerico<>("emprestimo.txt");
+		this.repoUsuario = new RepositorioGenerico<>("emprestimo.arq");
 	}
 	
 	public void atribuirMulta(Long cpf, Long dias) throws ElementoNaoExisteException{
@@ -30,7 +30,7 @@ public class ControladorMulta implements IControladorMulta{
 				
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class ControladorMulta implements IControladorMulta{
 				troco = valor - controllerEmprestimo.buscarEmprestimo(cpf).getMulta().getDivida();
 				controllerEmprestimo.buscarEmprestimo(cpf).getMulta().setDivida(0);
 			}else{
-				System.out.println("Valor nao e suficiente!");
+				
 			}
 		}
 		return troco;

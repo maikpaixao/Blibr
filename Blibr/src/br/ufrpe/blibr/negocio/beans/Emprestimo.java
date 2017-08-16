@@ -68,7 +68,8 @@ public class Emprestimo implements Serializable{
 
 	public boolean equals(Object o){
 		boolean retorno = false;
-		if(this.getUsuario().equals(((Emprestimo) o).getUsuario()) && this.getLivro().equals(((Emprestimo) o).getLivro())){
+		if(this.getUsuario().equals(((Emprestimo) o).getUsuario()) 
+				&& this.getLivro().equals(((Emprestimo) o).getLivro())){
 			retorno=true;
 		}
 		return retorno;

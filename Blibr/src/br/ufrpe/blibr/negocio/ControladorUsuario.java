@@ -42,7 +42,7 @@ public class ControladorUsuario implements IControladorUsuario{
 				repoUsuario.adicionar(usuario);
 			}
 		} catch (ElementoJaExisteException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -56,7 +56,6 @@ public class ControladorUsuario implements IControladorUsuario{
 			if(cpf==null){
 				throw new ElementoNaoExisteException(buscarUsuario(cpf));
 			}else{
-				//retorno = repoUsuario.buscarUsuario(cpf);
 				for(Usuario usuario: repoUsuario.listar()){
 					if(usuario.getCpf().equals(cpf)){
 						retorno = usuario;
@@ -64,7 +63,7 @@ public class ControladorUsuario implements IControladorUsuario{
 				}
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 		return retorno;
 	}
@@ -77,7 +76,7 @@ public class ControladorUsuario implements IControladorUsuario{
 				throw new ElementoNaoExisteException(buscarUsuario(cpf));
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}
 	
@@ -89,34 +88,8 @@ public class ControladorUsuario implements IControladorUsuario{
 				throw new ElementoNaoExisteException(usuario);
 			}
 		} catch (ElementoNaoExisteException e) {
-			e.getObj();
+			e.printStackTrace();
 		}
 	}	
-//	public void salvarListaDeUsuarios(){
-//		File file = new File("ListaDeUsuarios.txt");
-//		try {
-//		
-//			FileOutputStream fos = new FileOutputStream(file);
-//			ObjectOutputStream ous = new ObjectOutputStream(fos);
-//			ous.writeObject(repoUsuario);
-//			ous.close();
-//		} catch (IOException e) {
-//		
-//		}
-//		
-//	}
-//	public void LendoListaDeUsuarios(){
-//		File file = new File("ListaDeUsuarios.txt");
-//		
-//		try {
-//			FileInputStream fis = new FileInputStream(file);
-//			ObjectInputStream ois = new ObjectInputStream(fis);
-//			Object o = ois.readObject();
-//			Usuario clone = (Usuario) o;
-//			ois.close();
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//	}
 	
 }

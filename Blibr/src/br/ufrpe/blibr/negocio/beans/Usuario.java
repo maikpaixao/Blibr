@@ -72,9 +72,6 @@ public class Usuario implements Serializable {
 	
 	@Override
 	public String toString() {
-		return  "Nome do Usuáro: " + getNome() + "\n"
-				+"CPF do Usuário: "+ getCpf() + "\n"
-				+"Idade do Usuário: " + getDataNascimento() + "\n"
-				+"Sexo do Usuário: " + getSexo();
+		return  nome;
 	}
 }

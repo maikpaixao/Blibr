@@ -67,10 +67,6 @@ public class Livro implements Serializable{
 	
 	@Override
 	public String toString(){
-		return "Codigo do Livro: " + codigoLivro + "\n"
-				+"Quantidade de Livros(Estoque): "+ quantidadeLivros + "\n"
-				+"Nome do Livro: " + nomeLivro + "\n"
-				+"Autor do Livro: " + nomeAutor + "\n"
-				+"Editora: " + editora;
+		return  nomeLivro;
 	}
 }

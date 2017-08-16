@@ -49,11 +49,11 @@
          <children>
             <TableView fx:id="emprestimoTable" prefHeight="302.0" prefWidth="438.0" style="-fx-background-color: #191919; -fx-control-inner-background: black; -fx-table-header-border-color: #111; -fx-base: black; -fx-padding: 0px;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
               <columns>
-                <TableColumn fx:id="nomeLivro" prefWidth="116.0" style="-fx-background-color: black; -fx-table-cell-border-color: black; -fx-text-base-color: white;" text="Código" />
-                <TableColumn fx:id="nomeUsuario" prefWidth="112.0" text="Nome" />
-                  <TableColumn fx:id="dataEmp" prefWidth="126.0" text="Autor" />
-                  <TableColumn fx:id="dataDev" prefWidth="117.0" text="Column X" />
-                  <TableColumn fx:id="multa" prefWidth="79.0" text="Quantidade" />
+                <TableColumn fx:id="nomeLivro" prefWidth="107.0" style="-fx-background-color: black; -fx-table-cell-border-color: black; -fx-text-base-color: white;" text="Livro" />
+                <TableColumn fx:id="nomeUsuario" prefWidth="108.0" text="Usuario" />
+                  <TableColumn fx:id="dataEmp" prefWidth="110.0" text="Data Emprestimo" />
+                  <TableColumn fx:id="dataDev" prefWidth="124.0" text="Data Devolução" />
+                  <TableColumn fx:id="multa" prefWidth="101.0" text="Multa" />
               </columns>
             </TableView>
             <TextField prefHeight="39.0" prefWidth="290.0" promptText="Digite o nome do livro...">

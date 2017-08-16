@@ -11,9 +11,8 @@
    <top>
       <MenuBar fx:id="menuBar" style="-fx-background-color: #090909; -fx-text-base-color: white;" BorderPane.alignment="CENTER">
         <menus>
-            <Menu mnemonicParsing="false" text="Meu Perfil">
+            <Menu mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" style="-fx-text-base-color: black;" text="Delete" />
                   <MenuItem fx:id="sair" mnemonicParsing="false" onAction="#sair" style="-fx-text-base-color: black;" text="Sair" />
                </items>
             </Menu>

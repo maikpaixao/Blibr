@@ -33,7 +33,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 						+ " os dados fornecidos são inválidos!");
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 						+ " os dados fornecidos são inválidos!");
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -63,7 +63,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 						+ " os dados fornecidos são inválidos!");
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -81,7 +81,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 						+ " os dados fornecidos são inválidos!");
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		return retorno;
 	}

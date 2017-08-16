@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #191919;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.blibr.gui.TelaMultaController">
    <center>
       <GridPane prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -22,7 +22,7 @@
             <RowConstraints maxHeight="313.0" minHeight="7.0" prefHeight="155.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Remover" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#pagarMulta" prefHeight="40.0" prefWidth="111.0" style="-fx-text-fill: white; -fx-background-color: #9b59b6;" text="Pagar" GridPane.rowIndex="4">
                <font>
                   <Font size="17.0" />
                </font>
@@ -35,12 +35,12 @@
                   <Insets top="10.0" />
                </padding>
             </Label>
-            <TextField prefHeight="39.0" prefWidth="450.0" promptText="Digite o nome do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="3">
+            <TextField fx:id="valorPg" prefHeight="39.0" prefWidth="450.0" promptText="Digite o valor fornecido..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField prefHeight="39.0" prefWidth="450.0" promptText="Digite o nome do Funcionario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="2">
+            <TextField fx:id="cpfPg" prefHeight="39.0" prefWidth="450.0" promptText="Digite o cpf do usuario..." style="-fx-background-color: #171717; -fx-border-width: 0 0 2 0; -fx-border-color: white; -fx-text-fill: white;" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>

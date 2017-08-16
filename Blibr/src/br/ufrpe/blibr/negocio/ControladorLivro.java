@@ -43,7 +43,7 @@ public class ControladorLivro implements IControladorLivro{
 				repoLivro.adicionar(livro);
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -60,7 +60,7 @@ public class ControladorLivro implements IControladorLivro{
 				}
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		return retorno;
 	}
@@ -73,7 +73,7 @@ public class ControladorLivro implements IControladorLivro{
 				repoLivro.atualizar(livro);
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -89,34 +89,8 @@ public class ControladorLivro implements IControladorLivro{
 				repoLivro.remover(buscarLivro(nome));
 			}
 		} catch (ObjetoInvalidoExcpetion e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
-//	public void salvarListaDeLivros(){
-//		File file = new File("ListaDeLivros.txt");
-//		try {
-//		
-//			FileOutputStream fos = new FileOutputStream(file);
-//			ObjectOutputStream ous = new ObjectOutputStream(fos);
-//			ous.writeObject(repoLivro);
-//			ous.close();
-//		} catch (IOException e) {
-//		
-//		}
-//		
-//	}
-//	public void LendoListaDeLivros(){
-//		File file = new File("ListaDeLivros.txt");
-//		
-//		try {
-//			FileInputStream fis = new FileInputStream(file);
-//			ObjectInputStream ois = new ObjectInputStream(fis);
-//			Object o = ois.readObject();
-//			Livro clone = (Livro) o;
-//			ois.close();
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//	}
 }

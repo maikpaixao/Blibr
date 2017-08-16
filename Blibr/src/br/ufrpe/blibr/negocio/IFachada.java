@@ -3,6 +3,7 @@ package br.ufrpe.blibr.negocio;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
@@ -30,6 +31,7 @@ public interface IFachada {
 	
 	public void emprestarLivro(Livro livro, Usuario usuario) throws ParseException;
 	public void registrarEmprestimo(Emprestimo emprestimo);
+	public Emprestimo buscarEmprestimo(Long cpf) throws ElementoNaoExisteException;
 	public ArrayList<Emprestimo> listarEmprestimos();
 	public void verificarEmprestimo(String cpf);
 	public Double pagarMulta(String cpf, Double valor);

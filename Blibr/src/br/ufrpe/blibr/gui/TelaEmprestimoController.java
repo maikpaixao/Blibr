@@ -19,11 +19,13 @@ public class TelaEmprestimoController {
 	private TextField nomeLivro;
 	@FXML
 	private TextField cpfUsuario;
+	@FXML
+	private TextField cpfDev;
+	@FXML
+	private TextField livroDev;
 	
 	public void emprestarLivro() throws ElementoNaoExisteException, ElementoJaExisteException{
 		
-		Livro livro = new Livro();
-		Usuario usuario = new Usuario();
 		Emprestimo emprestimo = new Emprestimo();
 		String livro1 = nomeLivro.getText().toString();
 		Long cpf = Long.parseLong(cpfUsuario.getText().toString());
@@ -34,6 +36,19 @@ public class TelaEmprestimoController {
 		f.registrarEmprestimo(emprestimo);
 		
 		Alert alert = new Alert(AlertType.WARNING, "Emprestimo realizado com sucesso!");
+		alert.show();
+		
+		System.out.println(TelaLoginController.funcionario.getNome());
+		
+	}
+	
+	public void realizarDevolucao() throws ElementoNaoExisteException{
+		Emprestimo emprestimo = new Emprestimo();
+		emprestimo.setUsuario(f.buscarUsuario(Long.parseLong(cpfDev.getText().toString())));
+		emprestimo.setLivro(f.buscarLivro(livroDev.getText().toString()));
+		f.realizarDevolução(emprestimo);
+		
+		Alert alert = new Alert(AlertType.WARNING, "Devolução realizada com sucesso!");
 		alert.show();
 	}
 	

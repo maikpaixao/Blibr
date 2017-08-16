@@ -105,7 +105,6 @@ ObservableList<Funcionario> cbList2 = FXCollections.observableArrayList();
 		funcionario.setSexo(sexoUsuario.getSelectionModel().getSelectedItem().toString());
 		funcionario.setDataNascimento(nascimentoUsuario.getValue());
 		funcionario.setSenha(senhaUsuario.getText());
-		funcionario.setCodFuncionario(Integer.parseInt(cpfUsuario.getText()));
 		f.adicionarFuncionario(funcionario);
 		Alert alert = new Alert(AlertType.INFORMATION, "Usuário Cadastrado!");
 		alert.show();

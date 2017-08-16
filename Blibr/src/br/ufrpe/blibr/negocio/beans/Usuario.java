@@ -18,12 +18,10 @@ public class Usuario implements Serializable {
 	private int idade;
 	private LocalDate dataNascimento;
 	private String sexo;
-	private static long nextId = 0;
-	private Long idUsuario;
+	private static final long serialVersionUID = 5896102336969442664L;
 	
 	public Usuario(){
-		this.idUsuario = nextId;
-		nextId++;
+		
 	}
 
 	public String getNome() {
@@ -56,10 +54,6 @@ public class Usuario implements Serializable {
 		this.sexo = sexo;
 	}
 	
-	public Long getId(){
-		return idUsuario;
-	}
-	
 	public void setDataNascimento(LocalDate localDate){
 		this.dataNascimento = localDate;
 	}
@@ -78,8 +72,7 @@ public class Usuario implements Serializable {
 	
 	@Override
 	public String toString() {
-		return  "ID do Usuário: " + getId() + "\n"
-				+"Nome do Usuáro: " + getNome() + "\n"
+		return  "Nome do Usuáro: " + getNome() + "\n"
 				+"CPF do Usuário: "+ getCpf() + "\n"
 				+"Idade do Usuário: " + getDataNascimento() + "\n"
 				+"Sexo do Usuário: " + getSexo();

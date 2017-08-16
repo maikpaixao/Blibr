@@ -67,12 +67,12 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		}
 	}
 	
-	public Funcionario buscarFuncionario(Long codFuncionario) throws ElementoNaoExisteException{
+	public Funcionario buscarFuncionario(Long cpf) throws ElementoNaoExisteException{
 		Funcionario retorno = null;
 		try {
-			if(codFuncionario!=null){
-				for(Funcionario funcionario: listarFuncionario()){
-					if(funcionario.getCodFuncionario() == codFuncionario){
+			if(cpf!=null){
+				for(Funcionario funcionario: repoFuncionario.listar()){
+					if(funcionario.getCpf().equals(cpf)){
 						retorno =  funcionario;
 					}
 				}

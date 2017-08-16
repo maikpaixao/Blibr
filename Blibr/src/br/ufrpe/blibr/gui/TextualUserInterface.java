@@ -29,8 +29,6 @@ public class TextualUserInterface {
 	Scanner sc = new Scanner(System.in);
 	
 	public void showInterface() throws ParseException, Exception{
-		    
-			preencherFuncionario();
 			
 			do{
 				System.out.println("==========Menu========");
@@ -296,17 +294,6 @@ public class TextualUserInterface {
 		nome = sc.next();
 		
 		fachada.removerLivro(nome);
-	}
-	
-	public void preencherFuncionario() throws Exception{
-		funcionario = new Funcionario();
-		funcionario.setCodFuncionario(11);
-		funcionario.setNome("Joao");
-		funcionario.setCpf((long) 00011100055);
-		funcionario.setSexo("masculino");
-		//funcionario.setDataNascimento("22/02/1990");
-		
-		fachada.adicionarFuncionario(funcionario);
 	}
 	
 	public void emprestarLivro() throws ParseException, ElementoNaoExisteException, ElementoJaExisteException{

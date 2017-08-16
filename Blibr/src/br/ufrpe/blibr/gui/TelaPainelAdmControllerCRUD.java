@@ -97,7 +97,6 @@ public class TelaPainelAdmControllerCRUD {
 		String sexo = sexoUsuario.getSelectionModel().getSelectedItem().toString();
 		
 		funcionario = new Funcionario();
-		funcionario.setCodFuncionario(112);
 		funcionario.setNome(nome);
 		funcionario.setCpf(cpf);
 		funcionario.setSexo(sexo);

@@ -6,15 +6,15 @@ import java.util.Date;
 
 public class Livro implements Serializable{
 	
-	private Long codigoLivro = 1L;
-	private int quantidadeLivros;
+	private Long codigoLivro;
+	private Integer quantLivros;
 	private String nomeLivro;
 	private String nomeAutor;
 	private String editora;
 	private static final long serialVersionUID = -9084900373440737932L;
 	
 	public Livro(){
-		codigoLivro = codigoLivro+1;
+		
 	}
 
 	public Long getCodigoLivro() {
@@ -49,17 +49,17 @@ public class Livro implements Serializable{
 		this.editora = editora;
 	}
 
-	public int getQuantidadeLivros() {
-		return quantidadeLivros;
+	public Integer getQuantidadeLivros() {
+		return quantLivros;
 	}
 
-	public void setQuantidadeLivros(int quantidadeLivros) {
-		this.quantidadeLivros = quantidadeLivros;
+	public void setQuantidadeLivros(Integer quantidadeLivros) {
+		this.quantLivros = quantidadeLivros;
 	}
 	
 	public boolean equals(Object o){
 		boolean retorno = false;
-		if(this.getNomeLivro()==((Livro) o).getNomeLivro()){
+		if(this.getCodigoLivro()==((Livro) o).getCodigoLivro()){
 			retorno=true;
 		}
 		return retorno;

@@ -11,7 +11,6 @@ import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ValidadeEmprestimoException;
 import br.ufrpe.blibr.negocio.Fachada;
-import br.ufrpe.blibr.negocio.beans.Autor;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;

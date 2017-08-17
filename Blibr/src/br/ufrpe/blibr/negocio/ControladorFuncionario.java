@@ -14,7 +14,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	private static ControladorFuncionario instance;
 	
 	private ControladorFuncionario(){
-		repoFuncionario = new RepositorioGenerico<>("funcionario.txt");
+		repoFuncionario = new RepositorioGenerico<Funcionario>("funcionario.arq");
 	}
 	
 	public static synchronized ControladorFuncionario getInstance(){
@@ -38,7 +38,8 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	}
 
 	public List<Funcionario> listarFuncionario() {
-		return repoFuncionario.listar();
+		List<Funcionario> lista = repoFuncionario.listar();
+		return lista;
 	}
 
 	public void editarFuncionario(Funcionario funcionario) throws Exception {

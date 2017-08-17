@@ -30,7 +30,7 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	private ControladorEmprestimo(){
 		repoEmprestimo = new RepositorioGenerico<>("emprestimo.arq");
 		repoUsuario = new RepositorioGenerico<>("usuario.arq");
-		repoLivro = new RepositorioGenerico<>("livro.txt");
+		repoLivro = new RepositorioGenerico<>("livro.arq");
 	}
 	
 	public static ControladorEmprestimo getInstance(){
@@ -56,7 +56,8 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	}
 	
 	public List<Emprestimo> listarEmprestimos(){
-		return repoEmprestimo.listar();
+		List<Emprestimo> lista = repoEmprestimo.listar();
+		return lista;
 	}
 	
 	public void verificarEmprestimo(Long cpf) throws ValidadeEmprestimoException, ElementoNaoExisteException{

@@ -25,7 +25,7 @@ public class ControladorLivro implements IControladorLivro{
 	private static ControladorLivro instance;
 	
 	private ControladorLivro(){
-		repoLivro = new RepositorioGenerico<>("livro.txt");
+		repoLivro = new RepositorioGenerico<>("livro.arq");
 	}
 	
 	public static ControladorLivro getInstance(){
@@ -78,7 +78,8 @@ public class ControladorLivro implements IControladorLivro{
 	}
 
 	public List<Livro> listarLivros() {
-		return repoLivro.listar();
+		List<Livro> lista = repoLivro.listar();
+		return lista;
 	}
 
 	public void removerLivro(String nome) throws ElementoNaoExisteException{

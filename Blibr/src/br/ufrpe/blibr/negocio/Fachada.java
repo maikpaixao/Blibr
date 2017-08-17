@@ -17,7 +17,7 @@ import br.ufrpe.blibr.negocio.beans.Funcionario;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 
-public class Fachada {
+public class Fachada implements IFachada{
 	private static Fachada instance;
 	private ControladorUsuario controladorU = ControladorUsuario.getInstance();
 	private ControladorLivro controladorL = ControladorLivro.getInstance();

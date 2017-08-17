@@ -6,12 +6,13 @@ import java.util.Iterator;
 
 import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
+import br.ufrpe.blibr.negocio.ControladorLivro;
 import br.ufrpe.blibr.negocio.Fachada;
-import br.ufrpe.blibr.negocio.beans.Autor;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
@@ -25,8 +26,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TelaLivroController {
 	
-	TextualUserInterface in = new TextualUserInterface();
 	Fachada f = Fachada.getInstance();
+	ControladorLivro cl = ControladorLivro.getInstance();
 	ObservableList<String> cbList = FXCollections.observableArrayList("10","20");
 	ObservableList<Livro> cbList2 = FXCollections.observableArrayList();
 	
@@ -48,42 +49,48 @@ public class TelaLivroController {
 	@FXML
 	private TableColumn<Livro, String> editoraColuna;
 	@FXML
-	private TableColumn<Livro, Integer> quantLivro;
+	private TableColumn<Livro, Integer> quantiLivro;
+	@FXML
+	private TableColumn<Livro, Long> idColuna;
 	
 	public void initialize(){
 		
 		Iterator<Livro> itr = f.listarLivros().iterator();
 		while(itr.hasNext()){
-			Livro fun = (Livro)itr.next();
-			cbList2.add(fun);
+			Livro li = (Livro)itr.next();
+			cbList2.add(li);
 		}
 		
 		if(livroTable!=null){
+			idColuna.setCellValueFactory(new PropertyValueFactory<>("codigoLi"));
 			nomeColuna.setCellValueFactory(new PropertyValueFactory<>("nomeLivro"));
 			autorColuna.setCellValueFactory(new PropertyValueFactory<>("nomeAutor"));
 			editoraColuna.setCellValueFactory(new PropertyValueFactory<>("editora"));
-			quantLivro.setCellValueFactory(new PropertyValueFactory<>("quantidadeLivros"));
+			quantiLivro.setCellValueFactory(new PropertyValueFactory<>("quantLivros"));
 			livroTable.setItems(cbList2);
 		}
+		
 		if(quantidadeLiv!=null){
 			quantidadeLiv.setItems(cbList);
 		}
 	}
 	
-	public void cadastrarLivro() throws ElementoNaoExisteException, ElementoJaExisteException{
+	public void cadastrarLivro(ActionEvent event) throws ElementoNaoExisteException, ElementoJaExisteException{
+		
 		Livro livro = new Livro();
 		
-		String nome = nomeLivro.getText().toString();
-		String autor = autorLivro.getText().toString();
-		String editora = editoraLivro.getText().toString();
-		int ql = Integer.parseInt(quantidadeLiv.getSelectionModel().getSelectedItem().toString());
+		String nome = nomeLivro.getText();
+		String autor = autorLivro.getText();
+		System.out.println(autor);
+		String editora = editoraLivro.getText();
+		Integer ql = Integer.parseInt(quantidadeLiv.getSelectionModel().getSelectedItem().toString());
 		
+		livro.setCodigoLivro(Long.parseLong(nome));
 		livro.setNomeLivro(nome);
 		livro.setAutorLivro(autor);
 		livro.setEditora(editora);
 		livro.setQuantidadeLivros(ql);
 		f.adicionarLivro(livro);
-		in.listarLivro();
 		
 		Alert alert = new Alert(AlertType.INFORMATION, "Livro Cadastrado!");
 		alert.show();
@@ -93,8 +100,8 @@ public class TelaLivroController {
 		return f.buscarLivro(nomeLivro);
 	}
 	
-	public void removerLivro(){
-		f.removerUsuario(livroTable.getSelectionModel().getSelectedItem().getCodigoLivro());
+	public void removerLivro() throws ElementoNaoExisteException{
+		f.removerLivro(livroTable.getSelectionModel().getSelectedItem().getNomeLivro());
 		
 		Alert alert = new Alert(AlertType.WARNING, "Usuário Removido!");
 		alert.show();

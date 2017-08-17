@@ -47,7 +47,8 @@ public class ControladorUsuario implements IControladorUsuario{
 	}
 	
 	public List<Usuario> listarUsuario(){
-		return repoUsuario.listar();
+		List<Usuario> lista = repoUsuario.listar();
+		return lista;
 	}
 	
 	public Usuario buscarUsuario(Long cpf) {
@@ -70,7 +71,7 @@ public class ControladorUsuario implements IControladorUsuario{
 
 	public void removerUsuario(Long cpf){
 		try{
-			if(cpf!=null && buscarUsuario(cpf)!=null){
+			if(cpf!=null){
 				repoUsuario.remover(buscarUsuario(cpf));
 			}else{
 				throw new ElementoNaoExisteException(buscarUsuario(cpf));

@@ -30,7 +30,6 @@ ObservableList<Funcionario> cbList2 = FXCollections.observableArrayList();
 	Fachada f = Fachada.getInstance();
 	private ControladorFuncionario cF = ControladorFuncionario.getInstance(); 
 	
-	
 	@FXML
 	private TableView<Funcionario> funcionarioTable;
 	@FXML
@@ -68,15 +67,6 @@ ObservableList<Funcionario> cbList2 = FXCollections.observableArrayList();
 	
 	
 	public void initialize(){
-//		if(repo.listar()!=null){
-//		nomeColuna.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("nome"));
-//		cpfColuna.setCellValueFactory(new PropertyValueFactory<Funcionario,Long>("cpf"));
-//		sexoColuna.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("sexo"));
-//		idadeColuna.setCellValueFactory(new PropertyValueFactory<Funcionario,Date>("dataNascimento"));
-//		funcionarioTable.setItems((ObservableList<Funcionario>) repo.listar());
-//		funcionarioTable.getColumns().addAll(nomeColuna,cpfColuna,sexoColuna,idadeColuna);
-//		}
-		//funcionarioTable.setItems(data);
 		
 		Iterator<Funcionario> itr = f.listarFuncionario().iterator();
 		while(itr.hasNext()){

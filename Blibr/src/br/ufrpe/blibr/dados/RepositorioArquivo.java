@@ -13,11 +13,9 @@ public class RepositorioArquivo implements Serializable{
 
         try {
         	FileInputStream fis = new FileInputStream(filename);
-        	if(fis!=null){//O erro é aqui
-        		ObjectInputStream ois = new ObjectInputStream(fis);
-                obj = (Object)ois.readObject();
-                ois.close();
-        	}
+        	ObjectInputStream ois = new ObjectInputStream(fis);
+            obj = (Object)ois.readObject();
+            ois.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

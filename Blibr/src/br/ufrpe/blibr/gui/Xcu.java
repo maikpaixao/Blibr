@@ -89,24 +89,43 @@ ObservableList<Funcionario> cbList2 = FXCollections.observableArrayList();
 	
 	public void cadastrarFuncionario(ActionEvent event) throws Exception{
 		Funcionario funcionario = new Funcionario();
-		
-		funcionario.setNome(nomeUsuario.getText());
-		funcionario.setCpf(Long.parseLong(cpfUsuario.getText()));
-		funcionario.setSexo(sexoUsuario.getSelectionModel().getSelectedItem().toString());
-		funcionario.setDataNascimento(nascimentoUsuario.getValue());
-		funcionario.setSenha(senhaUsuario.getText());
-		f.adicionarFuncionario(funcionario);
-		Alert alert = new Alert(AlertType.INFORMATION, "Usuário Cadastrado!");
-		alert.show();
+		if(nomeUsuario.getText()=="" || cpfUsuario.getText()==""
+				|| sexoUsuario.getSelectionModel().getSelectedItem()==""
+				|| senhaUsuario.getText()==""){
+			Alert alert = new Alert(AlertType.INFORMATION, "Preencha todos os campos!");
+			alert.show();
+		}else{
+			funcionario.setNome(nomeUsuario.getText());
+			funcionario.setCpf(Long.parseLong(cpfUsuario.getText()));
+			funcionario.setSexo(sexoUsuario.getSelectionModel().getSelectedItem().toString());
+			funcionario.setDataNascimento(nascimentoUsuario.getValue());
+			funcionario.setSenha(senhaUsuario.getText());
+			f.adicionarFuncionario(funcionario);
+			Alert alert = new Alert(AlertType.INFORMATION, "Usuário Cadastrado!");
+			alert.show();
+		}
 	}
 	
-	public void editarFuncionario() throws ElementoNaoExisteException{
-
+	public void editarFuncionario() throws Exception{
+		
+		Funcionario funcionario = new Funcionario();
 		atualizarSexo.setItems(cbList);
 		Long cpf = Long.parseLong(buscaUsuariaoCpf.getText());
 		atualizarNome.setText(buscarFuncionario(cpf).getNome());
 		atualizarData.setValue(buscarFuncionario(cpf).getDataNascimento());
 		atualizarSexo.getSelectionModel().select(buscarFuncionario(cpf).getSexo());
+		
+		if(atualizarNome.getText()==""
+				|| atualizarSexo.getSelectionModel().getSelectedItem()==""
+				|| atualizarData.getValue()==null){
+			Alert alert = new Alert(AlertType.INFORMATION, "Preencha todos os campos!");
+			alert.show();
+		}else{
+			funcionario.setNome(atualizarNome.getText());
+			funcionario.setDataNascimento(atualizarData.getValue());
+			funcionario.setSexo(atualizarSexo.getSelectionModel().getSelectedItem().toString());
+			f.editarFuncionario(funcionario);
+		}
 	}
 	
 	public Funcionario buscarFuncionario(Long cpf) throws ElementoNaoExisteException{
@@ -114,7 +133,7 @@ ObservableList<Funcionario> cbList2 = FXCollections.observableArrayList();
 	}
 	
 	public void remove() throws ElementoNaoExisteException, IOException{
-		cF.removerUsuario(funcionarioTable.getSelectionModel().getSelectedItem().getCpf());
+		f.removerFuncionario(funcionarioTable.getSelectionModel().getSelectedItem().getCpf());
 	
 		Alert alert = new Alert(AlertType.WARNING, "Usuário Removido!");
 		alert.show();

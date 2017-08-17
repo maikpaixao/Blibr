@@ -81,27 +81,41 @@ public class TelaCadastroUsuarioControlador {
 	public void cadastrarUsuario() throws ElementoJaExisteException, ElementoNaoExisteException, IOException{
 		Usuario usuario = new Usuario();
 		
-		String nome = nomeUsuario.getText().toString();
-		Long cpf = Long.parseLong(cpfUsuario.getText().toString());
-		String sexo = sexoUsuario.getSelectionModel().getSelectedItem().toString();
-		LocalDate date = nascimentoUsuario.getValue();
-		
-		usuario.setNome(nome);
-		usuario.setCpf(cpf);
-		usuario.setSexo(sexo);
-		usuario.setDataNascimento(date);
-		f.adicionarUsuario(usuario);
-		in.listarUsuario();
-		Alert alert = new Alert(AlertType.INFORMATION, "Usuário Cadastrado!");
-		alert.show();
+		if(nomeUsuario.getText()=="" || cpfUsuario.getText()==""
+				|| sexoUsuario.getSelectionModel().getSelectedItem()==""
+				|| nascimentoUsuario.getValue()==null){
+			Alert alert = new Alert(AlertType.INFORMATION, "Preencha todos os campos!");
+			alert.show();
+		}else{
+			String nome = nomeUsuario.getText().toString();
+			Long cpf = Long.parseLong(cpfUsuario.getText().toString());
+			String sexo = sexoUsuario.getSelectionModel().getSelectedItem().toString();
+			LocalDate date = nascimentoUsuario.getValue();
+			
+			usuario.setNome(nome);
+			usuario.setCpf(cpf);
+			usuario.setSexo(sexo);
+			usuario.setDataNascimento(date);
+			f.adicionarUsuario(usuario);
+			in.listarUsuario();
+			Alert alert = new Alert(AlertType.INFORMATION, "Usuário Cadastrado!");
+			alert.show();
+		}
 	}
 	
 	public void atualzarUsuario() throws ElementoNaoExisteException{
 
-		Long cpf = Long.parseLong(buscaCpf.getText());
-		atualizarNome.setText(buscarUsuario(cpf).getNome());
-		atualizarData.setValue(buscarUsuario(cpf).getDataNascimento());
-		atualizarSexo.getSelectionModel().select(buscarUsuario(cpf).getSexo());
+		if(atualizarNome.getText()=="" || buscaCpf.getText()==""
+				|| atualizarSexo.getSelectionModel().getSelectedItem()==""
+				|| atualizarData.getValue()==null){
+			Alert alert = new Alert(AlertType.INFORMATION, "Preencha todos os campos!");
+			alert.show();
+		}else{
+			Long cpf = Long.parseLong(buscaCpf.getText());
+			atualizarNome.setText(buscarUsuario(cpf).getNome());
+			atualizarData.setValue(buscarUsuario(cpf).getDataNascimento());
+			atualizarSexo.getSelectionModel().select(buscarUsuario(cpf).getSexo());
+		}
 	}
 	
 	public Usuario buscarUsuario(Long cpf) throws ElementoNaoExisteException{

@@ -51,7 +51,7 @@ public class ControladorLivro implements IControladorLivro{
 		Livro retorno = null;
 		try {
 			if(nomeLivro==null){
-				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+				throw new ElementoNaoExisteException(nomeLivro);
 			}else{
 				for(Livro livro: listarLivros()){
 					if(livro.getNomeLivro().equals(nomeLivro)){
@@ -59,7 +59,7 @@ public class ControladorLivro implements IControladorLivro{
 					}
 				}
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 		return retorno;
@@ -68,11 +68,11 @@ public class ControladorLivro implements IControladorLivro{
 	public void editarLivro(Livro livro) throws ElementoNaoExisteException{
 		try {
 			if(livro==null){
-				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+				throw new ElementoNaoExisteException(livro);
 			}else{
 				repoLivro.atualizar(livro);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 	}
@@ -85,11 +85,11 @@ public class ControladorLivro implements IControladorLivro{
 	public void removerLivro(String nome) throws ElementoNaoExisteException{
 		try {
 			if(nome==null){
-				throw new ObjetoInvalidoExcpetion("Desculpe, mas esses dados são inválidos!");
+				throw new ElementoNaoExisteException(nome);
 			}else{
 				repoLivro.remover(buscarLivro(nome));
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 	}

@@ -8,10 +8,13 @@ import br.ufrpe.blibr.negocio.Fachada;
 import br.ufrpe.blibr.negocio.beans.Emprestimo;
 import br.ufrpe.blibr.negocio.beans.Livro;
 import br.ufrpe.blibr.negocio.beans.Usuario;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class TelaEmprestimoController {
 	
@@ -21,13 +24,12 @@ public class TelaEmprestimoController {
 	private TextField nomeLivro;
 	@FXML
 	private TextField cpfUsuario;
-	
 	@FXML
 	private TextField cpfDev;
 	@FXML
 	private TextField livroDev;
 	
-	public void emprestarLivro() throws ElementoNaoExisteException, ElementoJaExisteException{
+	public void emprestarLivro(ActionEvent event) throws ElementoNaoExisteException, ElementoJaExisteException{
 		
 		Emprestimo emprestimo = new Emprestimo();
 		String livro1 = nomeLivro.getText().toString();
@@ -43,15 +45,17 @@ public class TelaEmprestimoController {
 		
 		Alert alert = new Alert(AlertType.WARNING, "Emprestimo realizado com sucesso!");
 		alert.show();
-		
-		System.out.println(TelaLoginController.funcionario.getNome());
+
+		Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
+		win.close();
 		
 	}
 	
-	public void realizarDevolucao() throws ElementoNaoExisteException{
+	public void realizarDevolucao(ActionEvent event) throws ElementoNaoExisteException{
 		
 		Emprestimo emprestimo = new Emprestimo();
-		String livro1 = livroDev.getText().toString();
+		
+		String livro1 = livroDev.getText();
 		Long cpf = Long.parseLong(cpfDev.getText().toString());
 		
 		emprestimo.setLivro(f.buscarLivro(livro1));
@@ -60,6 +64,8 @@ public class TelaEmprestimoController {
 		
 		Alert alert = new Alert(AlertType.WARNING, "Devolução realizado com sucesso!");
 		alert.show();
+		
+		Stage win = (Stage)((Node)event.getSource()).getScene().getWindow();
+		win.close();
 	}
-	
 }

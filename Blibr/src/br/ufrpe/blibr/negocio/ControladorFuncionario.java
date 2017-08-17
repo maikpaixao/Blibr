@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.ufrpe.blibr.dados.IRepositorio;
 import br.ufrpe.blibr.dados.RepositorioGenerico;
+import br.ufrpe.blibr.exception.ElementoJaExisteException;
 import br.ufrpe.blibr.exception.ElementoNaoExisteException;
 import br.ufrpe.blibr.exception.ObjetoInvalidoExcpetion;
 import br.ufrpe.blibr.negocio.beans.Funcionario;
@@ -24,15 +25,14 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		return instance;
 	}
 
-	public void adicionarFuncionario(Funcionario funcionario) throws Exception {
+	public void adicionarFuncionario(Funcionario funcionario) throws ElementoNaoExisteException, ElementoJaExisteException {
 		try {
 			if(funcionario!=null){
 				repoFuncionario.adicionar(funcionario);
 			}else{
-				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
-						+ " os dados fornecidos são inválidos!");
+				throw new ElementoNaoExisteException(funcionario);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 	}
@@ -42,15 +42,14 @@ public class ControladorFuncionario implements IControladorFuncionario{
 		return lista;
 	}
 
-	public void editarFuncionario(Funcionario funcionario) throws Exception {
+	public void editarFuncionario(Funcionario funcionario) throws ElementoNaoExisteException {
 		try {
 			if(funcionario!=null){
 				repoFuncionario.atualizar(funcionario);
 			}else{
-				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
-						+ " os dados fornecidos são inválidos!");
+				throw new ElementoNaoExisteException(funcionario);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 	}
@@ -60,10 +59,9 @@ public class ControladorFuncionario implements IControladorFuncionario{
 			if(codFuncionario!=null){
 				repoFuncionario.remover(buscarFuncionario(codFuncionario));
 			}else{
-				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
-						+ " os dados fornecidos são inválidos!");
+				throw new ElementoNaoExisteException(codFuncionario);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 	}
@@ -78,10 +76,9 @@ public class ControladorFuncionario implements IControladorFuncionario{
 					}
 				}
 			}else{
-				throw new ObjetoInvalidoExcpetion("Não foi possível realizar a operação,"
-						+ " os dados fornecidos são inválidos!");
+				throw new ElementoNaoExisteException(cpf);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 		return retorno;

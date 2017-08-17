@@ -27,7 +27,6 @@ import javafx.scene.control.Alert.AlertType;
 
 public class TelaPainelAdmControllerCRUD {
 	
-	private ControladorFuncionario cF = ControladorFuncionario.getInstance(); 
 	private Fachada fachada = Fachada.getInstance();
 	Funcionario funcionario;
 	
@@ -59,24 +58,6 @@ public class TelaPainelAdmControllerCRUD {
 	
 	public void initialize() throws Exception{
 		
-//		funcionario = new Funcionario();
-//		funcionario.setCodFuncionario(11);
-//		funcionario.setNome("Joao");
-//		funcionario.setCpf((long) 00011100055);
-//		funcionario.setSexo("masculino");
-//		//funcionario.setDataNascimento("22/02/1990");
-//		
-//		fachada.adicionarFuncionario(funcionario);
-//		
-//		funcionario = new Funcionario();
-//		funcionario.setCodFuncionario(11);
-//		funcionario.setNome("Maria");
-//		funcionario.setCpf((long) 00011100055);
-//		funcionario.setSexo("masculino");
-//		//funcionario.setDataNascimento("22/02/1990");
-//		
-//		fachada.adicionarFuncionario(funcionario);
-		
 		Iterator<Funcionario> itr = fachada.listarFuncionario().iterator();
 		while(itr.hasNext()){
 			Funcionario fun = (Funcionario)itr.next();
@@ -106,30 +87,5 @@ public class TelaPainelAdmControllerCRUD {
 		
 		Alert alert = new Alert(AlertType.INFORMATION, "Funcionario Cadastrado!");
 		alert.show();
-	}
-	
-	public void removerFuncionario(ActionEvent event){
-		//Funcionario funcionario = new Funcionario();
-	}
-	
-	public void editarFuncionario(ActionEvent event){
-		
-	}
-	
-	public void buscarFuncionario() throws ElementoNaoExisteException{
-		
-//		for(Funcionario fun: cF.listarFuncionario()){
-//			cbList.addAll(fun);
-//			
-//		}
-//		ObservableList<Funcionario> list = cbList;
-//		nomeColuna.setCellValueFactory(new PropertyValueFactory<>("nome"));
-//		cpfColuna.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-//		sexoColuna.setCellValueFactory(new PropertyValueFactory<>("sexo"));
-//		idadeColuna.setCellValueFactory(new PropertyValueFactory<>("dataNascimento"));
-//		funcionarioTable.setItems(list);
-		//Funcionario funcionario = new Funcionario();
-//		Long codFuncionario = Long.parseLong(codFun.getText());
-//		return cF.buscarFuncionario(codFuncionario);
 	}
 }

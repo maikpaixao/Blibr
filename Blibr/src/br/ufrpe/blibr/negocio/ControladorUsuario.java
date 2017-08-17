@@ -36,7 +36,7 @@ public class ControladorUsuario implements IControladorUsuario{
 	
 	public void adicionarUsuario(Usuario usuario) throws ElementoJaExisteException, ElementoNaoExisteException{
 		try{
-			if(usuario!=null && buscarUsuario(usuario.getCpf())!=null){
+			if(usuario!=null){
 				throw new ElementoJaExisteException("Esse usuário já está cadastrado!");
 			}else{
 				repoUsuario.adicionar(usuario);
@@ -83,7 +83,7 @@ public class ControladorUsuario implements IControladorUsuario{
 	
 	public void editarUsario(Usuario usuario){
 		try{
-			if(usuario!=null && buscarUsuario(usuario.getCpf())!=null){
+			if(usuario!=null){
 				repoUsuario.atualizar(usuario);
 			}else{
 				throw new ElementoNaoExisteException(usuario);

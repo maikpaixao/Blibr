@@ -43,14 +43,14 @@ public class ControladorEmprestimo implements IControladorEmprestimo{
 	public void registrarEmprestimo(Emprestimo emprestimo) throws ElementoNaoExisteException, ElementoJaExisteException{
 		try {
 			if(emprestimo == null && 
-			   buscarEmprestimo(emprestimo.getUsuario().getCpf()).getMulta().getDivida()>(0.0)){
-				throw new ObjetoInvalidoExcpetion("Desculpa, mas esses dados são inválidos!");
+			   buscarEmprestimo(emprestimo.getUsuario().getCpf()).getMulta().getDivida()>(0)){
+				throw new ElementoNaoExisteException(emprestimo);
 			}else{
 				controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).setQuantidadeLivros
 				(controllerLivro.buscarLivro(emprestimo.getLivro().getNomeLivro()).getQuantidadeLivros()-1);
 				repoEmprestimo.adicionar(emprestimo);
 			}
-		} catch (ObjetoInvalidoExcpetion e) {
+		} catch (ElementoNaoExisteException e) {
 			e.printStackTrace();
 		}
 	}
